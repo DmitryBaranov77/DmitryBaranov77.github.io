@@ -26,7 +26,6 @@ const RegistrationForm = () => {
 
 	return (
 		<div className='reg'>
-			{tg}
 			<InputGroup hasValidation>
 				<FloatingLabel label='Ваш email' controlId="floatingInput" className="mb-3">
 					<Form.Control className={'input is-' + validEmail} type='email' placeholder='name@example.com' value={email} onChange={onChangeEmail} onBlur={onBlurEmail}/>
