@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Button, FloatingLabel, Form, InputGroup } from 'react-bootstrap';
+import { useTelegram } from '../../hooks/useTelegram';
 import './registrationForm.css';
 
 const RegistrationForm = () => {
+	const {tg} = useTelegram();
 	const [fio, setFio] = useState('');
 	const [adress, setadress] = useState('');
 	const [phoneNumber, setPhoneNumber] = useState('');
@@ -24,6 +26,7 @@ const RegistrationForm = () => {
 
 	return (
 		<div className='reg'>
+			{tg}
 			<InputGroup hasValidation>
 				<FloatingLabel label='Ваш email' controlId="floatingInput" className="mb-3">
 					<Form.Control className={'input is-' + validEmail} type='email' placeholder='name@example.com' value={email} onChange={onChangeEmail} onBlur={onBlurEmail}/>
