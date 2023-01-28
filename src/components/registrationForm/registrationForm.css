@@ -1,3 +1,7 @@
+.reg{
+	margin-top: 1rem!important;
+}
+
 .input{
 	background-color: var(--tg-theme-secondary-bg-color);
 	color: var(--tg-theme-text-color)
