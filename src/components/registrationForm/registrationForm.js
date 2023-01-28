@@ -26,24 +26,22 @@ const RegistrationForm = () => {
 
 	return (
 		<div className='reg'>
-			<InputGroup hasValidation>
-				<FloatingLabel label='Ваш email' controlId="floatingInput" className="mb-3">
-					<Form.Control className={'input is-' + validEmail} type='email' placeholder='name@example.com' value={email} onChange={onChangeEmail} onBlur={onBlurEmail}/>
-					<Form.Control.Feedback type='invalid'>Пожалуйста, укажите корректный email</Form.Control.Feedback>
-				</FloatingLabel>
-				<FloatingLabel label='Ваш email' controlId="floatingInput" className="mb-3">
-					<Form.Control className={'input is-' + validEmail} type='email' placeholder='name@example.com' value={email} onChange={onChangeEmail} onBlur={onBlurEmail}/>
-					<Form.Control.Feedback type='invalid'>Пожалуйста, укажите корректный email</Form.Control.Feedback>
-				</FloatingLabel>
-				<FloatingLabel label='Ваш email' controlId="floatingInput" className="mb-3">
-					<Form.Control className={'input is-' + validEmail} type='email' placeholder='name@example.com' value={email} onChange={onChangeEmail} onBlur={onBlurEmail}/>
-					<Form.Control.Feedback type='invalid'>Пожалуйста, укажите корректный email</Form.Control.Feedback>
-				</FloatingLabel>
-				<FloatingLabel label='Ваш email' controlId="floatingInput" className="mb-3">
-					<Form.Control className={'input is-' + validEmail} type='email' placeholder='name@example.com' value={email} onChange={onChangeEmail} onBlur={onBlurEmail}/>
-					<Form.Control.Feedback type='invalid'>Пожалуйста, укажите корректный email</Form.Control.Feedback>
-				</FloatingLabel>
-			</InputGroup>
+			<FloatingLabel label='Ваш email' controlId="floatingInput" className="mb-3">
+				<Form.Control className={'input is-' + validEmail} type='email' placeholder='name@example.com' value={email} onChange={onChangeEmail} onBlur={onBlurEmail}/>
+				<Form.Control.Feedback type='invalid'>Пожалуйста, укажите корректный email</Form.Control.Feedback>
+			</FloatingLabel>
+			<FloatingLabel label='Ваш email' controlId="floatingInput" className="mb-3">
+				<Form.Control className={'input is-' + validEmail} type='email' placeholder='name@example.com' value={email} onChange={onChangeEmail} onBlur={onBlurEmail}/>
+				<Form.Control.Feedback type='invalid'>Пожалуйста, укажите корректный email</Form.Control.Feedback>
+			</FloatingLabel>
+			<FloatingLabel label='Ваш email' controlId="floatingInput" className="mb-3">
+				<Form.Control className={'input is-' + validEmail} type='email' placeholder='name@example.com' value={email} onChange={onChangeEmail} onBlur={onBlurEmail}/>
+				<Form.Control.Feedback type='invalid'>Пожалуйста, укажите корректный email</Form.Control.Feedback>
+			</FloatingLabel>
+			<FloatingLabel label='Ваш email' controlId="floatingInput" className="mb-3">
+				<Form.Control className={'input is-' + validEmail} type='email' placeholder='name@example.com' value={email} onChange={onChangeEmail} onBlur={onBlurEmail}/>
+				<Form.Control.Feedback type='invalid'>Пожалуйста, укажите корректный email</Form.Control.Feedback>
+			</FloatingLabel>
 		</div>
 	);
 };
