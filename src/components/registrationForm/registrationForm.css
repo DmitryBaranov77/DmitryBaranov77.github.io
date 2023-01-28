@@ -1,11 +1,11 @@
 @supports(--tg-color-scheme: 'dark'){
-	reg {
+	.reg {
 		background-color: white;
 	}
 }
 
 @supports(--tg-color-scheme: 'light'){
-	reg {
+	.reg {
 		background-color: black;
 	}
 }
