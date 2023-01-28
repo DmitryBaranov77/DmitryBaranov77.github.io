@@ -1,10 +1,10 @@
-@supports(--tg-color-scheme: dark){
+@supports(--tg-color-scheme: 'dark'){
 	reg {
 		background-color: white;
 	}
 }
 
-@supports(--tg-color-scheme: light){
+@supports(--tg-color-scheme: 'light'){
 	reg {
 		background-color: black;
 	}
