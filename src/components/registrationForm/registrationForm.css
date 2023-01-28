@@ -1,0 +1,7 @@
+.reg{
+	background-color: black;
+}
+
+.input{
+	background-color: var(--tg-theme-bg-color);
+}

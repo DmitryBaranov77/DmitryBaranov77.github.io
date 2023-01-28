@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, FloatingLabel, Form, InputGroup } from 'react-bootstrap';
+import './registrationForm.css';
 
 const RegistrationForm = () => {
 	const [fio, setFio] = useState('');
