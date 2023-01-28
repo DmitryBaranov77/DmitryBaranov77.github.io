@@ -1,12 +1,5 @@
-@supports(--tg-color-scheme: 'dark'){
-	.reg {
-		background-color: white;
-	}
-}
-
-@supports(--tg-color-scheme: 'light'){
-	.reg {
-		background-color: black;
-	}
+.input{
+	background-color: var(--tg-theme-secondary-bg-color);
+	color: var(--tg-theme-text-color);
 }
 
