@@ -37,7 +37,7 @@ const RegistrationForm = () => {
 	}, [])
 
 	useEffect(() => {
-		if(!fio || !adress || !phoneNumber || !email || !(validEmail = 'valid')){
+		if(!fio || !adress || !phoneNumber || !email || !(validEmail === 'valid')){
 			tg.MainButton.hide();
 		} else {
 			tg.MainButton.show();
