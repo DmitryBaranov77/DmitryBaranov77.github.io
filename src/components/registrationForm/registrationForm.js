@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { FloatingLabel, Form} from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { AddressSuggestions } from 'react-dadata';
 import { useTelegram } from '../../hooks/useTelegram';
 import 'react-dadata/dist/react-dadata.css';
@@ -21,7 +21,7 @@ const RegistrationForm = () => {
 			email
 		}
 		tg.sendData(JSON.stringify(data));
-	}, [fio, ad, phoneNumber, email])
+	}, [fio, adress, phoneNumber, email])
 
 	useEffect(() => {
 		tg.onEvent('mainButtonClicked', onSendData);
@@ -42,7 +42,7 @@ const RegistrationForm = () => {
 		} else {
 			tg.MainButton.show();
 		}
-	}, fio, adress, phoneNumber, email, validEmail)
+	}, [fio, adress, phoneNumber, email, validEmail])
 
 	const onChangeEmail = (e) => {
 		setEmail(e.target.value);
