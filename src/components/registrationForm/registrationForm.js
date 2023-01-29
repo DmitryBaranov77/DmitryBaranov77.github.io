@@ -18,7 +18,8 @@ const RegistrationForm = () => {
 			fio,
 			adress,
 			phoneNumber, 
-			email
+			email,
+			user: tg.user
 		}
 		tg.sendData(JSON.stringify(data));
 	}, [fio, adress, phoneNumber, email])
