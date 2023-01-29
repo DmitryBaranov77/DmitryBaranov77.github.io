@@ -1,11 +1,11 @@
 .reg{
 	margin-top: 1rem!important;
     padding: 0 2rem;
-    border-color: var(--tg-theme-bg-color);
 }
 
 .input{
 	background-color: var(--tg-theme-bg-color);
+    border-color: var(--tg-theme-bg-color);
 	color: var(--tg-theme-text-color);
     margin-top: 1rem;
 }
