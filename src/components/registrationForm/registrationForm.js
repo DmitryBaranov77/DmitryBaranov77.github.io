@@ -16,11 +16,12 @@ const RegistrationForm = () => {
 	const onSendData = useCallback(() => {
 		const data ={
 			fio,
+			adress,
 			phoneNumber, 
 			email
 		}
 		tg.sendData(JSON.stringify(data));
-	}, [fio, phoneNumber, email])
+	}, [fio, adress, phoneNumber, email])
 
 	useEffect(() => {
 		tg.onEvent('mainButtonClicked', onSendData);
