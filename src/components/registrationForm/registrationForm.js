@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FloatingLabel, Form} from 'react-bootstrap';
 import { AddressSuggestions } from 'react-dadata';
 import { useTelegram } from '../../hooks/useTelegram';
@@ -12,6 +12,37 @@ const RegistrationForm = () => {
 	const [phoneNumber, setPhoneNumber] = useState('');
 	const [email, setEmail] = useState('');
 	const [validEmail, setValidEmail] = useState('');
+
+	const onSendData = useCallback(() => {
+		const data ={
+			fio,
+			adress,
+			phoneNumber, 
+			email
+		}
+		tg.sendData(JSON.stringify(data));
+	}, [fio, ad, phoneNumber, email])
+
+	useEffect(() => {
+		tg.onEvent('mainButtonClicked', onSendData);
+		return () => {
+			tg.offEvent('mainButtonClicked', onSendData);
+		}
+	}, [onSendData])
+
+	useEffect(() => {
+		tg.MainButton.setParams({
+			text: 'Зарегистрироваться'
+		})
+	}, [])
+
+	useEffect(() => {
+		if(!fio || !adress || !phoneNumber || !email || !(validEmail = 'valid')){
+			tg.MainButton.hide();
+		} else {
+			tg.MainButton.show();
+		}
+	}, fio, adress, phoneNumber, email, validEmail)
 
 	const onChangeEmail = (e) => {
 		setEmail(e.target.value);
@@ -45,9 +76,9 @@ const RegistrationForm = () => {
 				<Form.Control.Feedback type='invalid'>Пожалуйста, укажите корректный email</Form.Control.Feedback>
 
 				<Form.Control className={'input'} type='text' placeholder='Иванов Иван Иванович' value={fio} onChange={onChangeFio} />
-				<AddressSuggestions token='22cd6c7adac9d78ce2cb0559940b208f26701947' inputProps={{placeholder: 'Адрес', className:'react-dadata__input input form-control'}} suggestionsClassName='suggestion' value={adress} onChange={setAdress}/>
-				<Form.Control className={'input is-' + validEmail} type='email' placeholder='name@example.com' value={email} onChange={onChangeEmail} onBlur={onBlurEmail}/>
-				<Form.Control.Feedback type='invalid'>Пожалуйста, укажите корректный email</Form.Control.Feedback>
+				<AddressSuggestions token='22cd6c7adac9d78ce2cb0559940b208f26701947' inputProps={{placeholder: 'Адрес', className:'react-dadata__input input form-control'}} suggestionsClassName='suggestion' value={adress} onChange={onChangeAdress}/>
+				
+				<Form.Control className={'input'} type='tel' placeholder='Номер телефона' value={phoneNumber} onChange={onChangePhoneNumber}/>
 		
 		</div>
 	);
