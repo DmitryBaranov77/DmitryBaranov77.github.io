@@ -22,7 +22,7 @@ const RegistrationForm = () => {
 			user: tg.user
 		}
 		tg.sendData(JSON.stringify(data));
-	}, [fio, adress, phoneNumber, email])
+	}, [fio, adress, phoneNumber, email, tg.user])
 
 	useEffect(() => {
 		tg.onEvent('mainButtonClicked', onSendData);
