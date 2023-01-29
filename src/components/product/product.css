@@ -1,6 +1,8 @@
 .product{
 	display: flex;
-	width: 50rem;
+	width: 30rem;
+	color: var(--tg-theme-text-color);
+	background: var(--tg-theme-bg-color);
 }
 
 .change-count{
