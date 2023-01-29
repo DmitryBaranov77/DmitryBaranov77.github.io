@@ -1,0 +1,12 @@
+.product{
+	display: flex;
+	width: 50rem;
+}
+
+.change-count{
+	position: absolute;
+}
+
+.hidden{
+	visibility: hidden;
+}
