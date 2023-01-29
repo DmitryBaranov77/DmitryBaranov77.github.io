@@ -45,7 +45,7 @@ const RegistrationForm = () => {
 				<Form.Control.Feedback type='invalid'>Пожалуйста, укажите корректный email</Form.Control.Feedback>
 
 				<Form.Control className={'input'} type='text' placeholder='Иванов Иван Иванович' value={fio} onChange={onChangeFio} />
-				<AddressSuggestions token='22cd6c7adac9d78ce2cb0559940b208f26701947' inputProps={{placeholder: 'Адрес', className:'react-dadata__input input form-control'}} value={adress} onChange={setAdress}/>
+				<AddressSuggestions token='22cd6c7adac9d78ce2cb0559940b208f26701947' inputProps={{placeholder: 'Адрес', className:'react-dadata__input input form-control'}} suggestionsClassName='suggestion' value={adress} onChange={setAdress}/>
 				<Form.Control className={'input is-' + validEmail} type='email' placeholder='name@example.com' value={email} onChange={onChangeEmail} onBlur={onBlurEmail}/>
 				<Form.Control.Feedback type='invalid'>Пожалуйста, укажите корректный email</Form.Control.Feedback>
 		
