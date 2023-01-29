@@ -78,7 +78,9 @@ const RegistrationForm = () => {
 				<Form.Control className={'input'} type='text' placeholder='Иванов Иван Иванович' value={fio} onChange={onChangeFio} />
 				<AddressSuggestions 
 					token='22cd6c7adac9d78ce2cb0559940b208f26701947' 
-					inputProps={{placeholder: 'Адрес', className:'react-dadata__input input form-control', value: adress, onChange: onChangeAdress}} 
+					inputProps={{placeholder: 'Адрес', className:'react-dadata__input input form-control'}}
+					value={adress}
+					onChange={onChangeAdress} 
 					suggestionsClassName='suggestion' 
 				/>
 				
