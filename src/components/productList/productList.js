@@ -13,7 +13,6 @@ export default class ProductList extends React.Component{
 	products = this.props.products;
 	tg = useTelegram().tg;
 
-
 	state = {
 		cart: []
 	}
@@ -26,14 +25,6 @@ export default class ProductList extends React.Component{
 		this.tg.sendData(JSON.stringify(data));
 	}
 
-	componentDidMount(){
-		
-	}
-
-	componentDidMount() {
-		this.tg.offEvent('mainButtonClicked', this.onSendData);
-	}
-
 	componentDidUpdate(prevProps, prevState){
 		if(this.state.cart.length === 0){
 			this.tg.MainButton.hide();
@@ -44,6 +35,7 @@ export default class ProductList extends React.Component{
 			})
 		}
 		this.tg.onEvent('mainButtonClicked', this.onSendData);
+		this.tg.offEvent('mainButtonClicked', this.onSendData);
 	}
 
 	onInc = (product) => {
