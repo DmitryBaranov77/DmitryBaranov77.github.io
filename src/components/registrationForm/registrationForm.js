@@ -53,7 +53,6 @@ const RegistrationForm = () => {
 	}
 
 	const onChangeAdress = (e) => {
-		console.log(e.target.value);
 		setAdress(e.target.value);
 	}
 

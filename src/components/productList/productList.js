@@ -18,7 +18,6 @@ export default class ProductList extends React.Component{
 	}
 
 	onSendData = () => {
-		console.log('111');
 		const data = {
 			cart: this.state.cart
 		}
@@ -35,7 +34,9 @@ export default class ProductList extends React.Component{
 			})
 		}
 		this.tg.onEvent('mainButtonClicked', this.onSendData);
-		this.tg.offEvent('mainButtonClicked', this.onSendData);
+		return () => {
+			this.tg.offEvent('mainButtonClicked', this.onSendData);
+		}
 	}
 
 	onInc = (product) => {
