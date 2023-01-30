@@ -44,10 +44,16 @@ export default class Product extends React.Component{
 					{title}. <span className='card__price'> {price}</span>
 				</h4>
 
-				<div className='btn-container'>
-					{count !== 0 ? (<Button title={'-'} type={'remove'} onClick={this.onDecHandler} />) : ''}
+				{count !== 0 ?
+				(<div className='btn-container'>
+					<Button title={'-'} type={'remove'} onClick={this.onDecHandler}/>
 					<Button title={'+'} type={'add'} onClick={this.onIncHandler}/>
-				</div>
+				</div>)
+				:
+				(<div className='btn-container'>
+					<Button title={'Add'} type={'add'} onClick={this.onIncHandler}/>
+				</div>)
+				}
 			</div>
 		);
 	}
