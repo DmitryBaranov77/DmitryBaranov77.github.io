@@ -21,11 +21,11 @@ export default class ProductList extends React.Component{
 	onSendData = () => {
 		const data = {
 			cart: this.state.cart,
-			initData: this.state.initData,
-			initDataUnsafe: this.tg.initDataUnsafe,
-			version: this.tg.version,
-			platform: this.tg.platform,
-			themeParams: this.tg.themeParams,
+			// initData: this.state.initData,
+			// initDataUnsafe: this.tg.initDataUnsafe,
+			// version: this.tg.version,
+			// platform: this.tg.platform,
+			// themeParams: this.tg.themeParams,
 		}
 		this.tg.sendData(JSON.stringify(data));
 	}
