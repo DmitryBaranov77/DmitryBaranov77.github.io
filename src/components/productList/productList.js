@@ -27,9 +27,7 @@ export default class ProductList extends React.Component{
 	}
 
 	componentDidMount(){
-		this.tg.onEvent('mainButtonClicked', useCallback(() => {
-			console.log(123);
-		}));
+		
 	}
 
 	componentDidMount() {
@@ -45,6 +43,9 @@ export default class ProductList extends React.Component{
 				text: getTotalPrice(this.state.cart)
 			})
 		}
+		this.tg.onEvent('mainButtonClicked', useCallback(() => {
+			console.log(123);
+		}));
 	}
 
 	onInc = (product) => {
