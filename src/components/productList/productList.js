@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTelegram } from '../../hooks/useTelegram';
 import Product from '../product/product';
 import './productList.css';
@@ -14,7 +14,6 @@ export default class ProductList extends React.Component{
 	tg = useTelegram().tg;
 
 	state = {
-		products: this.products,
 		cart: []
 	}
 
@@ -29,68 +28,50 @@ export default class ProductList extends React.Component{
 		}
 	}
 
-
-	onAdd = async (product) => {
-		let index = this.state.products.findIndex(item => item.id === product.id);
-		this.setState(prevState => {
-			prevState.products[index].count++;
-			return {
-				products: prevState.products,
-				cart: [...prevState.cart, prevState.products[index]]
-			}
-		})
-
-		document.getElementById(`add-${product.id}`).classList.add('hidden');
-		document.getElementById(`change-count-${product.id}`).classList.remove('hidden');
+	onInc = (product) => {
+		const exist = this.state.cart.find(item => item.id === product.id);
+		if(exist){
+			this.setState(prevState => {
+				return {
+					cart: prevState.cart.map(item => item.id === product.id ? {...exist, quantity: exist.quantity + 1} : item)
+				}
+			})
+		} else {
+			this.setState(prevState => {
+				return {
+					cart: [...prevState.cart, {...product, quantity: 1}]
+				}
+			})
+		}
 	}
 
-	onDec = (product) => {
-		let index = this.state.products.findIndex(item => item.id === product.id);
-		this.setState(prevState => {
-			prevState.products[index].count--;
-			if(prevState.products[index].count === 0){
-				document.getElementById(`add-${product.id}`).classList.remove('hidden');
-				document.getElementById(`change-count-${product.id}`).classList.add('hidden');
-				return {
-					products: prevState.products,
-					card: prevState.cart.filter(i => i.id !== product.id)
+	onDec = (product) =>{
+		const exist = this.state.cart.find(item => item.id === product.id);
+		if(exist.quantity === 1){
+			this.setState(prevState => {
+				return{
+					cart: prevState.cart.filter(item => item.id !== product.id)
 				}
-			} else {
-				prevState.cart.findIndex(item => item.id === product.id)
-				prevState.cart[index] = prevState.products[index];
+			})
+		} else {
+			this.setState(prevState => {
 				return {
-					products: prevState.products,
-					cart: prevState.cart
+					cart: prevState.cart.map(item => item.id === product.id ? {...exist, quantity: exist.quantity - 1} : item)
 				}
-			}
-		})
-	}
-
-	onInc = (product) =>{
-		let index = this.state.products.findIndex(item => item.id === product.id);
-		this.setState(prevState => {
-			prevState.products[index].count++;
-			prevState.cart.findIndex(item => item.id === product.id)
-			prevState.cart[index] = prevState.products[index];
-			return {
-				products: prevState.products,
-				cart: prevState.cart
-			}
-		})
+			})
+		}
 	}
 
 	render() {
-		const {products} = this.state;
+		const products = this.products;
 		return (
 			<div className='list'>
 				{products.map(item => (
 					<Product
 						key={item.id}
 						product={item}
-						onAdd={() => this.onAdd(item)}
-						className={'item'}
-						onInc={() => this.onInc(item)}
-						onDec={() => this.onDec(item)}
+						onInc={this.onInc}
+						onDec={this.onDec}
 					/>
 				))}
 			</div>

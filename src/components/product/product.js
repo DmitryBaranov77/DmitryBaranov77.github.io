@@ -1,25 +1,54 @@
-import React, { useState } from 'react';
-import { Button, Card } from 'react-bootstrap';
+import React from 'react';
+import Button from '../../button/button';
 import './product.css';
 
-const Product = ({product, className, onAdd, onInc, onDec}) => {
+export default class Product extends React.Component{
+	product = this.props.product;
+	state = {
+		count: 0
+	};
 
-	return (
-		<div className={'product ' + className}>
-			<Card>
-				<Card.Img variant='top' src='https://roof-rack.ru/upload/medialibrary/9dd/%D1%80%D1%8E%D0%BA%D0%B7%D0%B0%D0%BA%208.jpg'/>
-				<Card.Body>
-					<Card.Title>{product.name + ' ' + product.price + 'р.'}</Card.Title>
-					<Card.Text>Количество: {product.count}</Card.Text>
-					<div className='hidden change-count' id={'change-count-' + product.id}>
-						<Button className='button' onClick={onInc}>+</Button>
-						<Button className='button' onClick={onDec}>-</Button>
-					</div>
-					<Button className='button add' id={'add-' + product.id} onClick={onAdd}>Добавить в корзину</Button>
-				</Card.Body>
-			</Card>
-		</div>
-	);
-};
+	onIncHandler = () => {
+		this.setState(prevstate => {
+			return {
+				count: prevstate.count + 1
+			}
+		})
+		this.props.onInc(this.product);
+	}
 
-export default Product;
+	onDecHandler = () => {
+		this.setState(prevstate => {
+			return {
+				count: prevstate.count - 1
+			}
+		})
+		this.props.onInc(this.product);
+		
+	}
+
+	render(){
+		const {title, src, price} = this.product;
+		const count = this.state.count;
+		return (
+			<div className={'card'}>
+				<span
+				className={`${count !== 0 ? 'card__badge' : 'card__badge--hidden'}`}
+				>
+					{count}
+				</span>
+				<div className='image__container'>
+					<img src={src} alt={title} />
+				</div>
+				<h4 className='card__title'>
+					{title}. <span className='card__price'> {price}</span>
+				</h4>
+
+				<div className='btn-container'>
+					<Button title={'+'} type={'add'} onClick={this.onIncHandler}/>
+					{count !== 0 ? (<Button title={'-'} type={'remove'} onClick={this.onDecHandler} />) : ''}
+				</div>
+			</div>
+		);
+	}
+}
