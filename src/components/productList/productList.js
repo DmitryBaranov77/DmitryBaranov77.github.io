@@ -18,30 +18,15 @@ export default class ProductList extends React.Component{
 		cart: []
 	}
 
-	onSendData = () => {
+	onSendData = useCallback(() => {
 		const data = {
-			cart: this.state.cart,
-			// initData: this.state.initData,
-			// initDataUnsafe: this.tg.initDataUnsafe,
-			// version: this.tg.version,
-			// platform: this.tg.platform,
-			// themeParams: this.tg.themeParams,
+			cart: this.state.cart
 		}
 		this.tg.sendData(JSON.stringify(data));
-	}
+	})
 
 	componentDidMount(){
-		this.tg.onEvent('mainButtonClicked', () => {
-			const data = {
-				cart: this.state.cart,
-				initData: this.state.initData,
-				initDataUnsafe: this.tg.initDataUnsafe,
-				version: this.tg.version,
-				platform: this.tg.platform,
-				themeParams: this.tg.themeParams,
-		}
-		this.tg.sendData(JSON.stringify(data));
-		});
+		this.tg.onEvent('mainButtonClicked', this.onSendData);
 	}
 
 	componentDidMount() {
