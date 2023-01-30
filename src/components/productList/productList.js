@@ -27,7 +27,7 @@ export default class ProductList extends React.Component{
 	}
 
 	componentDidMount(){
-		this.tg.onEvent('mainButtonClicked', this.onSendData);
+		this.tg.onEvent('mainButtonClicked', this.onSendData());
 	}
 
 	componentDidMount() {
