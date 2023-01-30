@@ -43,9 +43,7 @@ export default class ProductList extends React.Component{
 				text: getTotalPrice(this.state.cart)
 			})
 		}
-		this.tg.onEvent('mainButtonClicked', useCallback(() => {
-			console.log(123);
-		}));
+		this.tg.onEvent('mainButtonClicked', this.onSendData);
 	}
 
 	onInc = (product) => {
