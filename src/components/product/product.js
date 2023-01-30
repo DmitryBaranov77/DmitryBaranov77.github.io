@@ -23,7 +23,7 @@ export default class Product extends React.Component{
 				count: prevstate.count - 1
 			}
 		})
-		this.props.onInc(this.product);
+		this.props.onDec(this.product);
 		
 	}
 
