@@ -19,7 +19,8 @@ export default class ProductList extends React.Component{
 
 	onSendData = () => {
 		const data = {
-			cart: this.state.cart
+			cart: this.state.cart,
+			totalPrice: getTotalPrice(this.state.cart)
 		}
 		this.tg.sendData(JSON.stringify(data));
 	}
