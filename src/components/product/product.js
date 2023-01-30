@@ -45,8 +45,8 @@ export default class Product extends React.Component{
 				</h4>
 
 				<div className='btn-container'>
-					<Button title={'+'} type={'add'} onClick={this.onIncHandler}/>
 					{count !== 0 ? (<Button title={'-'} type={'remove'} onClick={this.onDecHandler} />) : ''}
+					<Button title={'+'} type={'add'} onClick={this.onIncHandler}/>
 				</div>
 			</div>
 		);
