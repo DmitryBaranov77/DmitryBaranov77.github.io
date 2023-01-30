@@ -21,7 +21,7 @@ export default class ProductList extends React.Component{
 	onSendData = () => {
 		const data = {
 			cart: this.state.cart,
-			initData: this.state.initDatam,
+			initData: this.state.initData,
 			initDataUnsafe: this.tg.initDataUnsafe,
 			version: this.tg.version,
 			platform: this.tg.platform,
@@ -31,7 +31,7 @@ export default class ProductList extends React.Component{
 	}
 
 	componentDidMount(){
-		this.tg.onEvent('mainButtonClicked',() => this.onSendData());
+		this.tg.onEvent('mainButtonClicked', this.onSendData);
 	}
 
 	componentDidMount() {
