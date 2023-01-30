@@ -18,12 +18,13 @@ export default class ProductList extends React.Component{
 		cart: []
 	}
 
-	onSendData = useCallback(() => {
+	onSendData = () => {
+		console.log('111');
 		const data = {
 			cart: this.state.cart
 		}
 		this.tg.sendData(JSON.stringify(data));
-	}, [])
+	}
 
 	componentDidMount(){
 		this.tg.onEvent('mainButtonClicked', this.onSendData);
