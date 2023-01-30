@@ -16,7 +16,6 @@ const products = [
 
 function App() {
   const {tg} = useTelegram();
-  console.log(tg.initDataUnsafe);
 
   useEffect(() => {
 
