@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useTelegram } from '../../hooks/useTelegram';
 import Product from '../product/product';
 import './productList.css';
@@ -13,8 +13,29 @@ export default class ProductList extends React.Component{
 	products = this.props.products;
 	tg = useTelegram().tg;
 
+
 	state = {
 		cart: []
+	}
+
+	onSendData = () => {
+		const data = {
+			cart: this.state.cart,
+			initData: this.state.initDatam,
+			initDataUnsafe: this.tg.initDataUnsafe,
+			version: this.tg.version,
+			platform: this.tg.platform,
+			themeParams: this.tg.themeParams,
+		}
+		this.tg.sendData(JSON.stringify(data));
+	}
+
+	componentDidMount(){
+		this.tg.onEvent('mainButtonClicked', this.onSendData);
+	}
+
+	componentDidMount() {
+		this.tg.offEvent('mainButtonClicked', this.onSendData);
 	}
 
 	componentDidUpdate(prevProps, prevState){

@@ -1,6 +1,7 @@
 .list{
 	background: var(--tg-theme-secondary-bg-color);
 	color: var(--tg-theme-text-color);
+	border-radius: 10%;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
