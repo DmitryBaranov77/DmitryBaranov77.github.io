@@ -11,11 +11,11 @@ const producsService = new ProductsService();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <Provider store={store}>
       <ProductsServiceContext.Provider value={producsService}>
         <App />
       </ProductsServiceContext.Provider>
     </Provider>
-  /* </React.StrictMode> */
+  </React.StrictMode>
 );
