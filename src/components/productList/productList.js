@@ -13,7 +13,6 @@ const getTotalPrice = (items = []) => {
 
 class ProductList extends React.Component{
 	tg = useTelegram().tg;
-	cart = this.props.cart;
 	
 	componentDidMount() {
 		const {ProductsService} = this.props;
@@ -28,13 +27,14 @@ class ProductList extends React.Component{
 		this.tg.sendData(JSON.stringify(data));
 	}
 
-	componentDidUpdate(prevProps, prevState){
-		if(this.cart.length === 0){
+	componentDidUpdate(){
+		const cart = this.props.cart;
+		if(cart.length === 0){
 			this.tg.MainButton.hide();
 		} else {
 			this.tg.MainButton.show();
 			this.tg.MainButton.setParams({
-				text: getTotalPrice(this.cart)
+				text: getTotalPrice(cart)
 			})
 		}
 		this.tg.onEvent('mainButtonClicked', this.onSendData);
@@ -44,7 +44,7 @@ class ProductList extends React.Component{
 	}
 
 	render() {
-		const { products, addToCart, deleteFromCart } = this.props;
+		const { products, addToCart, deleteFromCart} = this.props;
 		return (
 			<div className='list'>
 				
