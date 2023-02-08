@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Form } from 'react-bootstrap';
 import { AddressSuggestions } from 'react-dadata';
 import { useTelegram } from '../../hooks/useTelegram';
 import 'react-dadata/dist/react-dadata.css';
@@ -72,17 +71,19 @@ const RegistrationForm = () => {
 
 	return (
 		<div className='reg'>
-				<Form.Control className={'input is-' + validEmail} type='email' placeholder='name@example.com' value={email} onChange={onChangeEmail} onBlur={onBlurEmail}/>
-				<Form.Control.Feedback type='invalid'>Пожалуйста, укажите корректный email</Form.Control.Feedback>
+				<input className={'input ' + validEmail} type='email' placeholder='name@example.com' value={email} onChange={onChangeEmail} onBlur={onBlurEmail} />
 
-				<Form.Control className={'input'} type='text' placeholder='Иванов Иван Иванович' value={fio} onChange={onChangeFio} />
+				<form hidden={validEmail === 'invalid' ? false : true}>Пожалуйста, укажите корректный email</form>
+
+				<input className={'input'} type='text' placeholder='Иванов Иван Иванович' value={fio} onChange={onChangeFio} />
+
 				<AddressSuggestions 
 					token='22cd6c7adac9d78ce2cb0559940b208f26701947' 
 					inputProps={{placeholder: 'Адрес', className:'react-dadata__input input form-control', value: adress, onBlur: onChangeAdress, onChange: onChangeAdress}}
 					suggestionsClassName='suggestion' 
 				/>
 				
-				<Form.Control className={'input'} type='tel' placeholder='Номер телефона' value={phoneNumber} onChange={onChangePhoneNumber}/>
+				<input className={'input'} type='tel' placeholder='Номер телефона' value={phoneNumber} onChange={onChangePhoneNumber}/>
 		
 		</div>
 	);
