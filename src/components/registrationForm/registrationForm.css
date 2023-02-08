@@ -30,7 +30,7 @@
     border-color: green;
 }
 
-.invalid {
+.input .invalid {
     border-color: red;
 }
 
