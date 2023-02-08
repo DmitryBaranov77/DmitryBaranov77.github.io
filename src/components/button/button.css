@@ -1,0 +1,36 @@
+.btn{
+	border: 0;
+	outline: none;
+	/* margin-left: 10px; */
+	box-shadow: 1px -3px 52px -5px rgba(0, 0, 0, 0.77);
+	cursor: pointer;
+	background-color: #324AB2;
+	color: white;
+	width: 35px;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.btn.big-add {
+	background-image: url('../../../public/img/cart.png');
+	background-size: 24px;
+}
+
+.btn.add {
+	background-image: url('../../../public/img/plus.png');
+	background-size: 25px;
+}
+
+.btn.remove{
+	background-image: url('../../../public/img/minus.png');
+	background-size: 25px;
+}
+
+.btn:active {
+	transform: scale(0.98);
+}
+  
+.btn:hover{
+	background-color: #576ECB;
+}

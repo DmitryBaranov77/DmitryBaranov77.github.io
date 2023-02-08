@@ -1,5 +1,7 @@
-import React, { useCallback } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import { useTelegram } from '../../hooks/useTelegram';
+import WithProductsService from '../hoc/withProductsService';
 import Product from '../product/product';
 import './productList.css';
 
@@ -9,29 +11,30 @@ const getTotalPrice = (items = []) => {
 	}, 0);
 }
 
-export default class ProductList extends React.Component{
-	products = this.props.products;
+class ProductList extends React.Component{
 	tg = useTelegram().tg;
-
-	state = {
-		cart: []
+	cart = this.props.cart;
+	
+	componentDidMount() {
+		const {ProductsService} = this.props;
+		this.props.productsLoaded(ProductsService.getProducts());
 	}
 
 	onSendData = () => {
 		const data = {
-			cart: this.state.cart,
-			totalPrice: getTotalPrice(this.state.cart)
+			cart: this.cart,
+			totalPrice: getTotalPrice(this.cart)
 		}
 		this.tg.sendData(JSON.stringify(data));
 	}
 
 	componentDidUpdate(prevProps, prevState){
-		if(this.state.cart.length === 0){
+		if(this.cart.length === 0){
 			this.tg.MainButton.hide();
 		} else {
 			this.tg.MainButton.show();
 			this.tg.MainButton.setParams({
-				text: getTotalPrice(this.state.cart)
+				text: getTotalPrice(this.cart)
 			})
 		}
 		this.tg.onEvent('mainButtonClicked', this.onSendData);
@@ -40,53 +43,52 @@ export default class ProductList extends React.Component{
 		}
 	}
 
-	onInc = (product) => {
-		const exist = this.state.cart.find(item => item.id === product.id);
-		if(exist){
-			this.setState(prevState => {
-				return {
-					cart: prevState.cart.map(item => item.id === product.id ? {...exist, quantity: exist.quantity + 1} : item)
-				}
-			})
-		} else {
-			this.setState(prevState => {
-				return {
-					cart: [...prevState.cart, {...product, quantity: 1}]
-				}
-			})
-		}
-	}
-
-	onDec = (product) =>{
-		const exist = this.state.cart.find(item => item.id === product.id);
-		if(exist.quantity === 1){
-			this.setState(prevState => {
-				return{
-					cart: prevState.cart.filter(item => item.id !== product.id)
-				}
-			})
-		} else {
-			this.setState(prevState => {
-				return {
-					cart: prevState.cart.map(item => item.id === product.id ? {...exist, quantity: exist.quantity - 1} : item)
-				}
-			})
-		}
-	}
-
 	render() {
-		const products = this.products;
+		const { products, addToCart, deleteFromCart } = this.props;
 		return (
 			<div className='list'>
+				
 				{products.map(item => (
 					<Product
 						key={item.id}
 						product={item}
-						onInc={this.onInc}
-						onDec={this.onDec}
+						onInc={() => addToCart(item)}
+						onDec={() => deleteFromCart(item)}
 					/>
 				))}
 			</div>
 		);
 	}
 };
+
+const mapStateToProps = (state) =>{
+	return {
+		products: state.products,
+		cart: state.cart
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		productsLoaded: (newProducts) => {
+			dispatch({
+				type: 'NEW_PRODUCTS',
+				payload: newProducts
+			})
+		},
+		addToCart: (item) => {
+			dispatch({
+				type: 'ADD_TO_CART',
+				payload: item
+			})
+		},
+		deleteFromCart: (item) => {
+			dispatch({
+				type: 'DELETE_FROM_CART',
+				payload: item
+			})
+		}
+	}
+}
+
+export default WithProductsService()(connect(mapStateToProps, mapDispatchToProps)(ProductList))

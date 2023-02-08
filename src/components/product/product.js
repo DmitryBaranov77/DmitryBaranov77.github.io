@@ -1,60 +1,53 @@
 import React from 'react';
-import Button from '../../button/button';
+import { connect } from 'react-redux';
+import Button from '../button';
 import './product.css';
 
-export default class Product extends React.Component{
-	product = this.props.product;
-	state = {
-		count: 0
-	};
-
-	onIncHandler = () => {
-		this.setState(prevstate => {
-			return {
-				count: prevstate.count + 1
-			}
-		})
-		this.props.onInc(this.product);
-	}
-
-	onDecHandler = () => {
-		this.setState(prevstate => {
-			return {
-				count: prevstate.count - 1
-			}
-		})
-		this.props.onDec(this.product);
-		
-	}
+class Product extends React.Component{
 
 	render(){
-		const {title, src, price} = this.product;
-		const count = this.state.count;
+		const {title, src, price, id} = this.props.product;
+		const {onInc, onDec} = this.props;
+		const exist = this.props.cart.find(item => item.id === id);
+		const count  = exist ? exist.quantity : 0; 
 		return (
 			<div className={'card'}>
-				<span
-				className={`${count !== 0 ? 'card__badge' : 'card__badge--hidden'}`}
-				>
-					{count}
-				</span>
 				<div className='image__container'>
-					<img src={src} alt={title} />
+					<a href='/reg'>
+						<img src={src} alt={title}/>
+					</a>
 				</div>
-				<h4 className='card__title'>
-					{title}. <span className='card__price'> {price}</span>
-				</h4>
+				
+				<div className='card__title'>
+					{title.substr(0, 24
+						)}<a className='about' href='/reg'>...</a>
+					
+				</div>
 
 				{count !== 0 ?
-				(<div className='btn-container'>
-					<Button title={'-'} type={'remove'} onClick={this.onDecHandler}/>
-					<Button title={'+'} type={'add'} onClick={this.onIncHandler}/>
+				(<div>
+					<div className='card__price'>{price*count === 0 ? price : price*count} ₽.</div>
+					<div className='btn-container'>
+						<Button title={'-'} type={'remove'} onClick={() => onDec()}/>
+						<div className='counter'>{count} шт.</div>
+						<Button title={'+'} type={'add'} onClick={() => onInc()}/>
+					</div>
 				</div>)
 				:
 				(<div className='btn-container'>
-					<Button title={'Add'} type={'add'} onClick={this.onIncHandler}/>
+					<div className='card__price'>{price} ₽.</div>
+					<Button title={'В корзину'} type={'big-add'} onClick={() => onInc()}/>
 				</div>)
 				}
 			</div>
 		);
 	}
 }
+
+const mapStateToProps = (state) =>{
+	return {
+		cart: state.cart
+	}
+}
+
+export default connect(mapStateToProps)(Product)

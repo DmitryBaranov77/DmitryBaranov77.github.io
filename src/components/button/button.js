@@ -7,11 +7,11 @@ const Button = ({type, title, onClick}) => {
 		<button
 			className={`btn ${
 				(type === 'add' && 'add') || 
-				(type === 'remove' && 'remove')
+				(type === 'remove' && 'remove') || 
+				(type === 'big-add' && 'big-add')
 			}`}
 			onClick={onClick}
 		>
-			{title}
 		</button>
 	);
 };
