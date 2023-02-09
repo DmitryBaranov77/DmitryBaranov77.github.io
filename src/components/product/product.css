@@ -1,7 +1,3 @@
-:root{
-	--primary-color: var(--tg-theme-bg-color)
-}
-
 .card {
 	display: flex;
 	flex-direction: column;
