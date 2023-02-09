@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CartListItem from '../cartListItem/cartListItem';
+import './cartList.css';
 
 class CartList extends React.Component {
 	render() {
@@ -13,7 +14,7 @@ class CartList extends React.Component {
 			)
 		} else {
 			return (
-				<div className='cartList'>
+				<div className='cart-list'>
 					{cart.map(item => (
 						<CartListItem
 						key={item.id}
