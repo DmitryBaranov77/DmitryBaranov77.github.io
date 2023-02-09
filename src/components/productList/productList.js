@@ -49,16 +49,22 @@ class ProductList extends React.Component{
 	render() {
 		const { products, addToCart, deleteFromCart} = this.props;
 		return (
-			<div className='list'>
-				<Link to='cart'>Cart</Link>
-				{products.map(item => (
-					<Product
-						key={item.id}
-						product={item}
-						onInc={() => addToCart(item)}
-						onDec={() => deleteFromCart(item)}
-					/>
-				))}
+			<div>
+				<div className='list-header'>
+					<Link to={'cart'}>
+						<Button type={'big-add'}/>
+					</Link>
+				</div>
+				<div className='list'>
+					{products.map(item => (
+						<Product
+							key={item.id}
+							product={item}
+							onInc={() => addToCart(item)}
+							onDec={() => deleteFromCart(item)}
+						/>
+					))}
+				</div>
 			</div>
 		);
 	}

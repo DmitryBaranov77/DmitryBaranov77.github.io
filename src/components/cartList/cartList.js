@@ -9,20 +9,31 @@ class CartList extends React.Component {
 		if(cart.length === 0){
 			return(
 				<div>
-					Ваша корзина пуста
+					<div className='cart-header'>
+						<button onClick={() => history.back()}>Назад</button>
+					</div>
+					<div>
+						Ваша корзина пуста
+					</div>
 				</div>
+				
 			)
 		} else {
 			return (
-				<div className='cart-list'>
-					{cart.map(item => (
-						<CartListItem
-						key={item.id}
-						product={item}
-						onInc={() => addToCart(item)}
-						onDec={() => deleteFromCart(item)}
-						/>
-					))}
+				<div>
+					<div className='cart-header'>
+						<button onClick={() => history.back()}>Назад</button>
+					</div>
+					<div className='cart-list'>
+						{cart.map(item => (
+							<CartListItem
+							key={item.id}
+							product={item}
+							onInc={() => addToCart(item)}
+							onDec={() => deleteFromCart(item)}
+							/>
+						))}
+					</div>
 				</div>
 			)
 		}

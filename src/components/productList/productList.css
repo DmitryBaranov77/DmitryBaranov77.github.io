@@ -6,3 +6,9 @@
 	flex-wrap: wrap;
 	justify-content: center;
 }
+
+.list-header{
+	display: flex;
+	justify-content: right;
+	position: sticky;
+}
