@@ -14,14 +14,14 @@ class CartList extends React.Component {
 		} else {
 			return (
 				<div className='cartList'>
-					{cart.map(item => {
+					{cart.map(item => (
 						<CartListItem
 						key={item.id}
 						product={item}
 						onInc={() => addToCart(item)}
 						onDec={() => deleteFromCart(item)}
 						/>
-					})}
+					))}
 				</div>
 			)
 		}
