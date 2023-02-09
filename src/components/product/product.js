@@ -26,7 +26,7 @@ class Product extends React.Component{
 
 				{count !== 0 ?
 				(<div>
-					<div className='card__price'>{price*count === 0 ? price : price*count} ₽.</div>
+					<div className='card__price'>{price*count === 0 ? price : price*count} ₽</div>
 					<div className='btn-container'>
 						<Button title={'-'} type={'remove'} onClick={() => onDec()}/>
 						<div className='counter'>{count} шт.</div>
@@ -35,7 +35,7 @@ class Product extends React.Component{
 				</div>)
 				:
 				(<div className='btn-container'>
-					<div className='card__price'>{price} ₽.</div>
+					<div className='card__price'>{price} ₽</div>
 					<Button title={'В корзину'} type={'big-add'} onClick={() => onInc()}/>
 				</div>)
 				}

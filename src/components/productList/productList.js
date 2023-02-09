@@ -20,11 +20,12 @@ class ProductList extends React.Component{
 	}
 
 	onSendData = () => {
-		const data = {
-			cart: this.cart,
-			totalPrice: getTotalPrice(this.cart)
-		}
-		this.tg.sendData(JSON.stringify(data));
+		window.location.href='/cart';
+		// const data = {
+		// 	cart: this.props.cart,
+		// 	totalPrice: getTotalPrice(this.props.cart)
+		// }
+		// this.tg.sendData(JSON.stringify(data));
 	}
 
 	componentDidUpdate(){
