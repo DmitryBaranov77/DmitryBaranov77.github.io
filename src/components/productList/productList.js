@@ -20,7 +20,7 @@ class ProductList extends React.Component{
 	}
 
 	onSendData = () => {
-		window.location.href='/cart';
+		window.location.replace('/cart');
 		// const data = {
 		// 	cart: this.props.cart,
 		// 	totalPrice: getTotalPrice(this.props.cart)
