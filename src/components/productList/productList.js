@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useTelegram } from '../../hooks/useTelegram';
+import Button from '../button';
 import WithProductsService from '../hoc/withProductsService';
 import Product from '../product/product';
 import './productList.css';
+import { Link } from 'react-router-dom';
 
 const getTotalPrice = (items = []) => {
 	return items.reduce((acc, item) => {
@@ -48,7 +50,7 @@ class ProductList extends React.Component{
 		const { products, addToCart, deleteFromCart} = this.props;
 		return (
 			<div className='list'>
-				
+				<Link to='cart'>Cart</Link>
 				{products.map(item => (
 					<Product
 						key={item.id}
@@ -92,4 +94,4 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-export default WithProductsService()(connect(mapStateToProps, mapDispatchToProps)(ProductList))
+export default  WithProductsService()(connect(mapStateToProps, mapDispatchToProps)(ProductList))
