@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { useTelegram } from '../../hooks/useTelegram';
 import Button from '../button';
 import CartListItem from '../cartListItem/cartListItem';
+import WithProductsService from '../hoc/withProductsService';
 import './cartList.css';
 
 class CartList extends React.Component {
@@ -15,7 +16,7 @@ class CartList extends React.Component {
 				<div>
 					<div className='cart-header'>
 						<Button type={'back'} onClick={() => {
-							history.back();
+							this.props.navigate(-1);
 							this.tg.HapticFeedback.impactOccurred('rigid');
 						}}/>
 					</div>
@@ -30,7 +31,7 @@ class CartList extends React.Component {
 				<div>
 					<div className='cart-header'>
 						<Button type={'back'} onClick={() => {
-							history.back();
+							this.props.navigate(-1);
 							this.tg.HapticFeedback.impactOccurred('rigid');
 						}}/>
 					</div>
@@ -79,4 +80,4 @@ const mapDispatchToProps = (dispatch) =>{
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartList);
+export default WithProductsService()(connect(mapStateToProps, mapDispatchToProps)(CartList));

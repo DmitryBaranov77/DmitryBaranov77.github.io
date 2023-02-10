@@ -51,9 +51,10 @@ class ProductList extends React.Component{
 		return (
 			<div>
 				<div className='list-header'>
-					<Link to={'cart'}>
-						<Button type={'cart'} onClick={() => this.tg.HapticFeedback.impactOccurred('rigid')}/>
-					</Link>
+					<Button type={'cart'} onClick={() => {
+						this.tg.HapticFeedback.impactOccurred('rigid');
+						this.props.navigate('/cart');
+					}}/>
 				</div>
 				<div className='list'>
 					{products.map(item => (
