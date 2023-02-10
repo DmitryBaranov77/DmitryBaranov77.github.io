@@ -10,6 +10,7 @@ function App() {
   const {tg} = useTelegram();
 
   useEffect(() => {
+    tg.MainButton.color('#324AB2');
 
   }, []);
 
