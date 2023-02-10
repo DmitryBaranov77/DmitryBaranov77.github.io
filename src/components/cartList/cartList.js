@@ -1,10 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useTelegram } from '../../hooks/useTelegram';
 import Button from '../button';
 import CartListItem from '../cartListItem/cartListItem';
 import './cartList.css';
 
 class CartList extends React.Component {
+	tg = useTelegram().tg;
+
 	render() {
 		const {cart, addToCart, deleteFromCart} = this.props;
 		if(cart.length === 0){
@@ -23,15 +26,24 @@ class CartList extends React.Component {
 			return (
 				<div>
 					<div className='cart-header'>
-						<Button type={'back'} onClick={() => history.back()}/>
+						<Button type={'back'} onClick={() => {
+							history.back();
+							this.tg.HapticFeedback.impactOccurred('rigid');
+						}}/>
 					</div>
 					<div className='cart-list'>
 						{cart.map(item => (
 							<CartListItem
 							key={item.id}
 							product={item}
-							onInc={() => addToCart(item)}
-							onDec={() => deleteFromCart(item)}
+							onInc={() => {
+								addToCart(item);
+								this.tg.HapticFeedback.impactOccurred('medium');
+							}}
+							onDec={() => {
+								deleteFromCart(item);
+								this.tg.HapticFeedback.impactOccurred('heavy');
+							}}
 							/>
 						))}
 					</div>

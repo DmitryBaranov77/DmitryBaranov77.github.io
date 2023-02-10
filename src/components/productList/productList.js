@@ -52,7 +52,7 @@ class ProductList extends React.Component{
 			<div>
 				<div className='list-header'>
 					<Link to={'cart'}>
-						<Button type={'cart'}/>
+						<Button type={'cart'} onClick={() => this.tg.HapticFeedback.impactOccurred('soft')}/>
 					</Link>
 				</div>
 				<div className='list'>
@@ -64,7 +64,10 @@ class ProductList extends React.Component{
 								addToCart(item);
 								this.tg.HapticFeedback.selectionChanged();
 							}}
-							onDec={() => deleteFromCart(item)}
+							onDec={() => {
+								deleteFromCart(item);
+								this.tg.HapticFeedback.impactOccurred('light');
+							}}
 						/>
 					))}
 				</div>
