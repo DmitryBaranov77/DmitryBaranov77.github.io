@@ -22,7 +22,7 @@ class ProductList extends React.Component{
 	}
 
 	onSendData = () => {
-		history.push('/cart');
+		this.props.history.push('/cart');
 		// const data = {
 		// 	cart: this.props.cart,
 		// 	totalPrice: getTotalPrice(this.props.cart)
