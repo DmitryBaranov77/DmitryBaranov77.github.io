@@ -11,4 +11,5 @@
 	display: flex;
 	justify-content: right;
 	position: sticky;
+	top: 0;
 }

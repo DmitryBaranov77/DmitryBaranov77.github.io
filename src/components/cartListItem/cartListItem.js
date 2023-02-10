@@ -13,18 +13,20 @@ class CartListItem extends React.Component {
 					<img src={src}/>
 				</div>
 
-				<div className='cart-item__title'>
-					{title}
-				</div>
-
-				<div className='cart-btn-container'>
-					<Button title={'-'} type={'remove'} onClick={() => onDec()}/>
-						<div className='counter'>{quantity} шт.</div>
-					<Button title={'+'} type={'add'} onClick={() => onInc()}/>
-				</div>
-
-				<div className='cart-price__container'>
-					{price*quantity} ₽
+				<div className='cart-item__container'>
+					<div className='cart-item__header'>
+						<div className='cart-item__title'>{title}</div>
+					</div>
+					<div className='cart-item__footer'>
+						<div className='cart-price__container'>
+							{price*quantity} ₽
+						</div>
+						<div className='cart-btn-container'>
+							<Button title={'-'} type={'remove'} onClick={() => onDec()}/>
+								<div className='counter'>{quantity} шт.</div>
+							<Button title={'+'} type={'add'} onClick={() => onInc()}/>
+						</div>
+					</div>
 				</div>
 			</div>
 		);
