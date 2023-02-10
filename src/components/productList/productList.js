@@ -40,9 +40,9 @@ class ProductList extends React.Component{
 				text: getTotalPrice(cart)
 			})
 		}
-		this.tg.onClick(() => this.navigate('/cart'));
+		this.tg.MainButton.onClick(() => this.navigate('/cart'));
 		return () => {
-			this.tg.offClick(() => this.navigate('/cart'));
+			this.tg.MainButton.offClick(() => this.navigate('/cart'));
 		}
 	}
 
