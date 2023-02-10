@@ -40,7 +40,7 @@ class ProductList extends React.Component{
 			})
 		}
 		this.tg.onEvent('mainButtonClicked', () => this.props.navigate('/cart'));
-		console.log(history)
+		console.log(history);
 		return () => {
 			this.tg.offEvent('mainButtonClicked', () => this.props.navigate('/cart'));
 		}
