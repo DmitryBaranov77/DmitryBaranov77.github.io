@@ -38,11 +38,11 @@ class CartList extends React.Component {
 							product={item}
 							onInc={() => {
 								addToCart(item);
-								this.tg.HapticFeedback.impactOccurred('medium');
+								this.tg.HapticFeedback.impactOccurred('rigid');
 							}}
 							onDec={() => {
 								deleteFromCart(item);
-								this.tg.HapticFeedback.impactOccurred('heavy');
+								this.tg.HapticFeedback.impactOccurred('rigid');
 							}}
 							/>
 						))}
