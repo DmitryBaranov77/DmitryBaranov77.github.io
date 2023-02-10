@@ -11,7 +11,6 @@ class CartList extends React.Component {
 
 	render() {
 		const {cart, addToCart, deleteFromCart} = this.props;
-		console.log(history);
 		if(cart.length === 0){
 			return(
 				<div>

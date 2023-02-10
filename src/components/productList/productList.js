@@ -14,6 +14,7 @@ const getTotalPrice = (items = []) => {
 
 class ProductList extends React.Component{
 	tg = useTelegram().tg;
+	navigate = this.props.navigate;
 	
 	componentDidMount() {
 		const {ProductsService} = this.props;
@@ -39,10 +40,9 @@ class ProductList extends React.Component{
 				text: getTotalPrice(cart)
 			})
 		}
-		this.tg.onEvent('mainButtonClicked', () => this.props.navigate('/cart'));
-		console.log(history);
+		this.tg.onEvent('mainButtonClicked', () => this.navigate('/cart'));
 		return () => {
-			this.tg.offEvent('mainButtonClicked', () => this.props.navigate('/cart'));
+			this.tg.offEvent('mainButtonClicked', () => this.navigate('/cart'));
 		}
 	}
 
@@ -53,7 +53,7 @@ class ProductList extends React.Component{
 				<div className='list-header'>
 					<Button type={'cart'} onClick={() => {
 						this.tg.HapticFeedback.impactOccurred('rigid');
-						this.props.navigate('/cart');
+						this.navigate('/cart');
 					}}/>
 				</div>
 				<div className='list'>
