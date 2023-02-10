@@ -5,7 +5,6 @@ import Button from '../button';
 import WithProductsService from '../hoc/withProductsService';
 import Product from '../product/product';
 import './productList.css';
-import { Link } from 'react-router-dom';
 
 const getTotalPrice = (items = []) => {
 	return items.reduce((acc, item) => {
@@ -40,9 +39,9 @@ class ProductList extends React.Component{
 				text: getTotalPrice(cart)
 			})
 		}
-		this.tg.onEvent('mainButtonClicked', this.onSendData);
+		this.tg.onEvent('mainButtonClicked', () => this.onSendData);
 		return () => {
-			this.tg.offEvent('mainButtonClicked', this.onSendData);
+			this.tg.offEvent('mainButtonClicked', () => this.onSendData);
 		}
 	}
 
