@@ -22,8 +22,7 @@ class ProductList extends React.Component{
 	}
 
 	onSendData = () => {
-		console.log('mainButtonClicked');
-		// this.props.navigate('/cart');
+		this.props.navigate('/cart');
 		// const data = {
 		// 	cart: this.props.cart,
 		// 	totalPrice: getTotalPrice(this.props.cart)
