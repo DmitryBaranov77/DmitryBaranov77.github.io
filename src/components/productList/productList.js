@@ -5,7 +5,7 @@ import Button from '../button';
 import WithProductsService from '../hoc/withProductsService';
 import Product from '../product/product';
 import './productList.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const getTotalPrice = (items = []) => {
 	return items.reduce((acc, item) => {
@@ -15,7 +15,6 @@ const getTotalPrice = (items = []) => {
 
 class ProductList extends React.Component{
 	tg = useTelegram().tg;
-	navigate = useNavigate();
 	
 	componentDidMount() {
 		const {ProductsService} = this.props;
@@ -23,7 +22,7 @@ class ProductList extends React.Component{
 	}
 
 	onSendData = () => {
-		this.navigate('/cart');
+		this.props.navigate('/cart');
 		// const data = {
 		// 	cart: this.props.cart,
 		// 	totalPrice: getTotalPrice(this.props.cart)
