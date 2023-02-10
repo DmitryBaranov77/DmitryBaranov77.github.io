@@ -62,7 +62,7 @@ class ProductList extends React.Component{
 							product={item}
 							onInc={() => {
 								addToCart(item);
-								this.tg.HapticFeedback.selectionChanged();
+								this.tg.HapticFeedback.impactOccurred('rigid');
 							}}
 							onDec={() => {
 								deleteFromCart(item);
