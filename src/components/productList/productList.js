@@ -22,7 +22,8 @@ class ProductList extends React.Component{
 	}
 
 	onSendData = () => {
-		this.props.navigate('/cart');
+		console.log('mainButtonClicked');
+		// this.props.navigate('/cart');
 		// const data = {
 		// 	cart: this.props.cart,
 		// 	totalPrice: getTotalPrice(this.props.cart)
@@ -42,12 +43,14 @@ class ProductList extends React.Component{
 		}
 	}
 
-	componentWillMount(){
-		this.tg.MainButton.onClick(() => console.log('mainButtonClicked'));
+	componentDidMount(){
+		this.tg.MainButton.onClick(this.onSendData);
+		console.log('Создание компонента');
 	}
 
 	componentWillUnmount(){
-		this.tg.MainButton.offClick();
+		this.tg.MainButton.offClick(this.onSendData);
+		console.log('Удаление компонента');
 	}
 
 	render() {
