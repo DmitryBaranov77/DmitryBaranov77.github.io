@@ -39,9 +39,9 @@ class ProductList extends React.Component{
 				text: getTotalPrice(cart)
 			})
 		}
-		this.tg.onEvent('mainButtonClicked', () => this.onSendData);
+		this.tg.onEvent('mainButtonClicked', () => this.props.navigate('/cart'));
 		return () => {
-			this.tg.offEvent('mainButtonClicked', () => this.onSendData);
+			this.tg.offEvent('mainButtonClicked', () => this.props.navigate('/cart'));
 		}
 	}
 
