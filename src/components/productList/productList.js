@@ -60,7 +60,10 @@ class ProductList extends React.Component{
 						<Product
 							key={item.id}
 							product={item}
-							onInc={() => addToCart(item)}
+							onInc={() => {
+								addToCart(item);
+								this.tg.HapticFeedback.notificationOccurred('success')
+							}}
 							onDec={() => deleteFromCart(item)}
 						/>
 					))}
