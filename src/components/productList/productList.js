@@ -62,7 +62,7 @@ class ProductList extends React.Component{
 							product={item}
 							onInc={() => {
 								addToCart(item);
-								this.tg.HapticFeedback.notificationOccurred('error')
+								this.tg.HapticFeedback.notificationOccurred('warning')
 							}}
 							onDec={() => deleteFromCart(item)}
 						/>
