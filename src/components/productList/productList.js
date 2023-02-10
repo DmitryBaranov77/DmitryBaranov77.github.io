@@ -23,11 +23,6 @@ class ProductList extends React.Component{
 
 	onSendData = () => {
 		this.props.navigate('/cart');
-		// const data = {
-		// 	cart: this.props.cart,
-		// 	totalPrice: getTotalPrice(this.props.cart)
-		// }
-		// this.tg.sendData(JSON.stringify(data));
 	}
 
 	componentDidUpdate(){
