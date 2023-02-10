@@ -47,7 +47,7 @@ class ProductList extends React.Component{
 	}
 
 	componentWillUnmount(){
-		this.tg.MainButton.offClick(() => console.log('mainButtonClicked'));
+		this.tg.MainButton.offClick();
 	}
 
 	render() {
