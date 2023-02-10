@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Button from '../button';
 import CartListItem from '../cartListItem/cartListItem';
 import './cartList.css';
 
@@ -22,7 +23,7 @@ class CartList extends React.Component {
 			return (
 				<div>
 					<div className='cart-header'>
-						<button onClick={() => history.back()}>Назад</button>
+						<Button type={'back'}/>
 					</div>
 					<div className='cart-list'>
 						{cart.map(item => (

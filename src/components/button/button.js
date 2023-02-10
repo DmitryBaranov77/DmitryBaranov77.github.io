@@ -8,7 +8,9 @@ const Button = ({type, title, onClick}) => {
 			className={`btn ${
 				(type === 'add' && 'add') || 
 				(type === 'remove' && 'remove') || 
-				(type === 'big-add' && 'big-add')
+				(type === 'big-add' && 'big-add') || 
+				(type === 'cart' && 'cart') ||
+				(type === 'back' && 'back')
 			}`}
 			onClick={onClick}
 		>

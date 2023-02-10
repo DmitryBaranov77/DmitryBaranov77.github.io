@@ -10,7 +10,5 @@
 .list-header{
 	display: flex;
 	justify-content: right;
-	position: sticky;
-	top: 0;
-	padding-right: 20px;
+	padding: 5px 5px;
 }

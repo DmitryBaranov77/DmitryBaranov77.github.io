@@ -27,6 +27,20 @@
 	background-size: 25px;
 }
 
+.btn.cart{
+	background-image: url('../../../public/img/cart-icon.png');
+	border-radius: 25px;
+	width: 55px;
+	background-size: 25px;
+}
+
+.btn.back{
+	background-image: url('../../../public/img/back.png');
+	border-radius: 25px;
+	width: 55px;
+	background-size: 25px;
+}
+
 .btn:active {
 	transform: scale(0.98);
 }

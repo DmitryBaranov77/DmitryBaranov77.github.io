@@ -52,7 +52,7 @@ class ProductList extends React.Component{
 			<div>
 				<div className='list-header'>
 					<Link to={'cart'}>
-						<Button type={'big-add'}/>
+						<Button type={'cart'}/>
 					</Link>
 				</div>
 				<div className='list'>
