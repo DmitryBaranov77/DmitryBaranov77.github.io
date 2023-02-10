@@ -14,7 +14,10 @@ class CartList extends React.Component {
 			return(
 				<div>
 					<div className='cart-header'>
-						<button onClick={() => history.back()}>Назад</button>
+						<Button type={'back'} onClick={() => {
+							history.back();
+							this.tg.HapticFeedback.impactOccurred('rigid');
+						}}/>
 					</div>
 					<div>
 						Ваша корзина пуста
