@@ -23,7 +23,7 @@ class CartList extends React.Component {
 			return (
 				<div>
 					<div className='cart-header'>
-						<Button type={'back'}/>
+						<Button type={'back'} onClick={() => history.back()}/>
 					</div>
 					<div className='cart-list'>
 						{cart.map(item => (
