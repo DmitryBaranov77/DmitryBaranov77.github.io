@@ -22,7 +22,7 @@ class ProductList extends React.Component{
 	}
 
 	onSendData = () => {
-		window.location.assign('/cart');
+		history.push('/cart');
 		// const data = {
 		// 	cart: this.props.cart,
 		// 	totalPrice: getTotalPrice(this.props.cart)
