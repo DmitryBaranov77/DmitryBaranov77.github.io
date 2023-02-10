@@ -43,7 +43,7 @@ class ProductList extends React.Component{
 		}
 	}
 
-	componentDidMount(){
+	componentWillMount(){
 		this.tg.MainButton.onClick(this.onSendData);
 		console.log('Создание компонента');
 	}
