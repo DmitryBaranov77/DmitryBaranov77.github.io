@@ -40,7 +40,13 @@ class ProductList extends React.Component{
 				text: getTotalPrice(cart)
 			})
 		}
+	}
+
+	componentWillMount(){
 		this.tg.MainButton.onClick(() => console.log('mainButtonClicked'));
+	}
+
+	componentWillUnmount(){
 		this.tg.MainButton.offClick(() => console.log('mainButtonClicked'));
 	}
 
