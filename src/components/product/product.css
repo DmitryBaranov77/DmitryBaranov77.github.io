@@ -24,7 +24,7 @@
 .image__container {
 	width: 100px;
 	height: 100px;
-	margin: 0 auto;
+	margin: 5px auto;
 }
 
 .image__container img {
@@ -38,7 +38,7 @@
 	flex-direction: row;
 	justify-content: space-between;
 	height: 35px;
-	padding: 1px 1px;
+	padding: 0 5px;
 }
 
 .btn-container .counter{
@@ -53,4 +53,5 @@
 	line-height: 24px;
 	font-weight: 600;
 	display: inline-block;
+	margin: 5px 5px;
 }
