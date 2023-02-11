@@ -14,18 +14,28 @@ class CartList extends React.Component {
 		const idempotenceKey = uuidv4();
 		fetch('https://api.yookassa.ru/v3/payments', {
 			method: 'POST',
+			mode: 'cors',
 			headers: {
+				"Access-Control-Allow-Origin": "*",
+				'Access-Control-Allow-Headers': "Content-Type",
 				'Idempotence-Key': idempotenceKey,
 				'Content-Type': 'application/json',
-				'Authorization': '983882:test_3QsLimRJIrI3puDS5pmPZaS5pCU5IpWmf6oOm737WwI'
+				'Authorization': '983882 test_3QsLimRJIrI3puDS5pmPZaS5pCU5IpWmf6oOm737WwI',
 			},
-			body: JSON.stringify({
-				'amount': {
-					'value': '100.00',
-					'currency': 'RUB'
-				},
-				'capture': true
-			})
+			body: JSON.stringify(
+				{
+					"amount": {
+					  "value": "100.00",
+					  "currency": "RUB"
+					},
+					"capture": true,
+					"confirmation": {
+					  "type": "redirect",
+					  "return_url": "https://www.example.com/return_url"
+					},
+					"description": "Заказ №1"
+				  })
+			
 		}).then(response => {
 			console.log(response);
 		})
@@ -86,6 +96,7 @@ class CartList extends React.Component {
 						<div className='cart-result'>
 							Итого: {this.props.totalPrice(cart)} ₽
 						</div>
+						<Button type={'back'} onClick={this.onCreatePayment}/>
 					</div>
 				</div>
 			)
