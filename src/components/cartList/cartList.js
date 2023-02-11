@@ -6,38 +6,30 @@ import CartListItem from '../cartListItem/cartListItem';
 import WithProductsService from '../hoc/withProductsService';
 import { v4 as uuidv4 } from 'uuid';
 import './cartList.css';
+import axios from 'axios';
 
 class CartList extends React.Component {
 	tg = useTelegram().tg;
 
 	onCreatePayment(){
 		const idempotenceKey = uuidv4();
-		fetch('https://api.yookassa.ru/v3/payments', {
-			method: 'POST',
-			mode: 'cors',
+		const responce = axios({
+			url: 'https://api.yookassa.ru/v3/payments',
+			method: 'post',
+			auth: {
+				username: '983882',
+				password: 'test_3QsLimRJIrI3puDS5pmPZaS5pCU5IpWmf6oOm737WwI'
+			},
 			headers: {
-				"Access-Control-Allow-Origin": "*",
-				'Access-Control-Allow-Headers': "Content-Type",
 				'Idempotence-Key': idempotenceKey,
 				'Content-Type': 'application/json',
-				'Authorization': '983882 test_3QsLimRJIrI3puDS5pmPZaS5pCU5IpWmf6oOm737WwI',
-			},
-			body: JSON.stringify(
-				{
-					"amount": {
-					  "value": "100.00",
-					  "currency": "RUB"
-					},
-					"capture": true,
-					"confirmation": {
-					  "type": "redirect",
-					  "return_url": "https://www.example.com/return_url"
-					},
-					"description": "Заказ №1"
-				  })
-			
-		}).then(response => {
-			console.log(response);
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+				'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
+			}	
+		});
+		responce.then(res => {
+			console.log(res);
 		})
 	}
 
@@ -96,7 +88,7 @@ class CartList extends React.Component {
 						<div className='cart-result'>
 							Итого: {this.props.totalPrice(cart)} ₽
 						</div>
-						<Button type={'back'} onClick={this.onCreatePayment}/>
+						<Button type={'back'} onClick={() => this.onCreatePayment()}/>
 					</div>
 				</div>
 			)
