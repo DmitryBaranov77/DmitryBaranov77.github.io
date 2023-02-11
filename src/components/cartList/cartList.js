@@ -13,24 +13,10 @@ class CartList extends React.Component {
 
 	onCreatePayment(){
 		const idempotenceKey = uuidv4();
-		const responce = axios({
-			url: 'https://api.yookassa.ru/v3/payments',
-			method: 'post',
-			auth: {
-				username: '983882',
-				password: 'test_3QsLimRJIrI3puDS5pmPZaS5pCU5IpWmf6oOm737WwI'
-			},
-			headers: {
-				'Idempotence-Key': idempotenceKey,
-				'Content-Type': 'application/json',
-				'Access-Control-Allow-Origin': '*',
-				'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-				'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
-			}	
-		});
-		responce.then(res => {
-			console.log(res);
-		})
+		const baseurl = "https://pokeapi.co/";
+		axios.get(`${baseurl}api/v2/pokemon/5`).then((response) => {
+            console.log(response);
+        });
 	}
 
 	componentWillMount(){
