@@ -17,6 +17,10 @@
 	text-align: center;
 }
 
+a.about {
+	text-decoration: none;
+}
+
 .card__title .card__price {
 	font-weight: lighter;
 }

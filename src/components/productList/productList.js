@@ -5,16 +5,10 @@ import Button from '../button';
 import WithProductsService from '../hoc/withProductsService';
 import Product from '../product/product';
 import './productList.css';
-
-const getTotalPrice = (items = []) => {
-	return items.reduce((acc, item) => {
-		return acc+=(item.price * item.quantity);
-	}, 0);
-}
-
 class ProductList extends React.Component{
 	tg = useTelegram().tg;
 	navigate = this.props.navigate;
+	totalPrice = this.props.totalPrice;
 	
 	componentDidMount() {
 		const {ProductsService} = this.props;
@@ -32,19 +26,17 @@ class ProductList extends React.Component{
 		} else {
 			this.tg.MainButton.show();
 			this.tg.MainButton.setParams({
-				text: getTotalPrice(cart)
+				text: this.totalPrice(cart)+' ₽'
 			})
 		}
 	}
 
 	componentWillMount(){
 		this.tg.MainButton.onClick(this.onSendData);
-		console.log('Создание компонента');
 	}
 
 	componentWillUnmount(){
 		this.tg.MainButton.offClick(this.onSendData);
-		console.log('Удаление компонента');
 	}
 
 	render() {

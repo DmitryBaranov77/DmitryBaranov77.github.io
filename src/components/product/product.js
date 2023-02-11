@@ -19,8 +19,8 @@ class Product extends React.Component{
 				</div>
 				
 				<div className='card__title'>
-					{title.substr(0, 24
-						)}<a className='about' href='#' onClick={() => alert('a')}>...</a>
+					{title.substr(0, 50
+						)}<a className='about' href='#' onClick={() => alert('a')}> ...</a>
 					
 				</div>
 
