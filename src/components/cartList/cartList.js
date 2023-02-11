@@ -10,9 +10,10 @@ class CartList extends React.Component {
 	tg = useTelegram().tg;
 
 	onSendData = () =>{
-		this.tg.sendData(JSON.stringify({
-			cart: this.props.cart
-		}))
+		fetch(`http://95.31.1.120:5000?total=${this.props.totalPrice(this.props.cart)}`).then(res => res.json()).then(data => {
+			document.location.href =data.confirmation.confirmation_url;
+		});
+
 	}
 
 	componentDidMount(){
@@ -70,6 +71,7 @@ class CartList extends React.Component {
 						<div className='cart-result'>
 							Итого: {this.props.totalPrice(cart)} ₽
 						</div>
+						<Button type={'back'} onClick={() => this.onSendData()}/>
 					</div>
 				</div>
 			)
