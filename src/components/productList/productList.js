@@ -15,7 +15,7 @@ class ProductList extends React.Component{
 		this.props.productsLoaded(ProductsService.getProducts());
 	}
 
-	onSendData = () => {
+	onGoCart = () => {
 		this.props.navigate('/cart');
 	}
 
@@ -32,11 +32,11 @@ class ProductList extends React.Component{
 	}
 
 	componentWillMount(){
-		this.tg.MainButton.onClick(this.onSendData);
+		this.tg.MainButton.onClick(this.onGoCart);
 	}
 
 	componentWillUnmount(){
-		this.tg.MainButton.offClick(this.onSendData);
+		this.tg.MainButton.offClick(this.onGoCart);
 	}
 
 	render() {
