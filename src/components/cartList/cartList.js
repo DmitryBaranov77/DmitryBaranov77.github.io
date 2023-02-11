@@ -14,7 +14,7 @@ class CartList extends React.Component {
 
 	onCreatePayment(){
 		const idempotenceKey = uuidv4();
-		const createPayload = new ICreatePayment() = {
+		const createPayload = {
 			amount: {
 				value: this.props.totalPrice(this.props.cart),
 				currency: 'RUB'
