@@ -9,7 +9,6 @@ import './cartList.css';
 
 class CartList extends React.Component {
 	tg = useTelegram().tg;
-	checkout = new YooCheckout({shopId: '983882', secretKey: 'test_3QsLimRJIrI3puDS5pmPZaS5pCU5IpWmf6oOm737WwI'});
 
 	onCreatePayment(){
 		const idempotenceKey = uuidv4();
