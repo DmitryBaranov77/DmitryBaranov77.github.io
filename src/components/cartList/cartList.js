@@ -9,7 +9,7 @@ import './cartList.css';
 class CartList extends React.Component {
 	tg = useTelegram().tg;
 
-	onSendData(){
+	onSendData = () =>{
 		this.tg.sendData(JSON.stringify({
 			cart: this.props.cart
 		}))
