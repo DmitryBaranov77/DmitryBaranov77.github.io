@@ -1,4 +1,3 @@
-import { YooCheckout, ICreatePayment} from '@a2seven/yoo-checkout';
 import React from 'react';
 import { connect } from 'react-redux';
 import { useTelegram } from '../../hooks/useTelegram';
@@ -14,19 +13,23 @@ class CartList extends React.Component {
 
 	onCreatePayment(){
 		const idempotenceKey = uuidv4();
-		const createPayload = {
-			amount: {
-				value: this.props.totalPrice(this.props.cart),
-				currency: 'RUB'
-			}
-		}
-
-		try {
-			const payment = this.checkout.createPayment(createPayload, idempotenceKey);
-			console.log(payment)
-		} catch (error) {
-			 console.error(error);
-		}
+		fetch('https://api.yookassa.ru/v3/payments', {
+			method: 'POST',
+			headers: {
+				'Idempotence-Key': idempotenceKey,
+				'Content-Type': 'application/json',
+				'Authorization': '983882:test_3QsLimRJIrI3puDS5pmPZaS5pCU5IpWmf6oOm737WwI'
+			},
+			body: JSON.stringify({
+				'amount': {
+					'value': '100.00',
+					'currency': 'RUB'
+				},
+				'capture': true
+			})
+		}).then(response => {
+			console.log(response);
+		})
 	}
 
 	componentWillMount(){
