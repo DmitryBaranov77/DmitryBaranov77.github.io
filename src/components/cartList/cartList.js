@@ -71,7 +71,6 @@ class CartList extends React.Component {
 						<div className='cart-result'>
 							Итого: {this.props.totalPrice(cart)} ₽
 						</div>
-						<Button type={'back'} onClick={() => this.onSendData()}/>
 					</div>
 				</div>
 			)

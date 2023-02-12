@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Button from '../button';
 import './product.css';
 
@@ -13,14 +14,14 @@ class Product extends React.Component{
 		return (
 			<div className={'card'}>
 				<div className='image__container'>
-					<a href='/reg'>
+					<Link to={`/about/?${id}`}>
 						<img src={src} alt={title}/>
-					</a>
+					</Link>
 				</div>
 				
 				<div className='card__title'>
 					{title.substr(0, 50
-						)}<a className='about' href='#' onClick={() => alert('a')}> ...</a>
+						)}<Link to={`/about/?${id}`}> ...</Link>
 					
 				</div>
 

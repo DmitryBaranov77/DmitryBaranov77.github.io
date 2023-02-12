@@ -6,12 +6,6 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
 	switch(action.type){
-		case 'SET_CART':
-			return {
-				...state,
-				cart: action.payload
-			};
-
 		case 'NEW_PRODUCTS':
 			return {
 				...state,

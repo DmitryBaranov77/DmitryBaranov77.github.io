@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useTelegram } from '../../hooks/useTelegram';
 import ProductList from '../productList/productList';
 import CartList from '../cartList/cartList';
+import AboutProduct from '../aboutProduct/aboutProduct';
 
 function App() {
   const {tg} = useTelegram();
@@ -24,6 +25,7 @@ function App() {
           <Route index element={<ProductList/>}/>
           <Route path='reg' element={<RegistrationForm/>} />
           <Route path='cart' element={<CartList/>}/>
+          <Route path='about' element={<AboutProduct />} />
 
         </Routes>
 
