@@ -17,7 +17,7 @@ class ProductList extends React.Component{
 
 	onGoCart = () => {
 		console.log('mainButtonClicked');
-		this.props.navigate('/cart');
+		// this.props.navigate('/cart');
 	}
 
 	componentDidUpdate(){
@@ -33,11 +33,11 @@ class ProductList extends React.Component{
 	}
 
 	componentWillMount(){
-		this.tg.MainButton.onClick(this.onGoCart);
+		this.tg.MainButton.onClick(() => this.onGoCart);
 	}
 
 	componentWillUnmount(){
-		this.tg.MainButton.offClick(this.onGoCart);
+		this.tg.MainButton.offClick(() => this.onGoCart);
 	}
 
 	render() {
