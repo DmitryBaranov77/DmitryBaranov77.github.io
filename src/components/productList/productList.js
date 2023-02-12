@@ -17,8 +17,7 @@ class ProductList extends React.Component{
 	}
 
 	onGoCart = () => {
-		console.log('mainButtonClicked');
-		// this.props.navigate('/cart');
+		this.props.navigate('/cart');
 	}
 
 	componentDidUpdate(){
