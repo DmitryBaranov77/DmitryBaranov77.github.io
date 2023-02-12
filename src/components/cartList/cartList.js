@@ -16,6 +16,18 @@ class CartList extends React.Component {
 
 	}
 
+	componentDidUpdate(){
+		const cart = this.props.cart;
+		if(cart.length === 0){
+			this.tg.MainButton.hide();
+		} else {
+			this.tg.MainButton.show();
+			this.tg.MainButton.setParams({
+				text: this.totalPrice(cart)+' ₽'
+			})
+		}
+	}
+
 	componentDidMount(){
 		this.tg.MainButton.onClick(this.onSendData);
 	}
