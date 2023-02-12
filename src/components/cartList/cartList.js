@@ -11,9 +11,9 @@ class CartList extends React.Component {
 
 	onSendData = () =>{
 		fetch(`https://dmnsmgn.ru/api/v1?total=${this.props.totalPrice(this.props.cart)}`).then(res => res.json()).then(data => {
+			this.tg.MainButton.hide();
 			document.location.href = data.confirmation.confirmation_url;
 		});
-
 	}
 
 	componentDidUpdate(){
