@@ -47,8 +47,7 @@
 
 .product-card .product-card__footer{
 	background: var(--tg-theme-secondary-bg-color);
-	border-radius: 5px;
-	padding: 1px 0;
+	padding: 5px 0;
 	position: sticky;
 	bottom: 0;
 }
