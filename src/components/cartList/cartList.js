@@ -23,7 +23,7 @@ class CartList extends React.Component {
 		} else {
 			this.tg.MainButton.show();
 			this.tg.MainButton.setParams({
-				text: this.totalPrice(cart)+' ₽'
+				text: this.props.totalPrice(cart)+' ₽'
 			})
 		}
 	}
