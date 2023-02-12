@@ -13,6 +13,7 @@ class ProductList extends React.Component{
 	componentDidMount() {
 		const {ProductsService} = this.props;
 		this.props.productsLoaded(ProductsService.getProducts());
+		this.tg.MainButton.onClick(this.onGoCart);
 	}
 
 	onGoCart = () => {
@@ -32,12 +33,8 @@ class ProductList extends React.Component{
 		}
 	}
 
-	componentWillMount(){
-		this.tg.MainButton.onClick(() => this.onGoCart);
-	}
-
 	componentWillUnmount(){
-		this.tg.MainButton.offClick(() => this.onGoCart);
+		this.tg.MainButton.offClick(this.onGoCart);
 	}
 
 	render() {
