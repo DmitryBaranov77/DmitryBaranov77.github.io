@@ -3,7 +3,11 @@
     display: flex;
     flex: 0 1 auto;
     flex-flow: row wrap;
-    margin-right: -0.5rem;
-    margin-left: -0.5rem;
 	position: relative;
+}
+
+.list-header {
+	display: flex;
+	justify-content: flex-end;
+	padding: 5px;
 }

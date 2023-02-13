@@ -107,4 +107,31 @@
     z-index: 2;
 }
 
+.btn-container {
+	-webkit-box-align: stretch;
+    align-items: stretch;
+    border-radius: 22px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    line-height: 0;
+    opacity: 1;
+    transition: opacity 0.3s ease 0s;
+    padding: 3px;
+    border: 1px solid rgb(247, 247, 247);
+    width: 100%;
+    background-color: rgb(247, 247, 247);
+}
+
+.counter {
+	display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 40px;
+    margin: 0px 8px;
+    overflow: hidden;
+}
+
 
