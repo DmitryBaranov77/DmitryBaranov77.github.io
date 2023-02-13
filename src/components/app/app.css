@@ -1,10 +1,23 @@
 body{
-	background-color: white;
+	color: rgb(22, 22, 22);
+    font-family: Gilroy, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
 }
+
 
 .active{
 	background-color: rgb(247, 247, 247);
 	border: 1px solid rgb(247, 247, 247);
 	border-radius: 30px;
 	display: flex;
+}
+
+div{
+	display: block;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
 }

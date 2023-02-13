@@ -1,12 +1,9 @@
-.list{
-	border-radius: 10%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-}
-
-.list-header{
-	display: flex;
-	justify-content: right;
-	padding: 5px 5px;
+.list {
+	box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-flow: row wrap;
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
+	position: relative;
 }
