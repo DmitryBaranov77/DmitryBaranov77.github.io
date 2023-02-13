@@ -16,7 +16,7 @@
     padding: 8px 0px 12px;
     position: relative;
     transition: box-shadow 0.3s ease 0s;
-    width: 100%;
+    /* width: 100%; */
     min-height: 271px;
 }
 
