@@ -10,11 +10,6 @@ import AboutProduct from '../aboutProduct/aboutProduct';
 function App() {
   const {tg} = useTelegram();
 
-  useEffect(() => {
-    tg.MainButton.color ='#324AB2';
-
-  }, []);
-
   return (
     <div className='App'>
       

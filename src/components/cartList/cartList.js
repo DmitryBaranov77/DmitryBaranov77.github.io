@@ -30,6 +30,7 @@ class CartList extends React.Component {
 
 	componentDidMount(){
 		this.tg.MainButton.onClick(this.onSendData);
+		this.tg.MainButton.color = '#08E8DE';
 	}
 
 	componentWillUnmount(){
