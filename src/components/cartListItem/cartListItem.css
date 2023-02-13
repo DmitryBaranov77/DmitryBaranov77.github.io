@@ -17,7 +17,7 @@
 
 .cart-item__header{
 	display: flex;
-	height: 118px;
+	height: 113px;
 }
 
 .cart-item__title{
@@ -44,7 +44,6 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	bottom: 0;
 }
 
 .cart-btn-container {
