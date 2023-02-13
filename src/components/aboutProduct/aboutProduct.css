@@ -2,8 +2,6 @@
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	background: var(--tg-theme-secondary-bg-color);
-	color: var(--tg-theme-text-color);
 	padding: 5px 5px;
 }
 
@@ -15,7 +13,6 @@
 .product-card__container{
 	display: flex;
 	flex-direction: column;
-	background-color: var(--tg-theme-bg-color);
 	border-radius: 10px;
 	padding: 5px 5px;
 }
@@ -46,16 +43,11 @@
 }
 
 .product-card .product-card__footer{
-	background: var(--tg-theme-secondary-bg-color);
+	display: block;
 	padding: 5px 0;
+	align-items: end;
 	position: sticky;
 	bottom: 0;
-}
-
-.product-card .product-card__footer .btn-container{
-	display: flex;
-	justify-content: space-between;
-	flex-direction: row;
 }
 
 

@@ -5,9 +5,9 @@
 	flex-direction: row;
 	margin: 13px 10px;
 	position: relative;
-	border-radius: 5px;
+	border-radius: 15px;
 	justify-content: space-between;
-	background-color: var(--tg-theme-bg-color);
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 18px;
 	border: none;
 }
 
@@ -51,7 +51,7 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	padding-right: 5px;
+	margin-right: 5px;
 }
 
 .cart-btn-container .counter{

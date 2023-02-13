@@ -37,14 +37,18 @@ class AboutProduct extends React.Component {
 					{count !== 0 ?
 					(<div className='btn-container'>
 						<div className='card__price'>{price*count === 0 ? price : price*count} ₽</div>
-						<Button title={'-'} type={'remove'} onClick={() => deleteFromCart(product)}/>
-						<div className='counter'>{count} шт.</div>
-						<Button title={'+'} type={'add'} onClick={() => addToCart(product)}/>
+						<div className='active'>
+							<Button title={'-'} type={'remove'} onClick={() => deleteFromCart(product)}/>
+							<div className='counter'>{count} шт.</div>
+							<Button title={'+'} type={'add'} onClick={() => addToCart(product)}/>
+						</div>
 					</div>)
 					:
-					(<div className='btn-container'>
-						<div className='card__price'>{price} ₽</div>
-						<Button title={'В корзину'} type={'big-add'} onClick={() => addToCart(product)}/>
+					(<div>
+						<div className='btn-container'>
+							<div className='card__price'>{price} ₽</div>
+							<Button title={'В корзину'} type={'big-add'} onClick={() => addToCart(product)}/>
+						</div>
 					</div>)
 					}
 				</div>

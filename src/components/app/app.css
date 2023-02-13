@@ -1,4 +1,6 @@
-body {
-	background: var(--tg-theme-secondary-bg-color);
-	color: var(--tg-theme-text-color);
+.active{
+	background-color: rgb(247, 247, 247);
+	border: 1px solid rgb(247, 247, 247);
+	border-radius: 30px;
+	display: flex;
 }

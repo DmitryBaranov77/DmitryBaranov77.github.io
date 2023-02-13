@@ -1,9 +1,7 @@
 .btn{
 	border: 0;
 	outline: none;
-	box-shadow: 1px -3px 52px -5px rgba(0, 0, 0, 0.77);
 	cursor: pointer;
-	background-color: #324AB2;
 	color: white;
 	width: 30px;
 	height: 30px;
@@ -15,16 +13,19 @@
 .btn.big-add {
 	background-image: url('../../../public/img/cart.png');
 	background-size: 24px;
+	background-color: #08E8DE;
 }
 
 .btn.add {
 	background-image: url('../../../public/img/plus.png');
 	background-size: 25px;
+	background-color: #08E8DE;
 }
 
 .btn.remove{
 	background-image: url('../../../public/img/minus.png');
 	background-size: 25px;
+	background-color: #F28500;
 }
 
 .btn.cart{
@@ -45,6 +46,6 @@
 	transform: scale(0.98);
 }
   
-.btn:hover{
+/* .btn:hover{
 	background-color: #576ECB;
-}
+} */
