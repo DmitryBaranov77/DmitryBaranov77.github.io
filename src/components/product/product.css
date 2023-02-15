@@ -12,9 +12,9 @@
 }
 
 .active.product-card-image__container{
-	margin: 0 auto;
+	margin: auto;
 	height: 100px;
-	padding-top: 10px;
+	width: 100px;
 }
 
 .product-card-image__container{
