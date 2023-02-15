@@ -1,7 +1,7 @@
 .btn{
 	display: flex;
-	width: 36px;
-	height: 36px;
+	width: 25px;
+	height: 25px;
 	-webkit-box-align: center;
 	justify-content: center;
 	border: none;
@@ -15,19 +15,19 @@
 
 .btn.big-add {
 	background-image: url('../../../public/img/cart.png');
-	background-size: 24px;
+	background-size: 20px;
 	background-color: #08E8DE;
 }
 
 .btn.add {
 	background-image: url('../../../public/img/plus.png');
-	background-size: 25px;
+	background-size: 20px;
 	background-color: #08E8DE;
 }
 
 .btn.remove{
 	background-image: url('../../../public/img/minus.png');
-	background-size: 25px;
+	background-size: 20px;
 	background-color: #F28500;
 }
 

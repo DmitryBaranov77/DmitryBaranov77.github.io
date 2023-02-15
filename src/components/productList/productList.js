@@ -40,7 +40,7 @@ class ProductList extends React.Component{
 	render() {
 		const { products, addToCart, deleteFromCart} = this.props;
 		return (
-			<div>
+			<div className='list-wrapper'>
 				<div className='list-header'>
 					<Button type={'cart'} onClick={() => {
 						this.tg.HapticFeedback.impactOccurred('rigid');
