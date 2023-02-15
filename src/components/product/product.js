@@ -19,7 +19,7 @@ class Product extends React.Component{
 
 				<div className='product-card-content'>
 					<div className='product-card-title__container'>
-						<div className='product-card-ttile'>{title}</div>
+						<div className='product-card-title'>{title}</div>
 					</div>
 
 					<div className={id + ' product-card-content-footer__container ' + (count !== 0 ? 'active' : '')}>
