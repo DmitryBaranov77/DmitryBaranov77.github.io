@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: 120px;
-    height: 220px; 
+    width: 30vw;
+    height: 34vh; 
     box-shadow: rgb(0 0 0 / 5%) 0px 4px 18px;
     background: white;
     margin: 3px;
@@ -12,8 +12,8 @@
 }
 
 .product-card-image__container{
-    max-height: 120px;
-    max-width: 120px;
+    width: 30vw;
+    height: 30vw;
 }
 
 .product-card-image{
@@ -35,7 +35,7 @@
 
 .product-card-title__container .product-card-title{
     text-align: center;
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .product-card-content-footer__container{
