@@ -13,7 +13,7 @@ class Product extends React.Component{
 		const count  = exist ? exist.quantity : 0; 
 		return (
 			<div className='product-card-wrapper'>
-				<div className='product-card-image__container'>
+				<div className={(count !== 0 ? 'active' : '') + ' product-card-image__container'}>
 					<img className='product-card-image' src={require('../../images/' + src)} alt={title}/>
 				</div>
 
