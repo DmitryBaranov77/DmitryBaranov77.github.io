@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: 120px;
-    height: 220px; 
+    width: 30vw;
+    height: 60vw; 
     box-shadow: rgb(0 0 0 / 5%) 0px 4px 18px;
     background: white;
     margin: 3px;
@@ -13,13 +13,13 @@
 
 .active.product-card-image__container{
 	margin: auto;
-	height: 100px;
-	width: 100px;
+	height: 25vw;
+	width: 25vw;
 }
 
 .product-card-image__container{
-    max-height: 120px;
-    max-width: 120px;
+    height: 30vw;
+    width: 30vw;
 }
 
 .product-card-image{
@@ -41,7 +41,7 @@
 
 .product-card-title__container .product-card-title{
     text-align: center;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .product-card-content-footer__container{
