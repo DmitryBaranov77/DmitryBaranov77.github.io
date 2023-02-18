@@ -1,13 +1,13 @@
 .btn{
 	display: flex;
-	width: 30px;
-	height: 30px;
+	width: 29px;
+	height: 29px;
 	-webkit-box-align: center;
 	justify-content: center;
 	border: none;
 	transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
 	border-radius: 50%;
-	padding: 6px;
+	padding: 5px;
 	background: no-repeat;
 	background-position: center;
 	position: relative;
