@@ -24,7 +24,7 @@ class Product extends React.Component{
 
 					<div className={id + ' product-card-content-footer__container ' + (count !== 0 ? 'active' : '')}>
 						<div className='product-card-price__container'>
-							<div className='product-card-price'>{count !== 0 ? price*count : price}</div>
+							<div className={'product-card-price ' + (count !== 0 ? 'active' : '')}>{count !== 0 ? price*count : price}</div>
 						</div>
 
 						<div className='product-card-btn-container'>

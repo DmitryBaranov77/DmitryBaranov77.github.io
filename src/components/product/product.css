@@ -61,11 +61,16 @@
 
 .product-card-content-footer__container .product-card-price__container .product-card-price{
     font-size: 18px;
-	margin-top: 10px;
+	padding-top: 5px;
+}
+
+.product-card-content-footer__container .product-card-price__container .product-card-price.active{
+    font-size: 18px;
+    padding-top: 0;
 }
 
 .product-card-btn-container{
-    padding: 5px;
+    padding: 0px 3px 3px 3px;
 }
 
 .product-card-btn-container .btns{
