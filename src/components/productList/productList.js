@@ -14,7 +14,7 @@ class ProductList extends React.Component{
 		const {ProductsService} = this.props;
 		this.props.productsLoaded(ProductsService.getProducts());
 		this.tg.MainButton.onClick(this.onGoCart);
-		this.tg.MainButton.color = '#00FFFF;';
+		this.tg.MainButton.color = '#00FFFF';
 	}
 
 	onGoCart = () => {
