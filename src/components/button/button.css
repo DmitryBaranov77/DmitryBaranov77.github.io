@@ -16,24 +16,24 @@
 .btn.big-add {
 	background-image: url('../../../public/img/cart.png');
 	background-size: 20px;
-	background-color: #08E8DE;
+	background-color: #00FFFF;
 }
 
 .btn.add {
 	background-image: url('../../../public/img/plus.png');
 	background-size: 20px;
-	background-color: #08E8DE;
+	background-color: #00FFFF;
 }
 
 .btn.remove{
 	background-image: url('../../../public/img/minus.png');
 	background-size: 20px;
-	background-color: #F28500;
+	background-color: #00FFFF;
 }
 
 .btn.cart{
 	background-image: url('../../../public/img/cart-icon.png');
-	background-color: #08E8DE;
+	background-color: #00FFFF;
 	border-radius: 25px;
 	width: 55px;
 	background-size: 25px;
