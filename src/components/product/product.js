@@ -27,9 +27,9 @@ class Product extends React.Component{
 							<div className={'product-card-price ' + (count !== 0 ? 'active' : '')}>{count !== 0 ? price*count : price}</div>
 						</div>
 
-						<div className='product-card-btn-container'>
+						<div className={'product-card-btn-container'}>
 							{count !== 0 ? (
-								<div className='btns'>
+								<div className={'btns ' + (count !== 0 ? 'active' : '')}>
 									<Button type={'remove'} onClick={() => onDec()} />
 									<div className='counter__container'>
 										<div className='counter'>{count} шт.</div>

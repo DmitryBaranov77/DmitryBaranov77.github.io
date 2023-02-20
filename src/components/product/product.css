@@ -73,6 +73,11 @@
     padding: 0px 3px 3px 3px;
 }
 
+.btns.active{
+    background-color: #9FE2BF;
+    border-radius: 20px;
+}
+
 .product-card-btn-container .btns{
     display: flex;
     flex-direction: row;
