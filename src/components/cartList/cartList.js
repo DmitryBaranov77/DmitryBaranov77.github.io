@@ -27,7 +27,6 @@ class CartList extends React.Component {
 
 	componentDidMount(){
 		this.tg.MainButton.onClick(this.onGoDelivery);
-		this.tg.MainButton.color = '#08E8DE';
 	}
 
 	componentWillUnmount(){
