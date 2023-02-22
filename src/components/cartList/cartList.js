@@ -9,11 +9,8 @@ import './cartList.css';
 class CartList extends React.Component {
 	tg = useTelegram().tg;
 
-	onSendData = () =>{
-		fetch(`https://dmnsmgn.ru/api/v1?total=${this.props.totalPrice(this.props.cart)}`).then(res => res.json()).then(data => {
-			this.tg.MainButton.hide();
-			document.location.href = data.confirmation.confirmation_url;
-		});
+	onGoDelivery = () =>{
+		this.props.navigate('/delivery');
 	}
 
 	componentDidUpdate(){
@@ -29,12 +26,12 @@ class CartList extends React.Component {
 	}
 
 	componentDidMount(){
-		this.tg.MainButton.onClick(this.onSendData);
+		this.tg.MainButton.onClick(this.onGoDelivery);
 		this.tg.MainButton.color = '#08E8DE';
 	}
 
 	componentWillUnmount(){
-		this.tg.MainButton.offClick(this.onSendData);
+		this.tg.MainButton.offClick(this.onGoDelivery);
 	}
 
 	render() {
@@ -83,6 +80,7 @@ class CartList extends React.Component {
 					<div className='cart__footer'>
 						<div className='cart-result'>
 							Итого: {this.props.totalPrice(cart)} ₽
+							{/* <Button type={'back'} onClick={() => this.props.navigate('/delivery')}/> */}
 						</div>
 					</div>
 				</div>

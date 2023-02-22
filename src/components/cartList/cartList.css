@@ -8,5 +8,11 @@
 .cart-header{
 	display: flex;
 	justify-content: left;
-	padding: 5px 5px;
+	margin: 5px 0 0 5px;
+}
+
+.cart__footer .cart-result{
+	font-weight: 600;
+	font-size: 22px;
+	text-align: center;
 }

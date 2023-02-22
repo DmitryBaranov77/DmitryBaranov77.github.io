@@ -1,0 +1,37 @@
+.delivery__header{
+	padding: 5px 0 0 5px;
+}
+
+.title{
+	text-align: center;
+	font-weight: 600;
+	font-size: 25px;
+	padding-bottom: 5px;
+}
+
+.delivery__content{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 5px;
+}
+
+.form-elem{
+	padding-top: 5px;
+}
+
+.form-elem label{
+	display: inline-block;
+	min-width: 20vw;
+}
+
+.form-elem input{
+	display: inline-block;
+	min-width: 60vw;
+	border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    height: 38px;
+    outline: none;
+    padding: 0 10px;
+}

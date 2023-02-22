@@ -6,6 +6,7 @@ import { useTelegram } from '../../hooks/useTelegram';
 import ProductList from '../productList/productList';
 import CartList from '../cartList/cartList';
 import AboutProduct from '../aboutProduct/aboutProduct';
+import Delivery from '../delivery/delivery';
 
 function App() {
   const {tg} = useTelegram();
@@ -18,6 +19,7 @@ function App() {
         <Routes>
 
           <Route index element={<ProductList/>}/>
+          <Route path='delivery' element={<Delivery/>}/>
           <Route path='reg' element={<RegistrationForm/>} />
           <Route path='cart' element={<CartList/>}/>
           <Route path='about' element={<AboutProduct />} />

@@ -10,7 +10,7 @@ class CartListItem extends React.Component {
 		return (
 			<div className='cart-item'>
 				<div className='cart-image__container'>
-					<img src={src}/>
+					<img src={require('../../images/'+src)}/>
 				</div>
 
 				<div className='cart-item__container'>

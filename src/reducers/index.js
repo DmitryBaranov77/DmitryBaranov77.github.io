@@ -1,7 +1,8 @@
 const initialState = {
 	cart: [],
 	products: [],
-	count: 0
+	count: 0,
+	adress: null
 }
 
 export const reducer = (state = initialState, action) => {
@@ -11,6 +12,12 @@ export const reducer = (state = initialState, action) => {
 				...state,
 				products: action.payload,
 			};
+
+		case 'ADD_ADRESS':
+			return {
+				...state,
+				adress: action.payload,
+			}
 
 		case 'ADD_TO_CART':
 			const exist = state.cart.find(item => item.id === action.payload.id);
@@ -24,7 +31,7 @@ export const reducer = (state = initialState, action) => {
 					...state,
 					cart: [...state.cart, {...action.payload, quantity: 1}]
 				}
-			}
+			};
 
 		case 'DELETE_FROM_CART':
 			const ex = state.cart.find(item => item.id === action.payload.id);
@@ -38,7 +45,7 @@ export const reducer = (state = initialState, action) => {
 					...state,
 					cart: state.cart.map(item => item.id === action.payload.id ? {...ex, quantity: ex.quantity - 1} : item)
 				}
-			}
+			};
 
 		default: return state;
 	}
