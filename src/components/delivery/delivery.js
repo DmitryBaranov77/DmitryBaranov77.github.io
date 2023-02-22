@@ -28,6 +28,7 @@ class Delivery extends Component {
 
 	componentDidMount(){
 		this.tg.MainButton.onClick(this.onSendData);
+		this.tg.MainButton.hide();
 	}
 
 	componentWillUnmount(){
