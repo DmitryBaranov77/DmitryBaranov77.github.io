@@ -37,9 +37,9 @@ class Delivery extends Component {
 
 	render() {
 		const {addAdress, adress, cart} = this.props;
-		// if(cart.length === 0){
-		// 	window.location.href = '/';
-		// }
+		if(cart.length === 0){
+			window.location.href = '/';
+		}
 
 		return (
 			<div className='delivery'>
