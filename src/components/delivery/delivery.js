@@ -55,7 +55,7 @@ class Delivery extends Component {
 						<label for='tab-2'>Доставка</label>
 						
 						<div id='content-2'>
-							<AddressSuggestions token='22cd6c7adac9d78ce2cb0559940b208f26701947' onChange={(e) => {
+							<AddressSuggestions filterFromBound='city' filterToBound='settlement' token='22cd6c7adac9d78ce2cb0559940b208f26701947' onChange={(e) => {
 									addAdress(e.data);
 							}}/>
 							<div className='form' hidden={adress ? false : true}>
@@ -81,7 +81,7 @@ class Delivery extends Component {
 								</div>
 								<div className='form-elem'>
 									<label>Квартира</label>
-									<input className='flat' type='text' value={getFlat(adress)} readOnly></input>
+									<input className='flat' type='text' value={getFlat(adress)}></input>
 								</div>
 							</div>
 						</div>
