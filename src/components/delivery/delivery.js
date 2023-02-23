@@ -37,9 +37,9 @@ class Delivery extends Component {
 
 	render() {
 		const {addAdress, adress, cart} = this.props;
-		if(cart.length === 0){
-			window.location.href = '/';
-		}
+		// if(cart.length === 0){
+		// 	window.location.href = '/';
+		// }
 
 		return (
 			<div className='delivery'>
@@ -47,36 +47,47 @@ class Delivery extends Component {
 					<Button type={'back'} onClick={() => this.props.navigate(-1)}/>
 				</div>
 				<div className='delivery__content'>
-					<div className='title'>
-						Адрес доставки
-					</div>
-					<AddressSuggestions token='22cd6c7adac9d78ce2cb0559940b208f26701947' onChange={(e) => {
-							addAdress(e.data);
-					}}/>
-					<div className='form' hidden={adress ? false : true}>
-						<div className='form-elem'>
-							<label>Индекс</label>
-							<input className='index' type='text' value={getIndex(adress)} readOnly></input>
+					<div className='title'>Выберите способ получения</div>
+					<div className='delivery__tabs'>
+						<input type='radio' name='tab-btn' id='tab-1' value=''/>
+						<label for='tab-1'>Самовывоз</label>
+						<input type='radio' name='tab-btn' id='tab-2' value='' />
+						<label for='tab-2'>Доставка</label>
+						
+						<div id='content-2'>
+							<AddressSuggestions token='22cd6c7adac9d78ce2cb0559940b208f26701947' onChange={(e) => {
+									addAdress(e.data);
+							}}/>
+							<div className='form' hidden={adress ? false : true}>
+								<div className='form-elem'>
+									<label>Индекс</label>
+									<input className='index' type='text' value={getIndex(adress)} readOnly></input>
+								</div>
+								<div className='form-elem'>
+									<label>Регион</label>
+									<input className='region' type='text' value={getRegion(adress)} readOnly></input>
+								</div>
+								<div className='form-elem'>
+									<label>Город</label>
+									<input className='city' type='text' value={getCity(adress)} readOnly></input>
+								</div>
+								<div className='form-elem'>
+									<label>Улица</label>
+									<input className='street' type='text' value={getStreet(adress)} readOnly></input>
+								</div>
+								<div className='form-elem'>
+									<label>Дом</label>
+									<input className='house' type='text' value={getHouse(adress)} readOnly></input>
+								</div>
+								<div className='form-elem'>
+									<label>Квартира</label>
+									<input className='flat' type='text' value={getFlat(adress)} readOnly></input>
+								</div>
+							</div>
 						</div>
-						<div className='form-elem'>
-							<label>Регион</label>
-							<input className='region' type='text' value={getRegion(adress)} readOnly></input>
-						</div>
-						<div className='form-elem'>
-							<label>Город</label>
-							<input className='city' type='text' value={getCity(adress)} readOnly></input>
-						</div>
-						<div className='form-elem'>
-							<label>Улица</label>
-							<input className='street' type='text' value={getStreet(adress)} readOnly></input>
-						</div>
-						<div className='form-elem'>
-							<label>Дом</label>
-							<input className='house' type='text' value={getHouse(adress)} readOnly></input>
-						</div>
-						<div className='form-elem'>
-							<label>Квартира</label>
-							<input className='flat' type='text' value={getFlat(adress)} readOnly></input>
+
+						<div className='pickup' id='content-1'>
+							Большая почтовая 18/20 корпус 11
 						</div>
 					</div>
 				</div>
