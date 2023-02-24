@@ -10,7 +10,9 @@ import 'react-dadata/dist/react-dadata.css';
 class Delivery extends Component {
 	tg = useTelegram().tg;
 	city = createRef();
-	street = createRef(<AddressSuggestions/>);
+	street = createRef();
+	house = createRef();
+
 
 	onSendData = () =>{
 		fetch(`https://dmnsmgn.ru/api/v1?total=${this.props.totalPrice(this.props.cart)}`).then(res => res.json()).then(data => {
@@ -22,8 +24,9 @@ class Delivery extends Component {
 	componentDidUpdate(){
 		const {adress, userInfo} = this.props;
 		if(this.city.current && this.street.current){
-			this.city.current.setInputValue(this.props.adress.city_with_type || this.props.adress.settlement_with_type);
-			this.street.current.setInputValue(this.props.adress.street_with_type);
+			this.city.current.setInputValue(adress.city_with_type || adress.settlement_with_type);
+			this.street.current.setInputValue(adress.street_with_type);
+			this.house.current.setInputValue((adress.house_type ? adress.house_type + ' ' : '') + (adress.house ? adress.house + ' ' : '') + (adress.block_type ? adress.block_type + ' ' : '') + (adress.block ? adress.block : ''));
 		}
 
 		if(!userInfo?.fio || !userInfo?.phone || !userInfo?.email || !adress?.city || !adress?.postal_code || !adress?.street || !adress?.house){
@@ -133,6 +136,7 @@ class Delivery extends Component {
 									token='22cd6c7adac9d78ce2cb0559940b208f26701947'
 									filterFromBound='house'
 									filterToBound='house'
+									ref={this.house}
 									filterLocations={[{city: adress?.city, settlement: adress?.settlement, street: adress?.street, street_type_full: adress?.street_type_full}]}
 									filterRestrictValue='true'
 									count={5}
@@ -157,7 +161,8 @@ class Delivery extends Component {
 									<input 
 									className='index' 
 									type='text' 
-									value={adress?.postal_code || ''} 
+									value={adress?.postal_code || ''}
+									readOnly
 									onChange={(e) =>{
 										addAdress({...adress, postal_code: e.target.value})
 									}}></input>

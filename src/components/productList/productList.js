@@ -36,6 +36,9 @@ class ProductList extends React.Component{
 
 	componentWillUnmount(){
 		this.tg.MainButton.offClick(this.onGoCart);
+		this.tg.MainButton.setParams({
+			text: 'Оплатить'
+		})
 	}
 
 	render() {
