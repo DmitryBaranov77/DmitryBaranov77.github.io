@@ -3,7 +3,8 @@ const initialState = {
 	products: [],
 	count: 0,
 	adress: {},
-	userInfo: {}
+	userInfo: {},
+	type: null
 }
 
 export const reducer = (state = initialState, action) => {
@@ -13,6 +14,12 @@ export const reducer = (state = initialState, action) => {
 				...state,
 				products: action.payload,
 			};
+
+		case 'CHANGE_TYPE':
+			return {
+				...state,
+				type: action.payload
+			}
 
 		case 'ADD_ADRESS':
 			return {

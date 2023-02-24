@@ -22,14 +22,14 @@ class Delivery extends Component {
 	}
 
 	componentDidUpdate(){
-		const {adress, userInfo} = this.props;
+		const {adress, userInfo, type} = this.props;
 		if(this.city.current && this.street.current){
 			this.city.current.setInputValue(adress.city_with_type || adress.settlement_with_type);
 			this.street.current.setInputValue(adress.street_with_type);
 			this.house.current.setInputValue((adress.house_type ? adress.house_type + ' ' : '') + (adress.house ? adress.house + ' ' : '') + (adress.block_type ? adress.block_type + ' ' : '') + (adress.block ? adress.block : ''));
 		}
 
-		if(!userInfo?.fio || !userInfo?.phone || !userInfo?.email || !adress?.city || !adress?.postal_code || !adress?.street || !adress?.house){
+		if((!userInfo?.fio || !userInfo?.phone || !userInfo?.email || !adress?.city || !adress?.postal_code || !adress?.street || !adress?.house) || (type === 'DELIVERY')){
 			this.tg.MainButton.hide();
 		} else {
 			this.tg.MainButton.show();
@@ -47,7 +47,7 @@ class Delivery extends Component {
 	}
 
 	render() {
-		const {addAdress, addUserInfo, adress, cart, userInfo} = this.props;
+		const {addAdress, addUserInfo, adress, cart, userInfo, changeType} = this.props;
 		if(cart.length === 0){
 			window.location.href = '/';
 		}
@@ -60,9 +60,9 @@ class Delivery extends Component {
 				<div className='delivery__content'>
 					<div className='title'>Выберите способ получения</div>
 					<div className='delivery__tabs'>
-						<input type='radio' name='tab-btn' id='tab-1' value=''/>
+						<input type='radio' name='tab-btn' id='tab-1' value='' onChange={() => changeType('PICKUP')}/>
 						<label htmlFor='tab-1'>Самовывоз</label>
-						<input type='radio' name='tab-btn' id='tab-2' value='' />
+						<input type='radio' name='tab-btn' id='tab-2' value=''onChange={() => changeType('DELIVERY')}/>
 						<label htmlFor='tab-2'>Доставка</label>
 						
 						<div id='content-2'>
@@ -185,7 +185,8 @@ const mapStateToProps = (state) => {
 	return {
 		adress: state.adress,
 		cart: state.cart,
-		userInfo: state.userInfo
+		userInfo: state.userInfo,
+		type: state.type
 	}
 }
 
@@ -201,6 +202,12 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch({
 				type: 'ADD_USER_INFO',
 				payload: userInfo
+			})
+		},
+		changeType: (type) => {
+			dispatch({
+				type: 'CHANGE_TYPE',
+				payload: type
 			})
 		}
 	}
