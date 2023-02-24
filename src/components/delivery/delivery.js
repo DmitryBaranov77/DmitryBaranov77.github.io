@@ -46,10 +46,9 @@ class Delivery extends Component {
 	render() {
 		const {addAdress, addUserInfo, adress, cart, userInfo} = this.props;
 		console.log(adress, userInfo);
-		// this.city.setInputValue(adress.city || adress.settlement);
-		// if(cart.length === 0){
-		// 	window.location.href = '/';
-		// }
+		if(cart.length === 0){
+			window.location.href = '/';
+		}
 
 		return (
 			<div className='delivery'>
