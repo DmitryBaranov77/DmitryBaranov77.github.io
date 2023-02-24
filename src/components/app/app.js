@@ -1,7 +1,5 @@
 import './app.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import RegistrationForm from '../registrationForm/registrationForm';
-import { useEffect } from 'react';
 import { useTelegram } from '../../hooks/useTelegram';
 import ProductList from '../productList/productList';
 import CartList from '../cartList/cartList';
@@ -20,7 +18,6 @@ function App() {
 
           <Route index element={<ProductList/>}/>
           <Route path='delivery' element={<Delivery/>}/>
-          <Route path='reg' element={<RegistrationForm/>} />
           <Route path='cart' element={<CartList/>}/>
           <Route path='about' element={<AboutProduct />} />
 
