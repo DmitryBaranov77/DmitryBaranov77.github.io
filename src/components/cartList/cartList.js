@@ -26,6 +26,15 @@ class CartList extends React.Component {
 	}
 
 	componentDidMount(){
+		const cart = this.props.cart;
+		if(cart.length === 0){
+			this.tg.MainButton.hide();
+		} else {
+			this.tg.MainButton.show();
+			this.tg.MainButton.setParams({
+				text: 'Оплатить'
+			})
+		}
 		this.tg.MainButton.onClick(this.onGoDelivery);
 	}
 
