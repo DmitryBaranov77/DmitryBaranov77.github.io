@@ -20,7 +20,7 @@ class Delivery extends Component {
 	}
 
 	componentDidUpdate(){
-		const {adress, userInfo} = this.props.adress;
+		const {adress, userInfo} = this.props;
 		if(this.city.current && this.street.current){
 			this.city.current.setInputValue(this.props.adress.city_with_type || this.props.adress.settlement_with_type);
 			this.street.current.setInputValue(this.props.adress.street_with_type);
@@ -45,7 +45,6 @@ class Delivery extends Component {
 
 	render() {
 		const {addAdress, addUserInfo, adress, cart, userInfo} = this.props;
-		console.log(adress, userInfo);
 		if(cart.length === 0){
 			window.location.href = '/';
 		}
