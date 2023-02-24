@@ -29,7 +29,7 @@ class Delivery extends Component {
 			this.house.current.setInputValue((adress.house_type ? adress.house_type + ' ' : '') + (adress.house ? adress.house + ' ' : '') + (adress.block_type ? adress.block_type + ' ' : '') + (adress.block ? adress.block : ''));
 		}
 
-		if((!userInfo?.fio || !userInfo?.phone || !userInfo?.email || !adress?.city || !adress?.postal_code || !adress?.street || !adress?.house) || (type === 'DELIVERY')){
+		if((!userInfo?.fio || !userInfo?.phone || !userInfo?.email || !adress?.city || !adress?.postal_code || !adress?.street || !adress?.house) && (type === 'DELIVERY')){
 			this.tg.MainButton.hide();
 		} else {
 			this.tg.MainButton.show();
