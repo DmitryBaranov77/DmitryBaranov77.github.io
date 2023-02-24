@@ -5,6 +5,7 @@ import { useTelegram } from '../../hooks/useTelegram';
 import Button from '../button';
 import WithProductsService from '../hoc/withProductsService';
 import './delivery.css';
+import 'react-dadata/dist/react-dadata.css';
 
 class Delivery extends Component {
 	tg = useTelegram().tg;
@@ -19,17 +20,17 @@ class Delivery extends Component {
 	}
 
 	componentDidUpdate(){
-		const adress = this.props.adress;
+		const {adress, userInfo} = this.props.adress;
 		if(this.city.current && this.street.current){
 			this.city.current.setInputValue(this.props.adress.city_with_type || this.props.adress.settlement_with_type);
 			this.street.current.setInputValue(this.props.adress.street_with_type);
 		}
 
-		// if(!getIndex(adress) || !getCity(adress) || !getHouse(adress)){
-		// 	this.tg.MainButton.hide();
-		// } else {
-		// 	this.tg.MainButton.show();
-		// }
+		if(!userInfo?.fio || !userInfo?.phone || !userInfo?.email || !adress?.city || !adress?.postal_code || !adress?.street || !adress?.house){
+			this.tg.MainButton.hide();
+		} else {
+			this.tg.MainButton.show();
+		}
 	}
 
 	componentDidMount(){
@@ -43,8 +44,8 @@ class Delivery extends Component {
 	}
 
 	render() {
-		const {addAdress, adress, cart} = this.props;
-		console.log(adress);
+		const {addAdress, addUserInfo, adress, cart, userInfo} = this.props;
+		console.log(adress, userInfo);
 		// this.city.setInputValue(adress.city || adress.settlement);
 		// if(cart.length === 0){
 		// 	window.location.href = '/';
@@ -64,6 +65,40 @@ class Delivery extends Component {
 						<label htmlFor='tab-2'>Доставка</label>
 						
 						<div id='content-2'>
+							<div className='user-info'>
+								<div className='form-elem'>
+									<label>ФИО</label>
+									<input 
+									className='fio' 
+									type='text' 
+									value={userInfo?.fio || ''} 
+									onChange={(e) =>{
+										addUserInfo({...userInfo, fio: e.target.value});
+									}}></input>
+								</div>
+
+								<div className='form-elem'>
+									<label>Телефон</label>
+									<input 
+									className='phone' 
+									type="tel"
+									value={userInfo?.phone || ''} 
+									onChange={(e) =>{
+										addUserInfo({...userInfo, phone: e.target.value});
+									}}></input>
+								</div>
+
+								<div className='form-elem'>
+									<label>Почта</label>
+									<input 
+									className='email' 
+									type='email' 
+									value={userInfo?.email || ''} 
+									onChange={(e) =>{
+										addUserInfo({...userInfo, email: e.target.value});
+									}}></input>
+								</div>
+							</div>
 							<div className='form' >
 								<div className='form-elem'>
 									<label>Населенный пункт</label>
@@ -73,7 +108,7 @@ class Delivery extends Component {
 									filterFromBound='city'
 									filterToBound='settlement'
 									filterRestrictValue='true'
-									
+									count={5}
 									onChange={(e) => {
 										addAdress({...e.data});
 									}}
@@ -88,6 +123,7 @@ class Delivery extends Component {
 									filterLocations={[{city: adress?.city, settlement: adress?.settlement}]}
 									filterRestrictValue='true'
 									ref={this.street}
+									count={5}
 									onChange={(e) => {
 										addAdress({...e.data})
 									}}
@@ -101,6 +137,7 @@ class Delivery extends Component {
 									filterToBound='house'
 									filterLocations={[{city: adress?.city, settlement: adress?.settlement, street: adress?.street, street_type_full: adress?.street_type_full}]}
 									filterRestrictValue='true'
+									count={5}
 									onChange={(e) => {
 										addAdress({...e.data})
 									}}
@@ -111,12 +148,12 @@ class Delivery extends Component {
 									<input 
 									className='flat' 
 									type='text' 
-									value={adress?.flat || ''} 
+									value={adress?.flat || ''}
 									onChange={(e) =>{
 										addAdress({...adress, flat: e.target.value})
 									}}></input>
 								</div>
-								
+
 								<div className='form-elem'>
 									<label>Индекс</label>
 									<input 
@@ -141,44 +178,11 @@ class Delivery extends Component {
 	}
 }
 
-const getRegion = (address) => {
-	return join([
-		join([address?.region_type, address?.region], " "),
-		join([address?.area_type, address?.area], " ")
-	])
-}
-
-const getCity = (address) => {
-	return join([
-		join([address?.city_type, address?.city], " "),
-		join([address?.settlement_type, address?.settlement], " ")
-	])
-}
-
-const getStreet = (address) => {
-	return join([address?.street_type, address?.street], " ");
-}
-
-const getHouse = (address) => {
-	return join([
-		join([address?.house_type, address?.house], " "),
-		join([address?.block_type, address?.block], " ")
-	])
-}
-
-const getFlat = (address) => {
-	return join([address?.flat_type, address?.flat], " ");
-}
-
-function join(arr){
-	var separator = arguments.length > 1 ? arguments[1] : ", ";
-	return arr.filter(function(n){return n}).join(separator);
-}
-
 const mapStateToProps = (state) => {
 	return {
 		adress: state.adress,
-		cart: state.cart
+		cart: state.cart,
+		userInfo: state.userInfo
 	}
 }
 
@@ -188,6 +192,12 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch({
 				type: 'ADD_ADRESS',
 				payload: adress
+			})
+		},
+		addUserInfo: (userInfo) => {
+			dispatch({
+				type: 'ADD_USER_INFO',
+				payload: userInfo
 			})
 		}
 	}

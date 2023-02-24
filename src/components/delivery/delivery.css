@@ -59,13 +59,13 @@
 	border-bottom: 1px solid #cccccc;
 }
 
-.form-elem label{
+#content-2 label{
 	font-size: 0.8rem;
 	color: #646973;
 	line-height: 1;
 }
 
-.form-elem input{
+#content-2 input{
 	box-sizing: border-box;
 	width: 100%;
 	border: none;
@@ -75,7 +75,7 @@
     padding: 6px 0 0 10px;
 }
 
-.form-elem input:focus{
+/* #content-2 input:focus{
 	border: none;
 	box-shadow: none;
-}
+} */

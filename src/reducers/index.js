@@ -2,7 +2,8 @@ const initialState = {
 	cart: [],
 	products: [],
 	count: 0,
-	adress: {}
+	adress: {},
+	userInfo: {}
 }
 
 export const reducer = (state = initialState, action) => {
@@ -20,6 +21,15 @@ export const reducer = (state = initialState, action) => {
 					...state.adress,
 					...action.payload
 				},
+			}
+
+		case 'ADD_USER_INFO':
+			return {
+				...state,
+				userInfo: {
+					...state.userInfo,
+					...action.payload
+				}
 			}
 
 		case 'ADD_TO_CART':
