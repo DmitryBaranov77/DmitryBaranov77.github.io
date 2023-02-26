@@ -42,7 +42,9 @@ class ProductList extends React.Component{
 	}
 
 	render() {
-		const { products, addToCart, deleteFromCart} = this.props;
+		const { products, categories, currentCategory, addToCart, deleteFromCart, changeCategory} = this.props;
+		const showProducts = currentCategory === 'Все' ? products : products.filter(item => item.type === currentCategory);
+
 		return (
 			<div className='list-wrapper'>
 				<div className='list-header'>
@@ -51,8 +53,15 @@ class ProductList extends React.Component{
 						this.navigate('/cart');
 					}}/>
 				</div>
+				<div className='categories'>
+					{categories.map((item, index) => (
+						<button key={index + 'btn'} onClick={() => changeCategory(item)}>
+							{item}
+						</button>
+					))}
+				</div>
 				<div className='list'>
-					{products.map(item => (
+					{showProducts.map(item => (
 						<Product
 							key={item.id}
 							product={item}
@@ -75,7 +84,9 @@ class ProductList extends React.Component{
 const mapStateToProps = (state) =>{
 	return {
 		products: state.products,
-		cart: state.cart
+		cart: state.cart,
+		categories: state.categories,
+		currentCategory: state.currentCategory
 	}
 }
 
@@ -97,6 +108,12 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch({
 				type: 'DELETE_FROM_CART',
 				payload: item
+			})
+		},
+		changeCategory: (category) => {
+			dispatch({
+				type: 'CHANGE_CATEGORY',
+				payload: category
 			})
 		}
 	}

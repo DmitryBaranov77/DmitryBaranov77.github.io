@@ -106,6 +106,7 @@ class Delivery extends Component {
 									<AddressSuggestions
 									token='22cd6c7adac9d78ce2cb0559940b208f26701947'
 									ref={this.city}
+									defaultQuery={adress.city_with_type || adress.settlement_with_type || ''}
 									filterFromBound='city'
 									filterToBound='settlement'
 									filterRestrictValue='true'
@@ -124,6 +125,7 @@ class Delivery extends Component {
 									filterLocations={[{city: adress?.city, settlement: adress?.settlement}]}
 									filterRestrictValue='true'
 									ref={this.street}
+									defaultQuery={adress.street_with_type || ''}
 									count={5}
 									onChange={(e) => {
 										addAdress({...e.data})
@@ -137,6 +139,7 @@ class Delivery extends Component {
 									filterFromBound='house'
 									filterToBound='house'
 									ref={this.house}
+									defaultQuery={(adress.house_type ? adress.house_type + ' ' : '') + (adress.house ? adress.house + ' ' : '') + (adress.block_type ? adress.block_type + ' ' : '') + (adress.block ? adress.block : '')}
 									filterLocations={[{city: adress?.city, settlement: adress?.settlement, street: adress?.street, street_type_full: adress?.street_type_full}]}
 									filterRestrictValue='true'
 									count={5}

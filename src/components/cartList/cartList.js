@@ -88,7 +88,7 @@ class CartList extends React.Component {
 					<div className='cart__footer'>
 						<div className='cart-result'>
 							Итого: {this.props.totalPrice(cart)} ₽
-							{/* <Button type={'back'} onClick={() => this.props.navigate('/delivery')}/> */}
+							<Button type={'back'} onClick={() => this.props.navigate('/delivery')}/>
 						</div>
 					</div>
 				</div>

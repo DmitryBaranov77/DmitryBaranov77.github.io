@@ -4,16 +4,34 @@ const initialState = {
 	count: 0,
 	adress: {},
 	userInfo: {},
-	type: null
+	type: null,
+	categories: [],
+	currentCategory: 'Все',
 }
 
 export const reducer = (state = initialState, action) => {
 	switch(action.type){
 		case 'NEW_PRODUCTS':
+			const products = action.payload;
+			const categories = [...new Set(products.map(item => item.type))];
+			categories.unshift('Все');
+			state.cart.forEach(item => {
+				const e = products.find(i => item.id === i.id);
+				if(!e){
+					state.cart = state.cart.filter(v => item.id !== v.id);
+				}
+			})
 			return {
 				...state,
-				products: action.payload,
+				products,
+				categories
 			};
+
+		case 'CHANGE_CATEGORY':
+			return {
+				...state,
+				currentCategory: action.payload
+			}
 
 		case 'CHANGE_TYPE':
 			return {
