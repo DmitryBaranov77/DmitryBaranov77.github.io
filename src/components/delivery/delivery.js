@@ -37,11 +37,8 @@ class Delivery extends Component {
 	}
 
 	componentDidMount(){
-		if((!this.props.userInfo?.fio || !this.props.userInfo?.phone || !this.props.userInfo?.email || !this.props.adress?.city || !this.props.adress?.postal_code || !this.props.adress?.street || !this.props.adress?.house) && (type === 'DELIVERY')){
-			this.tg.MainButton.hide();
-		} else {
-			this.tg.MainButton.show();
-		}
+		this.props.changeType('PICKUP');
+		this.tg.MainButton.show();
 		this.tg.MainButton.onClick(this.onSendData);
 	}
 
@@ -64,9 +61,9 @@ class Delivery extends Component {
 				<div className='delivery__content'>
 					<div className='title'>Выберите способ получения</div>
 					<div className='delivery__tabs'>
-						<input type='radio' name='tab-btn' id='tab-1' value='' onChange={() => changeType('PICKUP')}/>
+						<input type='radio' name='tab-btn' id='tab-1' value='' defaultChecked onChange={() => changeType('PICKUP')}/>
 						<label htmlFor='tab-1'>Самовывоз</label>
-						<input type='radio' name='tab-btn' id='tab-2' value=''onChange={() => changeType('DELIVERY')}/>
+						<input type='radio' name='tab-btn' id='tab-2' value='' onChange={() => changeType('DELIVERY')}/>
 						<label htmlFor='tab-2'>Доставка</label>
 						
 						<div id='content-2'>
@@ -76,7 +73,7 @@ class Delivery extends Component {
 									<input 
 									className='fio' 
 									type='text' 
-									value={userInfo?.fio || ''} 
+									value={userInfo?.fio || ''}
 									onChange={(e) =>{
 										addUserInfo({...userInfo, fio: e.target.value});
 									}}></input>
@@ -115,6 +112,7 @@ class Delivery extends Component {
 									filterToBound='settlement'
 									filterRestrictValue='true'
 									count={5}
+									selectOnBlur
 									onChange={(e) => {
 										addAdress({...e.data});
 									}}
@@ -142,6 +140,7 @@ class Delivery extends Component {
 									ref={this.street}
 									defaultQuery={adress.street_with_type || ''}
 									count={5}
+									selectOnBlur
 									onChange={(e) => {
 										addAdress({...e.data})
 									}}
@@ -161,6 +160,7 @@ class Delivery extends Component {
 									onChange={(e) => {
 										addAdress({...e.data})
 									}}
+									selectOnBlur
 									/>
 								</div>
 								<div className='form-elem'>
