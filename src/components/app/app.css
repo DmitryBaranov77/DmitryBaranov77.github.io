@@ -4,3 +4,7 @@ body{
 	font-family: 'Roboto Condensed', sans-serif;
 	overflow-y: scroll;
 }
+
+::-webkit-scrollbar {
+	display: none;
+}
