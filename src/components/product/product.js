@@ -14,7 +14,9 @@ class Product extends React.Component{
 		return (
 			<div className='product-card-wrapper'>
 				<div className={(count !== 0 ? 'active' : '') + ' product-card-image__container'}>
-					<img className='product-card-image' src={require('../../images/' + src)} alt={title}/>
+					<a href={'about?' + id}>
+						<img className='product-card-image' src={require('../../images/' + src)} alt={title}/>
+					</a>
 				</div>
 
 				<div className='product-card-content'>

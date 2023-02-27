@@ -9,7 +9,7 @@ class AboutProduct extends React.Component {
 		const id = location.search.slice(1);
 		const {addToCart, deleteFromCart, products, cart} = this.props;
 		const product = products.find(item => item.id === id);
-		const {src, title, descr, price} = product;
+		let {src, title, descr, price} = product;
 		const exist = cart.find(item => item.id === id);
 		const count = exist ? exist.quantity : 0;
 		
@@ -24,33 +24,30 @@ class AboutProduct extends React.Component {
 				
 				<div className='product-card__container'>
 					<div className='image__container'>
-						<img src={src} alt='img'/>
+						<img src={require('../../images/'+src)} alt='img'/>
 					</div>
 					<div className='title__container'>
 						<div className='title'>{title}</div>
 					</div>
 					<div className='description__container'>
-						<div className='description'>{descr}</div>
+						<p className='description'>{descr}</p>
 					</div>
 				</div>
 				<div className='product-card__footer'>
-					{count !== 0 ?
-					(<div className='btn-container'>
-						<div className='card__price'>{price*count === 0 ? price : price*count} ₽</div>
-						<div className='active'>
-							<Button title={'-'} type={'remove'} onClick={() => deleteFromCart(product)}/>
-							<div className='counter'>{count} шт.</div>
-							<Button title={'+'} type={'add'} onClick={() => addToCart(product)}/>
+					<div className='card__price'>{price*count === 0 ? price : price*count} ₽</div>
+					{count !== 0 ? (
+						<div className={'btns ' + (count !== 0 ? 'active' : '')}>
+							<Button type={'remove'} onClick={() => deleteFromCart(product)} />
+							<div className='counter__container'>
+								<div className='counter'>{count} шт.</div>
+							</div>
+							<Button type={'add'} onClick={() => addToCart(product)} />
 						</div>
-					</div>)
-					:
-					(<div>
-						<div className='btn-container'>
-							<div className='card__price'>{price} ₽</div>
-							<Button title={'В корзину'} type={'big-add'} onClick={() => addToCart(product)}/>
+					) : (
+						<div className='btns'>
+							<Button type={'big-add'} onClick={() => addToCart(product)} />
 						</div>
-					</div>)
-					}
+					)}
 				</div>
 			</div>
 		);

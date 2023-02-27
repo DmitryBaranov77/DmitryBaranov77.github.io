@@ -5,12 +5,14 @@ import './cartListItem.css';
 class CartListItem extends React.Component {
 
 	render() {
-		const {src, title, quantity, price} = this.props.product;
+		const {src, title, quantity, price, id} = this.props.product;
 		const {onInc, onDec} = this.props;
 		return (
 			<div className='cart-item'>
 				<div className='cart-image__container'>
-					<img src={require('../../images/'+src)}/>
+					<a href={'about?' + id}>
+						<img src={require('../../images/'+src)}/>
+					</a>
 				</div>
 
 				<div className='cart-item__container'>
