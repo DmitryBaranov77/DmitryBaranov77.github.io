@@ -56,7 +56,10 @@ class ProductList extends React.Component{
 				<div className='categories-scroller'>
 					<nav className='categories-scroller__items'>
 						{categories.map((item, index) => (
-							<button className={currentCategory === item ? 'active' : ''} key={index + 'btn'} onClick={() => changeCategory(item)}>
+							<button className={currentCategory === item ? 'active' : ''} key={index + 'btn'} onClick={() =>{
+								this.tg.HapticFeedback.impactOccurred('rigid');
+								changeCategory(item);
+							}}>
 								{item}
 							</button>
 						))}

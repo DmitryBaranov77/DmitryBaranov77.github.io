@@ -56,7 +56,10 @@ class Delivery extends Component {
 		return (
 			<div className='delivery'>
 				<div className='delivery__header'>
-					<Button type={'back'} onClick={() => this.props.navigate(-1)}/>
+					<Button type={'back'} onClick={() => {
+						this.tg.HapticFeedback.impactOccurred('rigid');
+						this.props.navigate(-1);
+					}}/>
 				</div>
 				<div className='delivery__content'>
 					<div className='title'>Выберите способ получения</div>
