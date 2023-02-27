@@ -37,7 +37,7 @@ class Delivery extends Component {
 	}
 
 	componentDidMount(){
-		if((!userInfo?.fio || !userInfo?.phone || !userInfo?.email || !adress?.city || !adress?.postal_code || !adress?.street || !adress?.house) && (type === 'DELIVERY')){
+		if((!this.props.userInfo?.fio || !this.props.userInfo?.phone || !this.props.userInfo?.email || !this.props.adress?.city || !this.props.adress?.postal_code || !this.props.adress?.street || !this.props.adress?.house) && (type === 'DELIVERY')){
 			this.tg.MainButton.hide();
 		} else {
 			this.tg.MainButton.show();
