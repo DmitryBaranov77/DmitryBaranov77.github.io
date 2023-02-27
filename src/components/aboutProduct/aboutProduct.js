@@ -3,6 +3,7 @@ import WithProductsService from '../hoc/withProductsService';
 import Button from '../button';
 import { connect } from 'react-redux';
 import './aboutProduct.css'
+import { useTelegram } from '../../hooks/useTelegram';
 
 class AboutProduct extends React.Component {
 	tg = useTelegram().tg;
