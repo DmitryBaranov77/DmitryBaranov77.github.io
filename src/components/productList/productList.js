@@ -53,12 +53,14 @@ class ProductList extends React.Component{
 						this.navigate('/cart');
 					}}/>
 				</div>
-				<div className='categories'>
-					{categories.map((item, index) => (
-						<button key={index + 'btn'} onClick={() => changeCategory(item)}>
-							{item}
-						</button>
-					))}
+				<div className='categories-scroller'>
+					<nav className='categories-scroller__items'>
+						{categories.map((item, index) => (
+							<button className={currentCategory === item ? 'active' : ''} key={index + 'btn'} onClick={() => changeCategory(item)}>
+								{item}
+							</button>
+						))}
+					</nav>
 				</div>
 				<div className='list'>
 					{showProducts.map(item => (

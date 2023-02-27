@@ -117,6 +117,17 @@ class Delivery extends Component {
 									/>
 								</div>
 								<div className='form-elem'>
+									<label>Индекс</label>
+									<input 
+									className='index' 
+									type='text' 
+									value={adress?.postal_code || ''}
+									readOnly
+									onChange={(e) =>{
+										addAdress({...adress, postal_code: e.target.value})
+									}}></input>
+								</div>
+								<div className='form-elem'>
 									<label>Улица</label>
 									<AddressSuggestions
 									token='22cd6c7adac9d78ce2cb0559940b208f26701947'
@@ -158,19 +169,6 @@ class Delivery extends Component {
 										addAdress({...adress, flat: e.target.value})
 									}}></input>
 								</div>
-
-								<div className='form-elem'>
-									<label>Индекс</label>
-									<input 
-									className='index' 
-									type='text' 
-									value={adress?.postal_code || ''}
-									readOnly
-									onChange={(e) =>{
-										addAdress({...adress, postal_code: e.target.value})
-									}}></input>
-								</div>
-
 							</div>
 						</div>
 

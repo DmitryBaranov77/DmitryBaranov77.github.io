@@ -10,3 +10,24 @@
 	position: relative;
 	padding-left: 2.5vw;
 }
+
+.categories-scroller{
+	overflow-y: hidden;
+	text-align: center;
+	white-space: nowrap;
+	margin: 5px;
+}
+
+.categories-scroller__items button{
+	color: white;
+	background-color: #20B2AA;
+	width: 100px;
+	height: 25px;
+	border-radius: 10px;
+	border: none;
+	margin: 0 5px 0 5px;
+}
+
+.categories-scroller__items .active{
+	background-color: #3bd3cb;
+}
