@@ -24,9 +24,13 @@ class CartListItem extends React.Component {
 							{price*quantity} ₽
 						</div>
 						<div className='cart-btn-container active'>
-							<Button title={'-'} type={'remove'} onClick={() => onDec()}/>
+							<Button title={'-'} type={'remove'} onClick={() => {
+								onDec();
+							}}/>
 								<div className='counter'>{quantity} шт.</div>
-							<Button title={'+'} type={'add'} onClick={() => onInc()}/>
+							<Button title={'+'} type={'add'} onClick={() => {
+								onInc();
+							}}/>
 						</div>
 					</div>
 				</div>

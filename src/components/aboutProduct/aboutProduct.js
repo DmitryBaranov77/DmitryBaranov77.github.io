@@ -37,15 +37,24 @@ class AboutProduct extends React.Component {
 					<div className='card__price'>{price*count === 0 ? price : price*count} ₽</div>
 					{count !== 0 ? (
 						<div className={'btns ' + (count !== 0 ? 'active' : '')}>
-							<Button type={'remove'} onClick={() => deleteFromCart(product)} />
+							<Button type={'remove'} onClick={() => {
+								this.tg.HapticFeedback.impactOccurred('rigid');
+								deleteFromCart(product);
+							}} />
 							<div className='counter__container'>
 								<div className='counter'>{count} шт.</div>
 							</div>
-							<Button type={'add'} onClick={() => addToCart(product)} />
+							<Button type={'add'} onClick={() => {
+								this.tg.HapticFeedback.impactOccurred('rigid');
+								addToCart(product);
+							}} />
 						</div>
 					) : (
 						<div className='btns'>
-							<Button type={'big-add'} onClick={() => addToCart(product)} />
+							<Button type={'big-add'} onClick={() => {
+								addToCart(product);
+								this.tg.HapticFeedback.impactOccurred('rigid');
+								}} />
 						</div>
 					)}
 				</div>
