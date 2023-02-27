@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import './aboutProduct.css'
 
 class AboutProduct extends React.Component {
+	tg = useTelegram().tg;
+
 	render() {
 		const id = location.search.slice(1);
 		const {addToCart, deleteFromCart, products, cart} = this.props;
