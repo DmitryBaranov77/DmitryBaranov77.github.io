@@ -37,13 +37,17 @@ class Delivery extends Component {
 	}
 
 	componentDidMount(){
+		if((!userInfo?.fio || !userInfo?.phone || !userInfo?.email || !adress?.city || !adress?.postal_code || !adress?.street || !adress?.house) && (type === 'DELIVERY')){
+			this.tg.MainButton.hide();
+		} else {
+			this.tg.MainButton.show();
+		}
 		this.tg.MainButton.onClick(this.onSendData);
-		this.tg.MainButton.hide();
-		
 	}
 
 	componentWillUnmount(){
 		this.tg.MainButton.offClick(this.onSendData);
+		this.tg.MainButton.hide()
 	}
 
 	render() {
