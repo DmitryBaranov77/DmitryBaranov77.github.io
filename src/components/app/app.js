@@ -5,6 +5,7 @@ import ProductList from '../productList/productList';
 import CartList from '../cartList/cartList';
 import AboutProduct from '../aboutProduct/aboutProduct';
 import Delivery from '../delivery/delivery';
+import ModalSize from '../modalSize';
 
 function App() {
   const {tg} = useTelegram();

@@ -1,12 +1,15 @@
 const initialState = {
 	cart: [],
 	products: [],
-	count: 0,
 	adress: {},
 	userInfo: {},
 	type: null,
 	categories: [],
 	currentCategory: 'Все',
+	modalStore: {
+		isOpen: false,
+		item: null
+	}
 }
 
 export const reducer = (state = initialState, action) => {
@@ -31,6 +34,12 @@ export const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				currentCategory: action.payload
+			}
+
+		case 'MODAL':
+			return {
+				...state,
+				modalStore: action.payload
 			}
 
 		case 'CHANGE_TYPE':
@@ -58,33 +67,52 @@ export const reducer = (state = initialState, action) => {
 			}
 
 		case 'ADD_TO_CART':
-			const exist = state.cart.find(item => item.id === action.payload.id);
+			const exist = __find(state.cart, action.payload);
 			if(exist){
 				return {
 					...state,
-					cart: state.cart.map(item => item.id === exist.id ? {...exist, quantity: exist.quantity + 1} : item)
+					cart: state.cart.map(item => ((item.id === exist.id) && (item.size === exist.size) && (item.color === exist.color)) ? {...exist, quantity: exist.quantity + 1} : item)
 				}
 			} else {
 				return {
 					...state,
-					cart: [...state.cart, {...action.payload, quantity: 1}]
+					cart: [...state.cart, {...action.payload, quantity: action.payload.quantity ? action.payload.quantity : 1}]
 				}
 			};
 
 		case 'DELETE_FROM_CART':
-			const ex = state.cart.find(item => item.id === action.payload.id);
-			if(ex.quantity === 1){
+			const ex = __find(state.cart, action.payload);
+			if(ex?.quantity === 1){
 				return{
 					...state,
-					cart: state.cart.filter(item => item.id !== ex.id)
+					cart: __filter(state.cart, ex)
 				}
 			} else {
 				return {
 					...state,
-					cart: state.cart.map(item => item.id === action.payload.id ? {...ex, quantity: ex.quantity - 1} : item)
+					cart: state.cart.map(item => ((item.id === action.payload.id) && (item.size === action.payload.size) && (item.color === action.payload.color)) ? {...ex, quantity: ex.quantity - 1} : item)
 				}
 			};
 
 		default: return state;
 	}
+}
+
+const __find = (cart, item) => {
+	for(const el of cart) {
+		if(el.id === item.id && el.size === item.size && el.color === item.color){
+			return el;
+		}
+	}
+	return null;
+}
+
+const __filter = (cart, item) => {
+	let result = [];
+	for(const el of cart) {
+		if(el.id !== item.id || el.size !== item.size || el.color !== item.color){
+			result.push(el);
+		}
+	}
+	return result;
 }

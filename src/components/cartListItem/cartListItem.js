@@ -5,7 +5,7 @@ import './cartListItem.css';
 class CartListItem extends React.Component {
 
 	render() {
-		const {src, title, quantity, price, id} = this.props.product;
+		const {src, title, quantity, price, id, size, color} = this.props.product;
 		const {onInc, onDec} = this.props;
 		return (
 			<div className='cart-item'>
@@ -17,7 +17,7 @@ class CartListItem extends React.Component {
 
 				<div className='cart-item__container'>
 					<div className='cart-item__header'>
-						<div className='cart-item__title'>{title}</div>
+						<div className='cart-item__title'>{title + (size !== 'base' ? ' ' +size : '') + (color !== 'base' ? ' ' + color : '')}</div>
 					</div>
 					<div className='cart-item__footer'>
 						<div className='cart-price__container'>

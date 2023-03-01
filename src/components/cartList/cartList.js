@@ -4,6 +4,7 @@ import { useTelegram } from '../../hooks/useTelegram';
 import Button from '../button';
 import CartListItem from '../cartListItem/cartListItem';
 import WithProductsService from '../hoc/withProductsService';
+import { addToCart, deleteFromCart } from '../../services/actions';
 import './cartList.css';
 
 class CartList extends React.Component {
@@ -69,9 +70,9 @@ class CartList extends React.Component {
 						}}/>
 					</div>
 					<div className='cart-list'>
-						{cart.map(item => (
+						{cart.map((item, index) => (
 							<CartListItem
-							key={item.id}
+							key={index}
 							product={item}
 							onInc={() => {
 								addToCart(item);
@@ -103,21 +104,9 @@ const mapStateToProps = (state) =>{
 	}
 }
 
-const mapDispatchToProps = (dispatch) =>{
-	return {
-		addToCart: (item) => {
-			dispatch({
-				type: 'ADD_TO_CART',
-				payload: item
-			})
-		},
-		deleteFromCart: (item) => {
-			dispatch({
-				type: 'DELETE_FROM_CART',
-				payload: item
-			})
-		}
-	}
+const mapDispatchToProps = {
+	addToCart,
+	deleteFromCart
 }
 
 export default WithProductsService()(connect(mapStateToProps, mapDispatchToProps)(CartList));

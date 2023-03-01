@@ -50,6 +50,8 @@
 }
 
 .product-card__footer .btns.active {
+	background-color: #9FE2BF;
+    border-radius: 20px;
 	width: 30vw;
 }
 

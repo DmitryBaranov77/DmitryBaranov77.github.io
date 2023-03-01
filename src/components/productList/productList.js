@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useTelegram } from '../../hooks/useTelegram';
+import { addToCart, changeCategory, deleteFromCart, modal, newProducts, productsLoaded } from '../../services/actions';
 import Button from '../button';
 import WithProductsService from '../hoc/withProductsService';
 import Product from '../product/product';
@@ -42,7 +43,7 @@ class ProductList extends React.Component{
 	}
 
 	render() {
-		const { products, categories, currentCategory, addToCart, deleteFromCart, changeCategory} = this.props;
+		const { products, categories, currentCategory, addToCart, deleteFromCart, changeCategory, modal} = this.props;
 		const showProducts = currentCategory === 'Все' ? products : products.filter(item => item.type === currentCategory);
 
 		return (
@@ -71,7 +72,11 @@ class ProductList extends React.Component{
 							key={item.id}
 							product={item}
 							onInc={() => {
-								addToCart(item);
+								if(item?.colors || item?.sizes){
+									modal({isOpen: true, item})
+								} else {
+									addToCart(item);
+								}
 								this.tg.HapticFeedback.impactOccurred('rigid');
 							}}
 							onDec={() => {
@@ -91,37 +96,18 @@ const mapStateToProps = (state) =>{
 		products: state.products,
 		cart: state.cart,
 		categories: state.categories,
-		currentCategory: state.currentCategory
+		currentCategory: state.currentCategory,
+		modalStore: state.modalStore
 	}
 }
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		productsLoaded: (newProducts) => {
-			dispatch({
-				type: 'NEW_PRODUCTS',
-				payload: newProducts
-			})
-		},
-		addToCart: (item) => {
-			dispatch({
-				type: 'ADD_TO_CART',
-				payload: item
-			})
-		},
-		deleteFromCart: (item) => {
-			dispatch({
-				type: 'DELETE_FROM_CART',
-				payload: item
-			})
-		},
-		changeCategory: (category) => {
-			dispatch({
-				type: 'CHANGE_CATEGORY',
-				payload: category
-			})
-		}
-	}
+const mapDispatchToProps = {
+	productsLoaded,
+	addToCart,
+	deleteFromCart,
+	changeCategory,
+	modal
+
 }
 
 export default  WithProductsService()(connect(mapStateToProps, mapDispatchToProps)(ProductList))

@@ -7,10 +7,10 @@ import './product.css';
 class Product extends React.Component{
 
 	render(){
-		const {title, src, price, id} = this.props.product;
-		const {onInc, onDec} = this.props;
+		const {title, src, price, id, sizes, colors} = this.props.product;
 		const exist = this.props.cart.find(item => item.id === id);
-		const count  = exist ? exist.quantity : 0; 
+		const {onInc, onDec} = this.props;
+		const count  = sizes || colors ? 0 : exist ? exist.quantity : 0;
 		return (
 			<div className='product-card-wrapper'>
 				<div className={(count !== 0 ? 'active' : '') + ' product-card-image__container'}>

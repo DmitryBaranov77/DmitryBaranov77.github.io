@@ -4,17 +4,18 @@ import Button from '../button';
 import { connect } from 'react-redux';
 import './aboutProduct.css'
 import { useTelegram } from '../../hooks/useTelegram';
+import { addToCart, deleteFromCart, modal } from '../../services/actions';
 
 class AboutProduct extends React.Component {
 	tg = useTelegram().tg;
 
 	render() {
 		const id = location.search.slice(1);
-		const {addToCart, deleteFromCart, products, cart} = this.props;
+		const {addToCart, deleteFromCart, products} = this.props;
 		const product = products.find(item => item.id === id);
-		let {src, title, descr, price} = product;
-		const exist = cart.find(item => item.id === id);
-		const count = exist ? exist.quantity : 0;
+		let {src, title, descr, price, sizes, colors} = product;
+		const exist = this.props.cart.find(item => item.id === id);
+		const count  = (sizes || colors) ? 0 : exist ? exist.quantity : 0;
 		
 		return (
 			<div className='product-card'>
@@ -49,13 +50,21 @@ class AboutProduct extends React.Component {
 							</div>
 							<Button type={'add'} onClick={() => {
 								this.tg.HapticFeedback.impactOccurred('rigid');
-								addToCart(product);
+								if(colors || sizes){
+									modal({isOpen: true, item: product})
+								} else {
+									addToCart(product);
+								}
 							}} />
 						</div>
 					) : (
 						<div className='btns'>
 							<Button type={'big-add'} onClick={() => {
-								addToCart(product);
+								if(colors || sizes){
+									modal({isOpen: true, item: product})
+								} else {
+									addToCart(product);
+								}
 								this.tg.HapticFeedback.impactOccurred('rigid');
 								}} />
 						</div>
@@ -69,25 +78,15 @@ class AboutProduct extends React.Component {
 const mapStateToProps = (state) => {
 	return {
 		products: state.products,
-		cart: state.cart
+		cart: state.cart,
+		modalStore: state.modalStore
 	}
 }
 
-const mapDispatchToProps = (dispatch) =>{
-	return {
-		addToCart: (item) => {
-			dispatch({
-				type: 'ADD_TO_CART',
-				payload: item
-			})
-		},
-		deleteFromCart: (item) => {
-			dispatch({
-				type: 'DELETE_FROM_CART',
-				payload: item
-			})
-		}
-	}
+const mapDispatchToProps = {
+	addToCart,
+	deleteFromCart,
+	modal
 }
 
 export default WithProductsService()(connect(mapStateToProps, mapDispatchToProps)(AboutProduct));
