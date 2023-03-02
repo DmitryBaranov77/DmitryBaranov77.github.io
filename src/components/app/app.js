@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className='App'>
-      
+      <ModalSize/>
       <Router>
 
         <Routes>

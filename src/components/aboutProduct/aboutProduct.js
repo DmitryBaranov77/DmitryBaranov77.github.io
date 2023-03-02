@@ -11,7 +11,7 @@ class AboutProduct extends React.Component {
 
 	render() {
 		const id = location.search.slice(1);
-		const {addToCart, deleteFromCart, products} = this.props;
+		const {addToCart, deleteFromCart, products, modal} = this.props;
 		const product = products.find(item => item.id === id);
 		let {src, title, descr, price, sizes, colors} = product;
 		const exist = this.props.cart.find(item => item.id === id);
@@ -60,8 +60,9 @@ class AboutProduct extends React.Component {
 					) : (
 						<div className='btns'>
 							<Button type={'big-add'} onClick={() => {
+								modal({isOpen: true, item: product});
 								if(colors || sizes){
-									modal({isOpen: true, item: product})
+									modal({isOpen: true, item: product});
 								} else {
 									addToCart(product);
 								}
