@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { connect } from 'react-redux';
 import { useTelegram } from '../../hooks/useTelegram';
 import { addToCart, changeCategory, deleteFromCart, modal, newProducts, productsLoaded } from '../../services/actions';
@@ -10,6 +10,7 @@ class ProductList extends React.Component{
 	tg = useTelegram().tg;
 	navigate = this.props.navigate;
 	totalPrice = this.props.totalPrice;
+	ref = createRef();
 	
 	componentDidMount() {
 		const {ProductsService} = this.props;
@@ -33,6 +34,19 @@ class ProductList extends React.Component{
 				text: this.totalPrice(cart)+' ₽'
 			})
 		}
+		const el = this.ref.current;
+		if (el) {
+			const onWheel = e => {
+			  if (e.deltaY == 0) return;
+			  e.preventDefault();
+			  el.scrollTo({
+				left: el.scrollLeft + e.deltaY,
+				behavior: "smooth"
+			  });
+			};
+			el.addEventListener("wheel", onWheel);
+			return () => el.removeEventListener("wheel", onWheel);
+		}
 	}
 
 	componentWillUnmount(){
@@ -54,17 +68,15 @@ class ProductList extends React.Component{
 						this.navigate('/cart');
 					}}/>
 				</div>
-				<div className='categories-scroller'>
-					<nav className='categories-scroller__items'>
-						{categories.map((item, index) => (
-							<button className={currentCategory === item ? 'active' : ''} key={index + 'btn'} onClick={() =>{
-								this.tg.HapticFeedback.impactOccurred('rigid');
-								changeCategory(item);
-							}}>
-								{item}
-							</button>
-						))}
-					</nav>
+				<div className='categories-scroller' ref={this.ref}>
+					{categories.map((item, index) => (
+						<button className={currentCategory === item ? 'active' : ''} key={index + 'btn'} onClick={() =>{
+							this.tg.HapticFeedback.impactOccurred('rigid');
+							changeCategory(item);
+						}}>
+							{item}
+						</button>
+					))}
 				</div>
 				<div className='list'>
 					{showProducts.map(item => (

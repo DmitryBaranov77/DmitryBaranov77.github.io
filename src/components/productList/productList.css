@@ -12,22 +12,23 @@
 }
 
 .categories-scroller{
-	overflow-y: hidden;
+	overflow-x: scroll;
 	text-align: center;
 	white-space: nowrap;
 	margin: 5px;
 }
 
-.categories-scroller__items button{
+.categories-scroller button{
+	display: inline-block;
 	color: white;
 	background-color: #20B2AA;
-	width: 100px;
+	min-width: 100px;
 	height: 25px;
 	border-radius: 10px;
 	border: none;
 	margin: 0 5px 0 5px;
 }
 
-.categories-scroller__items .active{
+.categories-scroller .active{
 	background-color: #3bd3cb;
 }
