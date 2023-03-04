@@ -57,6 +57,8 @@
 	flex-direction: row;
 	justify-content: space-between;
 	margin-right: 5px;
+	background-color: #9FE2BF;
+	border-radius: 20px;
 }
 
 .cart-btn-container .counter{

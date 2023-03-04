@@ -2,19 +2,29 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { useTelegram } from '../../hooks/useTelegram';
 import Button from '../button';
-import { addToCart, modal } from '../../services/actions';
+import { addToCart, modal, deleteFromCart } from '../../services/actions';
 import './modalSize.css';
 
 const initialState = {
 	size: null,
 	color: null,
-	count: 1
+	src: null
 };
 
 class ModalSize extends Component {
 	tg = useTelegram().tg;
 	state = {
-		...initialState
+		...initialState,
+	}
+
+	componentDidUpdate(){
+		if(!this.state.src && this.props.modalStore.item){
+			this.setState({
+				src: this.props.modalStore.item?.src,
+				color: this.props.modalStore.item?.colors ? this.props.modalStore.item?.colors[0] : 'base',
+				size: this.props.modalStore.item?.sizes ?  this.props.modalStore.item?.sizes[0] : 'base'
+			})
+		}
 	}
 
 	handler(name, value) {
@@ -24,8 +34,11 @@ class ModalSize extends Component {
 	}
 
 	render() {
-		const {modal, addToCart} = this.props; 
-		let {isOpen, item} = this.props.modalStore; 
+		const {modal, addToCart, deleteFromCart, cart} = this.props; 
+		let {isOpen, item} = this.props.modalStore;
+		const exist = cart.find(pr => ((pr.id === item?.id) && (pr.color?.name === this.state.color?.name) && (pr.size === this.state.size)));
+		const count = exist ? exist.quantity : 0;
+		let src = this.state.src ? require('../../images/'+this.state.src) : '';
 		return (
 			<>
 				{isOpen ? 
@@ -44,19 +57,26 @@ class ModalSize extends Component {
 							}} />
 						</div>
 						<div className='modal-content'>
+							<div className='modal-content__header'>
+								<img src ={src} alt=''></img>
+								<div className='price'>{item.price * count}</div>
+							</div>
 							{item.colors ? 
 							(<div className='list-wrapper'>
 								<div className='title'>Выберите цвет</div>
-								<div className='list'>
-									{item.colors.split(' ').map((color, index) => (
-										<div key={color.toString()} className='modal-content__item'>
+								<div className='list__colors'>
+									{item.colors.map((color, index) => (
+										<div key={'color--'+index} className='modal-content__item'>
 											<input 
 											id={'color-'+index}
 											type='radio' 
-											onChange={() => this.handler('color', color)}
+											onChange={() => {
+												this.handler('color', color);
+												this.handler('src', color.src);
+											}}
 											checked={this.state.color === color}
 											/>
-											<label htmlFor={'color-'+index}>{color}</label>
+											<label htmlFor={'color-'+index}>{color.name}</label>
 										</div>
 									))}
 								</div>
@@ -67,8 +87,8 @@ class ModalSize extends Component {
 							{item.sizes ? 
 							(<div className='list-wrapper'>
 								<div className='title'>Выберите размер</div>
-								<div className='list'>
-									{item.sizes.split(' ').map((size, index) => (
+								<div className='list__sizes'>
+									{item.sizes.map((size, index) => (
 										<div key={size.toString()} className='modal-content__item'>
 										<input 
 										id={'size-'+index}
@@ -86,23 +106,19 @@ class ModalSize extends Component {
 							null
 							}
 						</div>
-						<div className={'modal-footer ' + ((!this.state.color || !this.state.size) ? 'hidden' : 'visible')}>
+						<div className={'modal-footer '}>
 							<div className={'btns'}>
-								<Button type={'remove'} onClick={() => this.state.count === 1 ? 1 : this.handler('count', this.state.count - 1)} />
+								<Button type={'remove'} onClick={() => {
+									if(this.state.count !== 0){
+										deleteFromCart({...item, color: this.state.color, size: this.state.size})
+									}
+								}} />
 								<div className='counter__container'>
-									<div className='counter'>{this.state.count} шт.</div>
+									<div className='counter'>{count} шт.</div>
 								</div>
 								<Button type={'add'} onClick={() => {
-									this.handler('count', this.state.count + 1)
+									addToCart({...item, color: this.state.color, size: this.state.size});
 								}} />
-							</div>
-							<div className='add-to-cart-btn'>
-								<button onClick={() => {
-									addToCart({...item, quantity: this.state.count, color: this.state.color, size: this.state.size});
-									this.setState({...initialState});
-									modal({isOpen: false, item: null});
-									this.tg.HapticFeedback.impactOccurred('rigid');
-								}}>Добавить в корзину</button>
 							</div>
 						</div>
 					</div>
@@ -118,13 +134,15 @@ class ModalSize extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		modalStore: state.modalStore
+		modalStore: state.modalStore,
+		cart: state.cart
 	}
 }
 
 const mapDispatchToProps = {
 	modal,
-	addToCart
+	addToCart,
+	deleteFromCart,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalSize);

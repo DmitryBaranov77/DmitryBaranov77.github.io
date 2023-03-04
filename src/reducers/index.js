@@ -71,7 +71,7 @@ export const reducer = (state = initialState, action) => {
 			if(exist){
 				return {
 					...state,
-					cart: state.cart.map(item => ((item.id === exist.id) && (item.size === exist.size) && (item.color === exist.color)) ? {...exist, quantity: exist.quantity + 1} : item)
+					cart: state.cart.map(item => ((item.id === exist.id) && (item.size === exist.size) && (exist.color === item.color || exist.color?.name === item.color?.name)) ? {...exist, quantity: exist.quantity + 1} : item)
 				}
 			} else {
 				return {
@@ -90,7 +90,7 @@ export const reducer = (state = initialState, action) => {
 			} else {
 				return {
 					...state,
-					cart: state.cart.map(item => ((item.id === action.payload.id) && (item.size === action.payload.size) && (item.color === action.payload.color)) ? {...ex, quantity: ex.quantity - 1} : item)
+					cart: state.cart.map(item => ((item.id === action.payload.id) && (item.size === action.payload.size) && (ex.color === item.color || ex.color?.name === item.color?.name)) ? {...ex, quantity: ex.quantity - 1} : item)
 				}
 			};
 
@@ -100,7 +100,7 @@ export const reducer = (state = initialState, action) => {
 
 const __find = (cart, item) => {
 	for(const el of cart) {
-		if(el.id === item.id && el.size === item.size && el.color === item.color){
+		if(el.id === item.id && el.size === item.size && (el.color === item.color || el.color?.name === item.color?.name)){
 			return el;
 		}
 	}

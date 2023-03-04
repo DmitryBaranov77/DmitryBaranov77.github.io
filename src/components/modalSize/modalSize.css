@@ -16,6 +16,8 @@
 	background-color: white;
 	border-radius: 5px 5px 0 0;
 	padding-bottom: 10px;
+	max-height: 80vh;
+	overflow: scroll;
 }
 
 .modal__wrapper .modal-header{
@@ -34,14 +36,39 @@
 	height: 45px;
 }
 
+.modal__wrapper .modal .modal-content .modal-content__header{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 5px;
+}
+
+.modal__wrapper .modal-content .modal-content__header img{
+	width: 40vw;
+}
+
+.modal__wrapper .modal-content .modal-content__header .price{
+	display: flex;
+	font-size: 20px;
+}
+
+
+
 .modal__wrapper .modal-content .list-wrapper{
 	display: flex;
 	flex-direction: column;
+	padding-left: 2.5vw;
 }
 
-.modal__wrapper .modal-content .list-wrapper .list{
+.modal__wrapper .modal-content .list-wrapper .list__colors{
 	display: flex;
 	flex-flow: row wrap;
+	padding-bottom: 10px;
+}
+
+.modal__wrapper .modal-content .list-wrapper .list__sizes{
+	display: flex;
+	flex-flow: column;
 	padding-bottom: 10px;
 }
 
@@ -49,22 +76,35 @@
 	display: none;
 }
 
-.modal__wrapper .modal-content .modal-content__item > label{
+.list__colors .modal-content__item > label{
 	display: inline-block;
 	text-align: center;
 	border: 1px solid #e8e8f0;
 	border-radius: 5px;
+	margin-top: 5px;
 	margin-right: 5px;
 	min-height: 10vw;
 	min-width: 10vw;
+	padding: 2px;
+}
 
+.list__sizes .modal-content__item > label{
+	display: inline-block;
+	text-align: center;
+	border: 1px solid #e8e8f0;
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-right: 5px;
+	min-height: 10vw;
+	min-width: 20vw;
+	padding: 2px;
 }
 
 .modal-content__item>input[type="radio"]:checked+label {
 	background-color: #b9dbda;
 }
 
-.modal-footer.visible{
+.modal-footer{
 	display: flex;
 	z-index: 10;
 	flex-direction: row;
@@ -73,16 +113,13 @@
 	padding: 5px;
 }
 
-.modal-footer.hidden{
-	display: none;
-}
-
 .modal-footer .btns{
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	margin-left: 5px;
 	margin-bottom: 5px;
-	width: 30vw;
+	width: 40vw;
 	background-color: #9FE2BF;
     border-radius: 20px;
 }
@@ -95,14 +132,6 @@
 
 .modal-footer .counter__container .counter{
 	font-size: 12px;
-}
-
-.modal-footer .add-to-cart-btn button{
-	background-color:#20B2AA;
-	border: none;
-	color: white;
-	height: 35px;
-	border-radius: 10px;
 }
 
 

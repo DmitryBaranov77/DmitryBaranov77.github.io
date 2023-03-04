@@ -1,23 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Button from '../button';
 import './cartListItem.css';	
 
 class CartListItem extends React.Component {
 
 	render() {
-		const {src, title, quantity, price, id, size, color} = this.props.product;
+		const products = this.props.products;
+		const {id, size, color, quantity} = this.props.product;
+		const {src, title, price} = products.find(item => item.id === id);
+		let img = color === 'base' ? src : color.src;
 		const {onInc, onDec} = this.props;
 		return (
 			<div className='cart-item'>
 				<div className='cart-image__container'>
 					<a href={'about?' + id}>
-						<img src={require('../../images/'+src)}/>
+						<img src={require('../../images/'+img)}/>
 					</a>
 				</div>
 
 				<div className='cart-item__container'>
 					<div className='cart-item__header'>
-						<div className='cart-item__title'>{title + (size !== 'base' ? ' ' +size : '') + (color !== 'base' ? ' ' + color : '')}</div>
+						<div className='cart-item__title'>{title + (size !== 'base' ? ' ' +size : '') + (color !== 'base' ? ' ' + color.name : '')}</div>
 					</div>
 					<div className='cart-item__footer'>
 						<div className='cart-price__container'>
@@ -39,4 +43,10 @@ class CartListItem extends React.Component {
 	}
 }
 
-export default CartListItem;
+const mapStateToProps = (state) => {
+	return {
+		products: state.products
+	}
+}
+
+export default connect(mapStateToProps)(CartListItem);

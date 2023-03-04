@@ -1,6 +1,7 @@
 const addToCart = (item) => {
 	const payload = {
-		...item,
+		id: item.id,
+		price: item.price,
 		size: item.size ? item.size : 'base',
 		color: item.color ? item.color : 'base'
 	}
@@ -12,7 +13,7 @@ const addToCart = (item) => {
 
 const deleteFromCart = (item) => {
 	const payload = {
-		...item,
+		id: item.id,
 		size: item.size ? item.size : 'base',
 		color: item.color ? item.color : 'base'
 	}
