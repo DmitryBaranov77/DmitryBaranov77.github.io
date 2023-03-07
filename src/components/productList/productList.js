@@ -26,7 +26,7 @@ class ProductList extends React.Component{
 
 	componentDidUpdate(){
 		const cart = this.props.cart;
-		if(cart.length === 0 && !this.props.modalStore.isOpen){
+		if(cart.length === 0 && this.props.modalStore.isOpen){
 			this.tg.MainButton.hide();
 		} else {
 			this.tg.MainButton.show();
