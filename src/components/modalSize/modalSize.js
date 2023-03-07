@@ -25,6 +25,7 @@ class ModalSize extends Component {
 				size: this.props.modalStore.item?.sizes ?  this.props.modalStore.item?.sizes[0] : 'base'
 			})
 		}
+		this.tg.MainButton.hide();
 	}
 
 	handler(name, value) {

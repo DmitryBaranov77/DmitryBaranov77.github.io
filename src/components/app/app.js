@@ -9,7 +9,7 @@ import ModalSize from '../modalSize';
 
 function App() {
   const {tg} = useTelegram();
-  localStorage.clear();
+  // localStorage.clear();
 
   return (
     <div className='App'>
