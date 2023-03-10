@@ -31,13 +31,11 @@ const Carousel = ({children, windowWidth}) => {
 			<div className='inner' style={{transform: `translate3d(${-diff}px, 0, 0)`}}
 			onTouchStart={(e) =>{
 				tg.expand();
-				document.body.style.overflow = 'hidden';
 				setWidth(e.targetTouches[0].target.offsetWidth);
 				setStartX(e.targetTouches[0].clientX + (currentXIndex * width));
 			}}
 			onTouchMove={(e) => {
 				tg.expand();
-				document.body.style.overflow = 'hidden';
 				const dif = startX - e.targetTouches[0].clientX;
 				if((currentXIndex === children.length - 1) && (dif > width)){
 					
