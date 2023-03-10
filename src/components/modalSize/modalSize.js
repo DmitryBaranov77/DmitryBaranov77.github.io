@@ -39,7 +39,7 @@ class ModalSize extends Component {
 		let {isOpen, item} = this.props.modalStore;
 		const exist = cart.find(pr => ((pr.id === item?.id) && (pr.color?.name === this.state.color?.name) && (pr.size === this.state.size)));
 		const count = exist ? exist.quantity : 0;
-		let src = this.state.src ? require('../../images/'+this.state.src) : '';
+		let src = this.state.src ? require('../../images/'+this.state.src[0]) : '';
 		return (
 			<>
 				{isOpen ? 

@@ -13,44 +13,10 @@ export const CarouselItem = ({children, width}) => {
 
 
 
-const Carousel = ({children, windowWidth}) => {
-	const [currentXIndex, setCurrentX] = useState(0);
-	const [startX, setStartX] = useState(0);
-	const [width, setWidth] = useState(windowWidth || window.innerWidth);
-	const [diff, setDiff] = useState(currentXIndex * width);
-	const tg = useTelegram().tg;
-
-	useEffect(() =>{
-		setDiff(windowWidth * currentXIndex);
-		console.log(diff);
-	}, [windowWidth])
-	
-
+const Carousel = ({children}) => {
 	return (
 		<div className='carousel'>
-			<div className='inner' style={{transform: `translate3d(${-diff}px, 0, 0)`}}
-			onTouchStart={(e) =>{
-				tg.expand();
-				setWidth(e.targetTouches[0].target.offsetWidth);
-				setStartX(e.targetTouches[0].clientX + (currentXIndex * width));
-			}}
-			onTouchMove={(e) => {
-				tg.expand();
-				const dif = startX - e.targetTouches[0].clientX;
-				if((currentXIndex === children.length - 1) && (dif > width)){
-					
-				} else if((currentXIndex === 0) && (dif < 0)){
-
-				} else if (dif > 0 && dif < width * (children.length - 1)){
-					setDiff(dif);
-				}
-			}}
-			onTouchEnd={(e) => {
-				document.body.style.overflow = 'scroll';
-				setCurrentX(Math.round(diff/width));
-				setDiff(Math.round(diff/width) * width);
-			}}
-			>
+			<div className='inner' style={{transform: `traslateX(-0%)`}}>
 				{React.Children.map(children, (child, index) => {
 					return React.cloneElement(child, {width: '100%'});
 				})}

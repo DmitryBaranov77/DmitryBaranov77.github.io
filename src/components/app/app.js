@@ -8,7 +8,6 @@ import Delivery from '../delivery/delivery';
 import ModalSize from '../modalSize';
 
 function App() {
-  const {tg} = useTelegram();
   localStorage.clear();
 
   return (

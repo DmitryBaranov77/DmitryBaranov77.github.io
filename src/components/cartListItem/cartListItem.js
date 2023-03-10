@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Button from '../button';
-import Carousel, { CarouselItem } from '../carousel/carousel';
 import './cartListItem.css';	
 
 class CartListItem extends React.Component {
@@ -10,23 +9,13 @@ class CartListItem extends React.Component {
 		const products = this.props.products;
 		const {id, size, color, quantity} = this.props.product;
 		const {src, title, price} = products.find(item => item.id === id);
-		let img = color === 'base' ? src : color.src;
+		let img = color === 'base' ? src[0] : color.src;
 		const {onInc, onDec} = this.props;
 		return (
 			<div className='cart-item'>
 				<div className='cart-image__container'>
 					<a href={'about?' + id}>
-						{src.length === 1 ? (
-								<img className='product-card-image' src={require('../../images/' + src)} alt={title}/>
-							) : (
-								<Carousel>
-									{src.map((item, index) => (
-										<CarouselItem key={index}>
-											<img className='product-card-image' src={require('../../images/' + item)} alt={title}/>
-										</CarouselItem>
-									))}
-								</Carousel>
-						)}
+						<img src={require('../../images/'+img)}/>
 					</a>
 				</div>
 
