@@ -36,6 +36,7 @@ const Carousel = ({children, windowWidth}) => {
 				setStartX(e.targetTouches[0].clientX + (currentXIndex * width));
 			}}
 			onTouchMove={(e) => {
+				tg.expand();
 				const dif = startX - e.targetTouches[0].clientX;
 				if((currentXIndex === children.length - 1) && (dif > width)){
 					
