@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '../button';
+import Carousel, { CarouselItem } from '../carousel/carousel';
 import './product.css';
 
 class Product extends React.Component{
@@ -15,7 +16,17 @@ class Product extends React.Component{
 			<div className='product-card-wrapper'>
 				<div className={(count !== 0 ? 'active' : '') + ' product-card-image__container'}>
 					<a href={'about?' + id}>
-						<img className='product-card-image' src={require('../../images/' + src)} alt={title}/>
+						{src.length === 1 ? (
+							<img className='product-card-image' src={require('../../images/' + src)} alt={title}/>
+						) : (
+							<Carousel windowWidth={(count !==0 ? 0.25 * window.innerWidth : 0.3 * window.innerWidth)}>
+								{src.map((item, index) => (
+									<CarouselItem key={index}>
+										<img className='product-card-image' src={require('../../images/' + item)} alt={title}/>
+									</CarouselItem>
+								))}
+							</Carousel>
+						)}
 					</a>
 				</div>
 

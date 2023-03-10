@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import './aboutProduct.css'
 import { useTelegram } from '../../hooks/useTelegram';
 import { addToCart, deleteFromCart, modal } from '../../services/actions';
+import Carousel, { CarouselItem } from '../carousel/carousel';
 
 class AboutProduct extends React.Component {
 	tg = useTelegram().tg;
@@ -28,7 +29,17 @@ class AboutProduct extends React.Component {
 				
 				<div className='product-card__container'>
 					<div className='image__container'>
-						<img src={require('../../images/'+src)} alt='img'/>
+						{src.length === 1 ? (
+								<img className='product-card-image' src={require('../../images/' + src)} alt={title}/>
+							) : (
+								<Carousel>
+									{src.map((item, index) => (
+										<CarouselItem key={index}>
+											<img className='product-card-image' src={require('../../images/' + item)} alt={title}/>
+										</CarouselItem>
+									))}
+								</Carousel>
+						)}
 					</div>
 					<div className='title__container'>
 						<div className='title'>{title}</div>

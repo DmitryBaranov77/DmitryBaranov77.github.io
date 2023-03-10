@@ -22,45 +22,47 @@ export default class ProductsService {
 			Страна бренда: Китай
 			Длина упаковки, см: 67
 			Ширина упаковки, см: 26
-			Высота упаковки, см: 30`, src:'car.jpg'},
+			Высота упаковки, см: 30`, 
+			src:['car.jpg', 'comb.jpg']
+			},
 			{id: '2', title: 'Детский комбинезон', colors: [
 				{
 					name: 'Цвет 1',
-					src: 'comb.jpg'
+					src: ['comb.jpg']
 				},
 				{
 					name: 'Цвет2',
-					src: 'S127c0e2b55f04ff19e6a5af68329c556C.jpg'
+					src: ['S127c0e2b55f04ff19e6a5af68329c556C.jpg']
 				},
 				{
 					name: 'Цвет3',
-					src: 'Sf1ac089cc4ea4be6a5a7af5a3140b747x.jpg'
+					src: ['Sf1ac089cc4ea4be6a5a7af5a3140b747x.jpg']
 				},
 				{
 					name: 'Цвет4',
-					src: 'S7bf46338a4b74332a24565f9fa4502b4T.jpg'
+					src: ['S7bf46338a4b74332a24565f9fa4502b4T.jpg']
 				},
 				{
 					name: 'Цвет5',
-					src: 'Sd20edc0f91eb429ab5210561d34bd9a2N.jpg'
+					src: ['Sd20edc0f91eb429ab5210561d34bd9a2N.jpg']
 				},
 				{
 					name: 'Цвет6',
-					src: 'Se015b4fada414a6285c1a3631f2a0f94S.jpg'
+					src: ['Se015b4fada414a6285c1a3631f2a0f94S.jpg']
 				},
 				{
 					name: 'Цвет7',
-					src: 'Sa7aeb4e5edcd41e6913f07b0e52c345en.jpg'
+					src: ['Sa7aeb4e5edcd41e6913f07b0e52c345en.jpg']
 				}
 			], 
 			sizes: ['S', 'M', 'L'], 
 			type:'Одежда', 
 			price: 2000, 
 			descr: 'Описание', 
-			src:'comb.jpg'},
-			{id: '3', title: 'Платье для девочки', sizes: ['S', 'M', 'L'], colors: null, type:'Верхняя одежда', price: 1200, descr: 'Описание', src:'dress.jpg'},
-			{id: '4', title: 'Игрушечный робот', type:'Игрушки', sizes: null, colors: null, price: 759, descr: 'Описание', src:'robot.jpg'},
-			{id: '5', title: 'Худи', type:'Одежда', sizes: null, colors: null,  price: 1300, descr: 'Описание', src:'sweater.jpg'}
+			src:['comb.jpg']},
+			{id: '3', title: 'Платье для девочки', sizes: ['S', 'M', 'L'], colors: null, type:'Верхняя одежда', price: 1200, descr: 'Описание', src:['dress.jpg', 'comb.jpg']},
+			{id: '4', title: 'Игрушечный робот', type:'Игрушки', sizes: null, colors: null, price: 759, descr: 'Описание', src:['robot.jpg']},
+			{id: '5', title: 'Худи', type:'Одежда', sizes: null, colors: null,  price: 1300, descr: 'Описание', src:['sweater.jpg']}
 		]
 		return products;
 	}
