@@ -1,5 +1,6 @@
 .carousel {
 	overflow: hidden;
+	
 }
 
 .inner {
@@ -11,4 +12,37 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.indicators{
+	display: flex;
+	flex-direction: row;
+	width: 90vw;
+	padding-top: 35vw;
+	justify-content: space-between;
+	position: absolute;
+	opacity: .2;
+	z-index: 100000;
+}
+
+.prev {
+	background-image: url('../../../public/img/prev.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 40px;
+	width: 60px;
+	background-size: 40px;
+	border: none;
+	background-color: transparent;
+}
+
+.next{
+	background-image: url('../../../public/img/next.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 40px;
+	width: 40px;
+	background-size: 40px;
+	border: none;
+	background-color: transparent;
 }
