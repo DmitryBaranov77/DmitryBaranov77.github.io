@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTelegram } from '../../hooks/useTelegram';
 import './carousel.css';
 
 
@@ -17,6 +18,7 @@ const Carousel = ({children, windowWidth}) => {
 	const [startX, setStartX] = useState(0);
 	const [width, setWidth] = useState(windowWidth);
 	const [diff, setDiff] = useState(currentXIndex * width);
+	const tg = useTelegram().tg;
 
 	useEffect(() =>{
 		setDiff(windowWidth * currentXIndex);
@@ -28,6 +30,8 @@ const Carousel = ({children, windowWidth}) => {
 		<div className='carousel'>
 			<div className='inner' style={{transform: `translate3d(${-diff}px, 0, 0)`}}
 			onTouchStart={(e) =>{
+				tg.expand();
+				document.body.style.overflow = 'hidden';
 				setWidth(e.targetTouches[0].target.offsetWidth);
 				setStartX(e.targetTouches[0].clientX + (currentXIndex * width));
 			}}
@@ -42,6 +46,7 @@ const Carousel = ({children, windowWidth}) => {
 				}
 			}}
 			onTouchEnd={(e) => {
+				document.body.style.overflow = 'scroll';
 				setCurrentX(Math.round(diff/width));
 				setDiff(Math.round(diff/width) * width);
 			}}
