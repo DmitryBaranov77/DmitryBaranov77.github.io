@@ -16,7 +16,7 @@ export const CarouselItem = ({children, width}) => {
 const Carousel = ({children, windowWidth}) => {
 	const [currentXIndex, setCurrentX] = useState(0);
 	const [startX, setStartX] = useState(0);
-	const [width, setWidth] = useState(windowWidth);
+	const [width, setWidth] = useState(windowWidth || window.innerWidth);
 	const [diff, setDiff] = useState(currentXIndex * width);
 	const tg = useTelegram().tg;
 
