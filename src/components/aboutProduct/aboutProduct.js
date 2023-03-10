@@ -71,7 +71,6 @@ class AboutProduct extends React.Component {
 					) : (
 						<div className='btns'>
 							<Button type={'big-add'} onClick={() => {
-								modal({isOpen: true, item: product});
 								if(colors || sizes){
 									modal({isOpen: true, item: product});
 								} else {

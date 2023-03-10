@@ -8,7 +8,7 @@ import Delivery from '../delivery/delivery';
 import ModalSize from '../modalSize';
 
 function App() {
-  localStorage.clear();
+  // localStorage.clear();
 
   return (
     <div className='App'>
