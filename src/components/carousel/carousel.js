@@ -37,6 +37,7 @@ const Carousel = ({children, windowWidth}) => {
 			}}
 			onTouchMove={(e) => {
 				tg.expand();
+				document.body.style.overflow = 'hidden';
 				const dif = startX - e.targetTouches[0].clientX;
 				if((currentXIndex === children.length - 1) && (dif > width)){
 					
