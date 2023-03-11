@@ -6,6 +6,7 @@ import CartList from '../cartList/cartList';
 import AboutProduct from '../aboutProduct/aboutProduct';
 import Delivery from '../delivery/delivery';
 import ModalSize from '../modalSize';
+import Admin from '../admin/admin';
 
 function App() {
   // localStorage.clear();
@@ -16,7 +17,7 @@ function App() {
       <Router>
 
         <Routes>
-
+          <Route path='admin' element={<Admin/>}/>
           <Route index element={<ProductList/>}/>
           <Route path='delivery' element={<Delivery/>}/>
           <Route path='cart' element={<CartList/>}/>

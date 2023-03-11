@@ -1,7 +1,7 @@
 import React, { createRef } from 'react';
 import { connect } from 'react-redux';
 import { useTelegram } from '../../hooks/useTelegram';
-import { addToCart, changeCategory, deleteFromCart, modal, newProducts, productsLoaded } from '../../services/actions';
+import { addToCart, changeCategory, deleteFromCart, modal, productsLoaded } from '../../services/actions';
 import Button from '../button';
 import WithProductsService from '../hoc/withProductsService';
 import Product from '../product/product';
