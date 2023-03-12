@@ -27,7 +27,7 @@ export default class ProductsService {
 			},
 			{id: '2', title: 'Детский комбинезон', colors: [
 				{
-					name: 'Цвет 1',
+					name: 'Голубой',
 					src: ['comb.jpg']
 				},
 				{

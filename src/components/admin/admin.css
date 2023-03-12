@@ -1,0 +1,37 @@
+.admin{
+	display: flex;
+	flex-direction: column;
+	margin: 0 10px 0 10px;
+}
+
+.admin > button {
+	margin: auto;
+	margin-top: 10px;
+	width: 50vw;
+}
+
+.admin-item{
+	margin-top: 7px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.admin-item > button {
+	height: 20px;
+}
+
+td{
+	max-width: 50vw;
+	word-wrap: break-word;
+}
+
+th {
+	vertical-align: top;
+	text-align: start;
+}
+
+.admin-form{
+	display: flex;
+	flex-direction: column;
+	margin: 0 10px 0 10px;
+}
