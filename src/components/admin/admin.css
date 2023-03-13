@@ -35,3 +35,28 @@ th {
 	flex-direction: column;
 	margin: 0 10px 0 10px;
 }
+
+.admin-form > button {
+	margin-top: 10px;
+}
+
+.admin-color{
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-bottom: 10px;
+}
+
+.admin-color > input[type="text"]{
+	max-width: 30vw;
+} 
+
+.admin-color > label{
+	max-width: 30vw;
+	overflow: hidden;
+}
+
+.file {
+	border: 1px black solid;
+}
