@@ -81,7 +81,7 @@ class ProductList extends React.Component{
 					))}
 				</div>
 				<div className='list'>
-					{showProducts.map(item => (
+					{/* {showProducts.map(item => (
 						<Product
 							key={item.id}
 							product={item}
@@ -98,7 +98,7 @@ class ProductList extends React.Component{
 								this.tg.HapticFeedback.impactOccurred('rigid');
 							}}
 						/>
-					))}
+					))} */}
 				</div>
 			</div>
 		);
