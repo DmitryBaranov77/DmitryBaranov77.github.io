@@ -69,7 +69,8 @@ export default class ProductsService {
 	}
 
 	getAll = async () => {
-		const res = await fetch(`https://dmnsmgn.ru/api`);
-		return await res.json();
+		const res = await fetch(`http://95.31.1.120:5000/api`);
+		
+		return (await res.json());
 	}
 }

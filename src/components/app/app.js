@@ -7,10 +7,11 @@ import AboutProduct from '../aboutProduct/aboutProduct';
 import Delivery from '../delivery/delivery';
 import ModalSize from '../modalSize';
 import Admin, { AddItem } from '../admin/admin';
+import { useEffect } from 'react';
 
 function App() {
   // localStorage.clear();
-
+  
   return (
     <div className='App'>
       <ModalSize/>

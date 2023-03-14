@@ -13,7 +13,7 @@ class AboutProduct extends React.Component {
 	render() {
 		const id = location.search.slice(1);
 		const {addToCart, deleteFromCart, products, modal} = this.props;
-		const product = products.find(item => item.id === id);
+		const product = products.find(item => item.id == id);
 		let {src, title, descr, price, sizes, colors} = product;
 		const exist = this.props.cart.find(item => item.id === id);
 		const count  = (sizes || colors) ? 0 : exist ? exist.quantity : 0;
@@ -30,12 +30,12 @@ class AboutProduct extends React.Component {
 				<div className='product-card__container'>
 					<div className='image__container'>
 						{src.length === 1 ? (
-								<img className='product-card-image' src={window.URL.createObjectURL(new Blob([Buffer.from(src)]))} alt={title}/>
+								<img className='product-card-image' src={src} alt={title}/>
 							) : (
 								<Carousel>
 									{src.map((item, index) => (
 										<CarouselItem key={index}>
-											<img className='product-card-image' src={window.URL.createObjectURL(new Blob([Buffer.from(src)]))} alt={title}/>
+											<img className='product-card-image' src={item} alt={title}/>
 										</CarouselItem>
 									))}
 								</Carousel>

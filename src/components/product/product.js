@@ -11,12 +11,12 @@ class Product extends React.Component{
 		const exist = this.props.cart.find(item => item.id === id);
 		const {onInc, onDec} = this.props;
 		const count  = sizes || colors ? 0 : exist ? exist.quantity : 0;
-		console.log(src);
+		// console.log(src);
 		return (
 			<div className='product-card-wrapper'>
 				<div className={(count !== 0 ? 'active' : '') + ' product-card-image__container'}>
 					<a href={'about?' + id}>
-						<img className='product-card-image' src={window.URL.createObjectURL(new Blob(src[0].data))} alt={title}/>
+						<img className='product-card-image' src={src[0]} alt={title}/>
 					</a>
 				</div>
 

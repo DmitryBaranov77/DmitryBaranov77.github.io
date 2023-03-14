@@ -5,12 +5,15 @@ import WithProductsService from '../hoc/withProductsService';
 import './admin.css'
 
 
+
 class Admin extends Component {
 	componentDidMount(){
 		const {ProductsService} = this.props;
-		this.props.productsLoaded(ProductsService.getProducts());
+		ProductsService.getAll().then(res => {
+			this.props.productsLoaded(res);
+		})
 	}
-
+	
 	render() {
 		const {products} = this.props;
 		return (
@@ -31,33 +34,42 @@ const AdminItem = ({item}) => {
 			<details>
 				<summary>{item.title}</summary>
 				<table>
-					<tr>
-						<th>Тип:</th>
-						<td>{item.type}</td>
-					</tr>
-					<tr>
-						<th>Описание:</th>
-						<td>{item.descr}</td>
-					</tr>
-					<tr>
-						<th>Цвета:</th>
-						<td>{item.colors !== null ? (
-							item.colors.map(item => (
-								`${item.name}, `
-							))
-						) : null}</td>
-					</tr>
-					<tr>
-						<th>Размеры:</th>
-						<td>{item.sizes !== null ? item.sizes.toString() : null}</td>
-					</tr>
-					<tr>
-						<th>Цена:</th>
-						<td>{item.price}</td>
-					</tr>
+					<tbody>
+						<tr>
+							<th>Тип:</th>
+							<td>{item.type}</td>
+						</tr>
+						<tr>
+							<th>Описание:</th>
+							<td>{item.descr}</td>
+						</tr>
+						<tr>
+							<th>Цвета:</th>
+							<td>{item.colors !== null ? (
+								item.colors.map(item => (
+									`${item.name}, `
+								))
+							) : null}</td>
+						</tr>
+						<tr>
+							<th>Размеры:</th>
+							<td>{item.sizes !== null ? item.sizes.toString() : null}</td>
+						</tr>
+						<tr>
+							<th>Цена:</th>
+							<td>{item.price}</td>
+						</tr>
+					</tbody>
 				</table>
 			</details>
-			<button>Удалить</button>
+			<button onClick={() => {
+				let data = new FormData();
+				data.append('id', item.id);
+				fetch('http://95.31.1.120:5000/api', {
+					method: 'DELETE',
+					body: data
+				})
+			}}>Удалить</button>
 		</div>
 	)
 }
@@ -83,10 +95,10 @@ export const AddItem = () => {
 			data.append('price', price);
 
 			sizes.map(item => {
-				data.append('sizes', item);
+				data.append('sizes[]', item);
 			})
 			colors.map(item => {
-				data.append('colorNames', item.name);
+				data.append('colorNames[]', item.name);
 				data.append('colorSrcs', item.src);
 			})
 			photos.map(item => {
@@ -101,7 +113,7 @@ export const AddItem = () => {
 			// console.log(data.getAll('colorNames'));
 			// console.log(data.getAll('colorSrcs'));
 			// console.log(data.getAll('files'));
-			fetch('https://dmnsmgn.ru/api',{
+			fetch('http://95.31.1.120:5000/api',{
 				method: 'POST',
 				body: data
 			})

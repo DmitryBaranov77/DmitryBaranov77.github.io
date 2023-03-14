@@ -9,13 +9,14 @@ class CartListItem extends React.Component {
 		const products = this.props.products;
 		const {id, size, color, quantity} = this.props.product;
 		const {src, title, price} = products.find(item => item.id === id);
+		console.log(color);
 		let img = color === 'base' ? src[0] : color.src;
 		const {onInc, onDec} = this.props;
 		return (
 			<div className='cart-item'>
 				<div className='cart-image__container'>
 					<a href={'about?' + id}>
-						<img src={require('../../images/'+img)}/>
+						<img src={img}/>
 					</a>
 				</div>
 

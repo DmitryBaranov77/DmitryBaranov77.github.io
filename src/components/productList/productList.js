@@ -12,9 +12,10 @@ class ProductList extends React.Component{
 	totalPrice = this.props.totalPrice;
 	ref = createRef();
 	
-	componentDidMount() {
+	async componentDidMount() {
 		const {ProductsService} = this.props;
 		// this.props.productsLoaded(ProductsService.getProducts());
+		// console.log(await ProductsService.getAll());
 		ProductsService.getAll().then(res => {
 			this.props.productsLoaded(res);
 		})

@@ -15,7 +15,15 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
 	switch(action.type){
 		case 'NEW_PRODUCTS':
-			const products = action.payload;
+			let products = action.payload;
+			// console.log(products);
+			products.map(item => {
+				item.colors = JSON.parse(item.colors);
+				item.colors.map((i, ind) => item.colors[ind].src = `http://95.31.1.120:5000/images/${i.src}`);
+				item.sizes = JSON.parse(item.sizes);
+				item.src = JSON.parse(item.src);
+				item.src.map((i, ind) => item.src[ind] = `http://95.31.1.120:5000/images/${i}`);
+			});
 			const categories = [...new Set(products.map(item => item.type))];
 			categories.unshift('Все');
 			state.cart.forEach(item => {
