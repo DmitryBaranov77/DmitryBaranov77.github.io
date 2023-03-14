@@ -1,7 +1,5 @@
 export default class ProductsService {
 	getProducts(){
-		const res = fetch(`https://dmnsmgn.ru/api`);
-		console.log(res.json());
 		const products = [
 			{id: '1', 
 			title: 'Детская машинка', 
@@ -68,5 +66,10 @@ export default class ProductsService {
 		]
 		
 		return products;
+	}
+
+	getAll = async () => {
+		const res = await fetch(`https://dmnsmgn.ru/api`);
+		console.log(await res.json());
 	}
 }
