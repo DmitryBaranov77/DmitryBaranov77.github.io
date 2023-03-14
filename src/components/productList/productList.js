@@ -14,9 +14,8 @@ class ProductList extends React.Component{
 	
 	componentDidMount() {
 		const {ProductsService} = this.props;
-		// this.props.productsLoaded(ProductsService.getProducts());
-		this.props.productsLoaded(ProductsService.getAll());
-		console.log(this.props.products);
+		this.props.productsLoaded(ProductsService.getProducts());
+		console.log(this.props.products, ProductsService.getAll());
 		this.tg.MainButton.onClick(this.onGoCart);
 		this.tg.enableClosingConfirmation();
 		this.tg.MainButton.color = '#20B2AA';
@@ -81,7 +80,7 @@ class ProductList extends React.Component{
 					))}
 				</div>
 				<div className='list'>
-					{/* {showProducts.map(item => (
+					{showProducts.map(item => (
 						<Product
 							key={item.id}
 							product={item}
@@ -98,7 +97,7 @@ class ProductList extends React.Component{
 								this.tg.HapticFeedback.impactOccurred('rigid');
 							}}
 						/>
-					))} */}
+					))}
 				</div>
 			</div>
 		);
