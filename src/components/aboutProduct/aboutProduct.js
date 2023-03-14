@@ -30,12 +30,12 @@ class AboutProduct extends React.Component {
 				<div className='product-card__container'>
 					<div className='image__container'>
 						{src.length === 1 ? (
-								<img className='product-card-image' src={require('../../images/' + src)} alt={title}/>
+								<img className='product-card-image' src={window.URL.createObjectURL(new Blob([Buffer.from(src)]))} alt={title}/>
 							) : (
 								<Carousel>
 									{src.map((item, index) => (
 										<CarouselItem key={index}>
-											<img className='product-card-image' src={require('../../images/' + item)} alt={title}/>
+											<img className='product-card-image' src={window.URL.createObjectURL(new Blob([Buffer.from(src)]))} alt={title}/>
 										</CarouselItem>
 									))}
 								</Carousel>

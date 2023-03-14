@@ -14,8 +14,8 @@ class ProductList extends React.Component{
 	
 	componentDidMount() {
 		const {ProductsService} = this.props;
-		this.props.productsLoaded(ProductsService.getProducts());
-		ProductsService.getAll();
+		// this.props.productsLoaded(ProductsService.getProducts());
+		this.props.productsLoaded(ProductsService.getAll());
 		this.tg.MainButton.onClick(this.onGoCart);
 		this.tg.enableClosingConfirmation();
 		this.tg.MainButton.color = '#20B2AA';
