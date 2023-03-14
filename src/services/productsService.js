@@ -64,7 +64,7 @@ export default class ProductsService {
 			{id: '4', title: 'Игрушечный робот', type:'Игрушки', sizes: null, colors: null, price: 759, descr: 'Описание', src:['robot.jpg']},
 			{id: '5', title: 'Худи', type:'Одежда', sizes: null, colors: null,  price: 1300, descr: 'Описание', src:['sweater.jpg']}
 		]
-		fetch('http://95.31.1.120:5000').then(res => res.json()).then(data => {
+		fetch('https://dmnsmgn.ru/api').then(res => res.json()).then(data => {
 			console.log(data);
 		})
 		

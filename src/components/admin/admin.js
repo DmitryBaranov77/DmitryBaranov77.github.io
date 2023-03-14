@@ -101,7 +101,7 @@ export const AddItem = () => {
 			// console.log(data.getAll('colorNames'));
 			// console.log(data.getAll('colorSrcs'));
 			// console.log(data.getAll('files'));
-			fetch('http://95.31.1.120:5000',{
+			fetch('https://dmnsmgn.ru/api',{
 				method: 'POST',
 				body: data
 			})
