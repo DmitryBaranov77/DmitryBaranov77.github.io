@@ -1,5 +1,7 @@
 export default class ProductsService {
 	getProducts(){
+		const res = fetch(`https://dmnsmgn.ru/api`);
+		console.log(res.json());
 		const products = [
 			{id: '1', 
 			title: 'Детская машинка', 
@@ -64,9 +66,6 @@ export default class ProductsService {
 			{id: '4', title: 'Игрушечный робот', type:'Игрушки', sizes: null, colors: null, price: 759, descr: 'Описание', src:['robot.jpg']},
 			{id: '5', title: 'Худи', type:'Одежда', sizes: null, colors: null,  price: 1300, descr: 'Описание', src:['sweater.jpg']}
 		]
-		fetch('https://dmnsmgn.ru/api').then(res => res.json()).then(data => {
-			console.log(data);
-		})
 		
 		return products;
 	}
