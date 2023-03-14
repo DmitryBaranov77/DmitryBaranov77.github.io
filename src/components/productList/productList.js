@@ -16,7 +16,7 @@ class ProductList extends React.Component{
 		const {ProductsService} = this.props;
 		// this.props.productsLoaded(ProductsService.getProducts());
 		ProductsService.getAll().then(res => {
-			console.log(res);
+			this.props.productsLoaded(res);
 		})
 		this.tg.MainButton.onClick(this.onGoCart);
 		this.tg.enableClosingConfirmation();
