@@ -14,6 +14,8 @@ class AboutProduct extends React.Component {
 		const id = location.search.slice(1);
 		const {addToCart, deleteFromCart, products, modal} = this.props;
 		const product = products.find(item => item.id == id);
+		console.log(products);
+		console.log(product);
 		let {src, title, descr, price, sizes, colors} = product;
 		const exist = this.props.cart.find(item => item.id == id);
 		const count  = (sizes || colors.length !== 0) ? 0 : exist ? exist.quantity : 0;
