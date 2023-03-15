@@ -106,19 +106,19 @@ export const AddItem = () => {
 				data.append('files', item.src);
 			})
 
-			// console.log(data.getAll('title'));
-			// console.log(data.getAll('type'));
-			// console.log(data.getAll('descr'));
-			// console.log(data.getAll('price'));
-			// console.log(data.getAll('sizes'));
-			// console.log(data.getAll('colorNames'));
-			// console.log(data.getAll('colorSrcs'));
-			// console.log(data.getAll('files'));
+			console.log(data.getAll('title'));
+			console.log(data.getAll('type'));
+			console.log(data.getAll('descr'));
+			console.log(data.getAll('price'));
+			console.log(data.getAll('sizes'));
+			console.log(data.getAll('colorNames'));
+			console.log(data.getAll('colorSrcs'));
+			console.log(data.getAll('files'));
 			fetch('https://dmnsmgn.ru/api',{
 				method: 'POST',
 				body: data
 			})
-			window.location.href = 'https://dmnsmgn.ru/admin'
+			// window.location.href = 'https://dmnsmgn.ru/admin';
 		}}>
 			<button type="button" onClick={() => window.location.href = 'https://dmnsmgn.ru/admin'}>Назад</button>
 			<label htmlFor='title'>Название</label>
