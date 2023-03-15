@@ -19,10 +19,10 @@ export const reducer = (state = initialState, action) => {
 			// console.log(products);
 			products.map(item => {
 				item.colors = JSON.parse(item.colors);
-				item.colors.map((i, ind) => item.colors[ind].src = `http://95.31.1.120:5000/images/${i.src}`);
+				item.colors.map((i, ind) => item.colors[ind].src = `https://dmnsmgn.ru/images/${i.src}`);
 				item.sizes = JSON.parse(item.sizes);
 				item.src = JSON.parse(item.src);
-				item.src.map((i, ind) => item.src[ind] = `http://95.31.1.120:5000/images/${i}`);
+				item.src.map((i, ind) => item.src[ind] = `https://dmnsmgn.ru/images/${i}`);
 			});
 			const categories = [...new Set(products.map(item => item.type))];
 			categories.unshift('Все');
