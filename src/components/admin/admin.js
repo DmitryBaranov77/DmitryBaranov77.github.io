@@ -106,21 +106,19 @@ export const AddItem = () => {
 				data.append('files', item.src);
 			})
 
-			console.log(colors);
-
-			console.log(data.getAll('title'));
-			console.log(data.getAll('type'));
-			console.log(data.getAll('descr'));
-			console.log(data.getAll('price'));
-			console.log(data.getAll('sizes[]'));
-			console.log(data.getAll('colorNames[]'));
-			console.log(data.getAll('colorSrcs'));
-			console.log(data.getAll('files'));
+			// console.log(data.getAll('title'));
+			// console.log(data.getAll('type'));
+			// console.log(data.getAll('descr'));
+			// console.log(data.getAll('price'));
+			// console.log(data.getAll('sizes[]'));
+			// console.log(data.getAll('colorNames[]'));
+			// console.log(data.getAll('colorSrcs'));
+			// console.log(data.getAll('files'));
 			fetch('https://dmnsmgn.ru/api',{
 				method: 'POST',
 				body: data
 			})
-			// window.location.href = 'https://dmnsmgn.ru/admin';
+			window.location.href = 'https://dmnsmgn.ru/admin';
 		}}>
 			<button type="button" onClick={() => window.location.href = 'https://dmnsmgn.ru/admin'}>Назад</button>
 			<label htmlFor='title'>Название</label>
@@ -139,7 +137,6 @@ export const AddItem = () => {
 						<label htmlFor='name'>Имя</label>
 						<input name='name' type='text' value={colors[index].name || ''} required onChange={(e) => {
 							let data = [...colors];
-							console.log(e.target.value);
 							data[0].name = e.target.value;
 							setColors(data);
 						}}/>
