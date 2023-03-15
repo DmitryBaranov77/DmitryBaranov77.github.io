@@ -1,8 +1,6 @@
 export default class ProductsService {	
 	getAll = async () => {
-		const res = await fetch(`https://dmnsmgn.ru/api`);
-		console.log(await res.json());
-		
+		const res = await fetch(`https://dmnsmgn.ru/api`);		
 		return (await res.json());
 	}
 }
