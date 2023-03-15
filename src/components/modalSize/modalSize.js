@@ -48,6 +48,7 @@ class ModalSize extends Component {
 				<div className='modal__wrapper' onClick={(e) => {
 					if(e.target.className === 'modal__wrapper'){
 						this.setState({...initialState});
+						this.tg.HapticFeedback.impactOccurred('rigid');
 						modal({isOpen: false, item: null});
 					}
 					}}>
@@ -55,6 +56,7 @@ class ModalSize extends Component {
 						<div className='modal-header'>
 							<button className='close' onClick={() =>  {
 								this.setState({...initialState});
+								this.tg.HapticFeedback.impactOccurred('rigid');
 								modal({isOpen: false, item: null});
 							}} />
 						</div>
@@ -113,6 +115,7 @@ class ModalSize extends Component {
 								<Button type={'remove'} onClick={() => {
 									if(this.state.count !== 0){
 										deleteFromCart({...item, color: this.state.color, size: this.state.size})
+										this.tg.HapticFeedback.impactOccurred('rigid');
 									}
 								}} />
 								<div className='counter__container'>
@@ -120,6 +123,7 @@ class ModalSize extends Component {
 								</div>
 								<Button type={'add'} onClick={() => {
 									addToCart({...item, color: this.state.color, size: this.state.size});
+									this.tg.HapticFeedback.impactOccurred('rigid');
 								}} />
 							</div>
 						</div>

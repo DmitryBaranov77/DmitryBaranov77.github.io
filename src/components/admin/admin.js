@@ -143,7 +143,7 @@ export const AddItem = () => {
 						}}/>
 
 						<label className='file' htmlFor={"filePicker"+index}>{colors[index].src?.name || 'Выберите файл'}</label>
-						<input id={"filePicker"+index} type={"file"} hidden required onChange={(e) => {
+						<input id={"filePicker"+index} type={"file"} accept='image/*' hidden required onChange={(e) => {
 							let data = [...colors];
 							data[index].src = e.target.files[0];
 							setColors(data);
@@ -163,7 +163,7 @@ export const AddItem = () => {
 				{photos.map((item, index) => (
 					<div className='admin-color' key={'photo'+index}>
 						<label className='file' htmlFor={"photoPicker"+index}>{photos[index].src?.name || 'Выберите файл'}</label>
-						<input id={"photoPicker"+index} type={"file"} hidden required onChange={(e) => {
+						<input id={"photoPicker"+index} type={"file"} accept='image/*' hidden required onChange={(e) => {
 							let data = [...photos];
 							data[index].src = e.target.files[0];
 							setPhotos(data);
