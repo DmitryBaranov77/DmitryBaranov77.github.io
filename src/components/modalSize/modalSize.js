@@ -20,8 +20,9 @@ class ModalSize extends Component {
 	componentDidUpdate(){
 		this.tg.MainButton.hide();
 		if(!this.state.src && this.props.modalStore.item){
+			const item = this.props.modalStore?.item;
 			this.setState({
-				src: this.props.modalStore.item?.src,
+				src: item?.colors ? item.colors[0].src : Array.isArray(item.src) ? item.src[0] : item.src,
 				color: this.props.modalStore.item?.colors ? this.props.modalStore.item?.colors[0] : 'base',
 				size: this.props.modalStore.item?.sizes ?  this.props.modalStore.item?.sizes[0] : 'base'
 			})
@@ -39,8 +40,6 @@ class ModalSize extends Component {
 		let {isOpen, item} = this.props.modalStore;
 		const exist = cart.find(pr => ((pr.id === item?.id) && (pr.color?.name === this.state.color?.name) && (pr.size === this.state.size)));
 		const count = exist ? exist.quantity : 0;
-		let src = this.state.src ? this.state.src[0] : '';
-		console.log(src);
 		return (
 			<>
 				{isOpen ? 
@@ -60,7 +59,7 @@ class ModalSize extends Component {
 						</div>
 						<div className='modal-content'>
 							<div className='modal-content__header'>
-								<img src ={src} alt=''></img>
+								<img src ={this.state.src} alt=''></img>
 								<div className='price'>{item.price * count}</div>
 							</div>
 							{item.colors ? 

@@ -15,8 +15,8 @@ class AboutProduct extends React.Component {
 		const {addToCart, deleteFromCart, products, modal} = this.props;
 		const product = products.find(item => item.id == id);
 		let {src, title, descr, price, sizes, colors} = product;
-		const exist = this.props.cart.find(item => item.id === id);
-		const count  = (sizes || colors) ? 0 : exist ? exist.quantity : 0;
+		const exist = this.props.cart.find(item => item.id == id);
+		const count  = (sizes || colors.length !== 0) ? 0 : exist ? exist.quantity : 0;
 		
 		return (
 			<div className='product-card'>
@@ -61,7 +61,7 @@ class AboutProduct extends React.Component {
 							</div>
 							<Button type={'add'} onClick={() => {
 								this.tg.HapticFeedback.impactOccurred('rigid');
-								if(colors || sizes){
+								if(colors.length !== 0 || sizes){
 									modal({isOpen: true, item: product})
 								} else {
 									addToCart(product);
@@ -71,7 +71,7 @@ class AboutProduct extends React.Component {
 					) : (
 						<div className='btns'>
 							<Button type={'big-add'} onClick={() => {
-								if(colors || sizes){
+								if(colors.length !== 0 || sizes){
 									modal({isOpen: true, item: product});
 								} else {
 									addToCart(product);

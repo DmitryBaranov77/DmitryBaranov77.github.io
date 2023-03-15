@@ -65,10 +65,11 @@ const AdminItem = ({item}) => {
 			<button onClick={() => {
 				let data = new FormData();
 				data.append('id', item.id);
-				fetch('http://95.31.1.120:5000/api', {
+				fetch('https://dmnsmgn.ru/api', {
 					method: 'DELETE',
 					body: data
 				})
+				window.location.reload();
 			}}>Удалить</button>
 		</div>
 	)
@@ -113,11 +114,13 @@ export const AddItem = () => {
 			// console.log(data.getAll('colorNames'));
 			// console.log(data.getAll('colorSrcs'));
 			// console.log(data.getAll('files'));
-			fetch('http://95.31.1.120:5000/api',{
+			fetch('https://dmnsmgn.ru/api',{
 				method: 'POST',
 				body: data
 			})
+			window.location.href = 'https://dmnsmgn.ru/admin'
 		}}>
+			<button type="button" onClick={() => window.location.href = 'https://dmnsmgn.ru/admin'}>Назад</button>
 			<label htmlFor='title'>Название</label>
 			<input type='text' name='title' required onChange={(e) => setTitle(e.target.value)}/>
 			

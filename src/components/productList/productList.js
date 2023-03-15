@@ -14,8 +14,6 @@ class ProductList extends React.Component{
 	
 	async componentDidMount() {
 		const {ProductsService} = this.props;
-		// this.props.productsLoaded(ProductsService.getProducts());
-		// console.log(await ProductsService.getAll());
 		ProductsService.getAll().then(res => {
 			this.props.productsLoaded(res);
 		})
@@ -88,7 +86,7 @@ class ProductList extends React.Component{
 							key={item.id}
 							product={item}
 							onInc={() => {
-								if(item?.colors || item?.sizes){
+								if(item?.colors.length !== 0 || item?.sizes){
 									modal({isOpen: true, item})
 								} else {
 									addToCart(item);
