@@ -23,7 +23,7 @@ class ModalSize extends Component {
 			const item = this.props.modalStore?.item;
 			console.log(item);
 			this.setState({
-				src: item?.colors ? item.colors[0].src : Array.isArray(item.src) ? item.src[0] : item.src,
+				src: item?.colors.length !== 0 ? item.colors[0].src : Array.isArray(item.src) ? item.src[0] : item.src,
 				color: this.props.modalStore.item?.colors ? this.props.modalStore.item?.colors[0] : 'base',
 				size: this.props.modalStore.item?.sizes ?  this.props.modalStore.item?.sizes[0] : 'base'
 			})
