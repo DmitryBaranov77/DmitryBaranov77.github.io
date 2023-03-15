@@ -138,7 +138,7 @@ export const AddItem = () => {
 						<input name='name' type='text' value={colors[index].name || ''} required onChange={(e) => {
 							let data = [...colors];
 							console.log(e.target.value);
-							data[index].name = e.target.value;
+							data[0].name = e.target.value;
 							setColors(data);
 						}}/>
 
