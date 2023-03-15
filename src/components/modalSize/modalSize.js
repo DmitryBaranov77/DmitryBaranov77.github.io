@@ -21,6 +21,7 @@ class ModalSize extends Component {
 		this.tg.MainButton.hide();
 		if(!this.state.src && this.props.modalStore.item){
 			const item = this.props.modalStore?.item;
+			console.log(item);
 			this.setState({
 				src: item?.colors ? item.colors[0].src : Array.isArray(item.src) ? item.src[0] : item.src,
 				color: this.props.modalStore.item?.colors ? this.props.modalStore.item?.colors[0] : 'base',
