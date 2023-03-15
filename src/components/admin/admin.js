@@ -106,14 +106,16 @@ export const AddItem = () => {
 				data.append('files', item.src);
 			})
 
-			console.log(data.getAll('title'));
-			console.log(data.getAll('type'));
-			console.log(data.getAll('descr'));
-			console.log(data.getAll('price'));
-			console.log(data.getAll('sizes'));
-			console.log(data.getAll('colorNames'));
-			console.log(data.getAll('colorSrcs'));
-			console.log(data.getAll('files'));
+			console.log(colors);
+
+			// console.log(data.getAll('title'));
+			// console.log(data.getAll('type'));
+			// console.log(data.getAll('descr'));
+			// console.log(data.getAll('price'));
+			// console.log(data.getAll('sizes'));
+			// console.log(data.getAll('colorNames'));
+			// console.log(data.getAll('colorSrcs'));
+			// console.log(data.getAll('files'));
 			fetch('https://dmnsmgn.ru/api',{
 				method: 'POST',
 				body: data
