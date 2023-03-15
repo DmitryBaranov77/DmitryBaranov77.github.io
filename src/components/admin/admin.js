@@ -117,8 +117,9 @@ export const AddItem = () => {
 			fetch('https://dmnsmgn.ru/api',{
 				method: 'POST',
 				body: data
+			}).then(() => {
+				window.location.href = 'https://dmnsmgn.ru/admin';
 			})
-			window.location.href = 'https://dmnsmgn.ru/admin';
 		}}>
 			<button type="button" onClick={() => window.location.href = 'https://dmnsmgn.ru/admin'}>Назад</button>
 			<label htmlFor='title'>Название</label>
